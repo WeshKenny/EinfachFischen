@@ -1,0 +1,63 @@
+.topbar{
+  position: fixed;      /* oder sticky, wenn nur beim Scrollen gewünscht */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: #ffffffcc;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  backdrop-filter: blur(6px);
+}
+
+/* Platz für fixierten Header freihalten */
+.app-main{
+  padding-top: 64px; /* gleiche Höhe wie .topbar */
+}
+
+/* Falls Überschriften Standardabstände haben */
+h1, .page-title {
+  margin-top: 0;
+}
+
+.brand{
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.topnav ul{
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.topnav a{
+  text-decoration: none;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background .15s, color .15s;
+  font-weight: 500;
+}
+
+.topnav a:hover{
+  background: rgba(0,0,0,0.06);
+}
+
+.topnav a.active{
+  background: #1e90ff;
+  color: white;
+}
+
+/* Responsive: auf kleinen Bildschirmen die Links enger oder als Menü anzeigen */
+@media (max-width: 600px){
+  .topnav ul{ gap: 8px; }
+  .brand{ font-size: 1rem; }
+}
+/* ...existing code... */
