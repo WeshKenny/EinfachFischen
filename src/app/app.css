@@ -1,63 +1,96 @@
-.topbar{
-  position: fixed;      /* oder sticky, wenn nur beim Scrollen gewünscht */
+.topbar {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 64px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
-  background: #ffffffcc;
+  padding: 0 32px;
+  background: linear-gradient(135deg, rgba(30, 60, 114, 0.95) 0%, rgba(42, 82, 152, 0.95) 100%);
   z-index: 1000;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  backdrop-filter: blur(6px);
+  border-bottom: 2px solid rgba(99, 179, 237, 0.3);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Platz für fixierten Header freihalten */
-.app-main{
-  padding-top: 64px; /* gleiche Höhe wie .topbar */
+.app-main {
+  padding-top: 90px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-/* Falls Überschriften Standardabstände haben */
-h1, .page-title {
-  margin-top: 0;
-}
-
-.brand{
+.brand {
   font-weight: 700;
-  font-size: 1.1rem;
-  color: #222;
+  font-size: 1.35rem;
+  background: linear-gradient(135deg, #60a5fa 0%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(96, 165, 250, 0.3);
 }
 
-.topnav ul{
+.topnav ul {
   list-style: none;
   display: flex;
-  gap: 16px;
+  gap: 8px;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
-.topnav a{
+.topnav a {
   text-decoration: none;
-  color: #333;
-  padding: 8px 12px;
-  border-radius: 8px;
-  transition: background .15s, color .15s;
+  color: #e0f2fe;
+  padding: 10px 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
   font-weight: 500;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
 }
 
-.topnav a:hover{
-  background: rgba(0,0,0,0.06);
+.topnav a:hover {
+  background: rgba(96, 165, 250, 0.15);
+  color: #bfdbfe;
+  transform: translateY(-2px);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
 }
 
-.topnav a.active{
-  background: #1e90ff;
+.topnav a.active {
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
   color: white;
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Responsive: auf kleinen Bildschirmen die Links enger oder als Menü anzeigen */
-@media (max-width: 600px){
-  .topnav ul{ gap: 8px; }
-  .brand{ font-size: 1rem; }
+@media (max-width: 600px) {
+  .topbar {
+    padding: 0 16px;
+    height: 60px;
+  }
+  
+  .app-main {
+    padding-top: 70px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  .topnav ul {
+    gap: 4px;
+  }
+  
+  .topnav a {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .brand {
+    font-size: 1.1rem;
+  }
 }
-/* ...existing code... */

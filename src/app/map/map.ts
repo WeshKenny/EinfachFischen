@@ -168,11 +168,11 @@ export class Map implements AfterViewInit {
 
   private initMap(): void {
     this.map = this.L.map('map', {
-      center: [46.8182, 8.2275],
-      zoom: 8,
-      zoomControl: true,
-      minZoom: 7,
-      maxZoom: 13
+      center: [46.8182, 8.2275],  // Switzerland's center coordinates
+      zoom: 8,                     // How zoomed in
+      zoomControl: true,           // Show +/- zoom buttons
+      minZoom: 8,                  // Can't zoom out more than this
+      maxZoom: 13                  // Can't zoom in more than this
     });
 
     this.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
