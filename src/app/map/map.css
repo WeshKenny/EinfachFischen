@@ -1,25 +1,62 @@
-.map-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
+/* Host-Element auf volle Größe setzen */
+:host {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 #map {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+}
+.map-component-wrapper {
+  width: 90%;                /* behält die responsive Breite */
+  max-width: 1600px;         /* erhöht für Breitbildformat */
+  height: 70vh;              /* nutzt 70% der Bildschirmhöhe */
+  min-height: 400px;         /* minimale Höhe */
+  max-height: 800px;         /* maximale Höhe */
+  margin: 2rem auto;         /* vertikaler Abstand oben/unten */
+  position: relative;
+  aspect-ratio: 16 / 9;      /* erzwingt 16:9 Seitenverhältnis */
 }
 
 .header {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-  background: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 20px 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 20px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ...existing code (behalte deine anderen Styles) ... */
+
+/* Responsive Anpassungen */
+@media (max-width: 1400px) {
+    .map-component-wrapper {
+        width: 85%;
+        height: 550px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .map-component-wrapper {
+        width: 90%;
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .map-component-wrapper {
+        width: 95%;
+        height: 450px;
+    }
 }
 
 .header h1 {
@@ -34,7 +71,7 @@
   color: #94a3b8;
 }
 
-/* CRITICAL - Force the markers to be visible */
+/* Rest of your marker and popup styles stay the same... */
 ::ng-deep .custom-marker {
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
   width: 30px !important;
@@ -56,7 +93,6 @@
   box-shadow: 0 6px 20px rgba(59, 130, 246, 0.8) !important;
 }
 
-/* Popup styling */
 ::ng-deep .leaflet-popup-content-wrapper {
   background: rgba(15, 23, 42, 0.98);
   backdrop-filter: blur(10px);

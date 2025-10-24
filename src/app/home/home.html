@@ -2,11 +2,14 @@
   <h1 class="page-title">Meine Karte von der Schweiz</h1>
 
   <div class="map-container">
-    <div id="map"></div>
-    <div class="error-message" id="error">
-      <app-map></app-map>     <!-- ← Use the map here -->
-    </div>
-</div></main>
+    <app-map></app-map>     <!-- ← Map component goes here! -->
+  </div>
+
+  <!-- Error message (if you need it, keep it separate) -->
+  <div class="error-message" id="error">
+    Karte konnte nicht geladen werden.
+  </div>
+</main>
 
 
 
