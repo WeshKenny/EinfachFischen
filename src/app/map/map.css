@@ -12,28 +12,17 @@
     overflow: hidden;
 }
 .map-component-wrapper {
-  width: 90%;                /* behält die responsive Breite */
-  max-width: 1600px;         /* erhöht für Breitbildformat */
-  height: 70vh;              /* nutzt 70% der Bildschirmhöhe */
-  min-height: 400px;         /* minimale Höhe */
-  max-height: 800px;         /* maximale Höhe */
+  width: 100%;                /* behält die responsive Breite */
+  max-width: 1800px;         /* erhöht für Breitbildformat */
+  height: 85vh;              /* nutzt 70% der Bildschirmhöhe */
+  min-height: 600px;         /* minimale Höhe */
+  max-height: 1000px;         /* maximale Höhe */
   margin: 2rem auto;         /* vertikaler Abstand oben/unten */
   position: relative;
   aspect-ratio: 16 / 9;      /* erzwingt 16:9 Seitenverhältnis */
 }
 
-.header {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 20px 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
+
 
 /* ...existing code (behalte deine anderen Styles) ... */
 

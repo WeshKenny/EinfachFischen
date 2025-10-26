@@ -1,13 +1,17 @@
 <main class="home-main">
-  <h1 class="page-title">Meine Karte von der Schweiz</h1>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>🏔️ Schweizer Gewässer</h1>
+      <p>Entdecke die schönsten Seen der Schweiz</p>
+      <button class="scroll-btn" (click)="scrollToMap()">
+        Zur Karte
+        <span class="arrow">↓</span>
+      </button>
+    </div>
+  </section>
 
-  <div class="map-container">
-    <app-map></app-map>     <!-- ← Map component goes here! -->
-  </div>
-
-  <!-- Error message (if you need it, keep it separate) -->
-  <div class="error-message" id="error">
-    Karte konnte nicht geladen werden.
+  <div class="map-container" #mapSection>
+    <app-map (loadFailed)="onMapLoadError()"></app-map>
   </div>
 </main>
 

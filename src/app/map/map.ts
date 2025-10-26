@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, AfterViewInit, PLATFORM_ID, Inject, Output, EventEmitter } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
 
@@ -22,6 +22,7 @@ interface Lake {
   styleUrls: ['./map.css']
 })
 export class Map implements AfterViewInit {
+  @Output() loadFailed = new EventEmitter<void>();
   private map!: L.Map;
   private L: any;
 
@@ -145,14 +146,15 @@ export class Map implements AfterViewInit {
 
   async ngAfterViewInit(): Promise<void> {
     if (isPlatformBrowser(this.platformId)) {
-      this.L = await import('leaflet');
-      
-      // FIX THE MARKER ICONS - ADD THIS!
-      this.fixLeafletIconPath();
-      
-      this.initMap();
-      this.addMarkers();
-    }
+      try {
+        this.L = await import('leaflet');
+        this.fixLeafletIconPath();
+        this.initMap();
+        this.addMarkers();
+      } catch (error) {
+        this.loadFailed.emit();
+      }
+    }   
   }
 
   // ADD THIS NEW METHOD!
@@ -169,7 +171,7 @@ export class Map implements AfterViewInit {
   private initMap(): void {
     this.map = this.L.map('map', {
       center: [46.8182, 8.2275],  // Switzerland's center coordinates
-      zoom: 8,                     // How zoomed in
+      zoom: 9,                     // How zoomed in
       zoomControl: true,           // Show +/- zoom buttons
       minZoom: 8,                  // Can't zoom out more than this
       maxZoom: 13                  // Can't zoom in more than this
