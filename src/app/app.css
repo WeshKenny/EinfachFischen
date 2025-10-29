@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: 70px; /* Etwas höher für bessere Proportion */
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
@@ -14,25 +14,17 @@
   border-bottom: 2px solid rgba(99, 179, 237, 0.3);
   backdrop-filter: blur(12px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;  /* Nur diese Zeile neu */
-
+  transition: all 0.3s ease;
 }
 
 .topbar.hidden {
   transform: translateY(-100%);
 }
 
-.app-main {
-  padding-top: 90px;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
 
 .brand {
   font-weight: 700;
-  font-size: 1.35rem;
+  font-size: 2rem; /* Größer für bessere Präsenz */
   background: linear-gradient(135deg, #60a5fa 0%, #93c5fd 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -40,37 +32,19 @@
   letter-spacing: -0.5px;
   text-shadow: 0 2px 10px rgba(96, 165, 250, 0.3);
   justify-self: start;
-  
+  padding-left: 20px; /* Mehr Abstand zum Rand */
 }
 
-.brand a:hover {
-  background: rgba(96, 165, 250, 0.15);
-  color: #bfdbfe;
-  transform: translateY(-2px);
-  border: 1px solid rgba(96, 165, 250, 0.3);
-  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
-}
-
-.brand a.active {
-  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
-  color: white;
-  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.brand a {
-  text-decoration: none;
-  color: #e0f2fe;
-  padding: 10px 20px;
-  border-radius: 12px;
-  font-weight: 500;
-  border: 1px solid transparent;
+.topnav {
+  justify-self: center; /* Zentriert die Navigation */
+  margin-left: auto; /* Schiebt die Navigation nach rechts */
+  padding-right: 40px; /* Mehr Abstand nach rechts */
 }
 
 .topnav ul {
   list-style: none;
   display: flex;
-  gap: 8px;
+  gap: 24px; /* Größerer Abstand zwischen den Links */
   align-items: center;
   margin: 0;
   padding: 0;
@@ -79,12 +53,14 @@
 .topnav a {
   text-decoration: none;
   color: #e0f2fe;
-  padding: 10px 20px;
+  padding: 12px 24px; /* Größere Klickfläche */
   border-radius: 12px;
   transition: all 0.3s ease;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 1.1rem; /* Etwas größer */
   border: 1px solid transparent;
+  background: transparent;
+  letter-spacing: 0.5px; /* Bessere Lesbarkeit */
 }
 
 .topnav a:hover {
@@ -102,28 +78,28 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Mobile Anpassungen */
 @media (max-width: 600px) {
   .topbar {
     padding: 0 16px;
     height: 60px;
   }
   
-  .app-main {
-    padding-top: 70px;
-    padding-left: 16px;
-    padding-right: 16px;
+  .brand {
+    font-size: 1.4rem;
+    padding-left: 10px;
+  }
+  
+  .topnav {
+    padding-right: 10px;
   }
   
   .topnav ul {
-    gap: 5px;
+    gap: 12px;
   }
   
   .topnav a {
-    padding: 8px 14px;
-    font-size: 0.85rem;
-  }
-  
-  .brand {
-    font-size: 1.1rem;
+    padding: 8px 16px;
+    font-size: 0.9rem;
   }
 }
