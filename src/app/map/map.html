@@ -1,5 +1,63 @@
 <div class="map-component-wrapper">
-  <div class="header">
+  <div class="layout">
+    <div id="map"></div>
   </div>
-  <div id="map"></div>
+</div>
+
+<!-- Sidebar außerhalb, fixed am rechten Rand -->
+<div class="sidebar" [class.open]="isSidebarOpen()">
+  <button class="close-button" (click)="closeSidebar()">&times;</button>
+  <div class="sidebar-content" *ngIf="selectedLakeData">
+    <h2>{{selectedLakeData.name}}</h2>
+      
+    
+    <div class="lake-section">
+      <h3>📊 Allgemeine Informationen</h3>
+      <div class="lake-info">
+        <div class="info-row">
+          <span class="info-label">Fläche:</span>
+          <span class="info-value">{{selectedLakeData.area}}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Maximale Tiefe:</span>
+          <span class="info-value">{{selectedLakeData.maxDepth}}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Höhe über Meer:</span>
+          <span class="info-value">{{selectedLakeData.elevation}}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Kantone:</span>
+          <span class="info-value">{{selectedLakeData.cantons}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="lake-section">
+      <h3>🎣 Fischereiinformationen</h3>
+      <div class="lake-info">
+        <div class="info-row">
+          <span class="info-label">Beste Saison:</span>
+          <span class="info-value">{{selectedLakeData.bestSeason}}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Gratis Fischen:</span>
+          <span class="info-value" [class.free-fishing]="selectedLakeData.freeFishing">
+            {{selectedLakeData.freeFishing ? 'Ja' : 'Nein'}}
+          </span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Bewilligung:</span>
+          <span class="info-value permit">{{selectedLakeData.permitRequired}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="lake-section">
+      <h3>🐟 Fischarten</h3>
+      <div class="fish-species">
+        <span class="fish-tag" *ngFor="let fish of selectedLakeData.fishSpecies">{{fish}}</span>
+      </div>
+    </div>
+  </div>
 </div>

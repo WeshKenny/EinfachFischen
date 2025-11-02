@@ -6,45 +6,210 @@
 }
 
 #map {
-    width: 100%;
-    height: 100%;
-    border-radius: 24px;
-    overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  z-index: 1;
 }
 .map-component-wrapper {
-  width: 100%;                /* behält die responsive Breite */
-  max-width: 1800px;         /* erhöht für Breitbildformat */
-  height: 85vh;              /* nutzt 70% der Bildschirmhöhe */
-  min-height: 600px;         /* minimale Höhe */
-  max-height: 1000px;         /* maximale Höhe */
-  margin: 2rem auto;         /* vertikaler Abstand oben/unten */
+  width: 95%;
+  max-width: 1600px;
+  height: calc(100vh - 150px); /* Dynamische Höhe basierend auf Viewport */
+  min-height: 500px;
+  max-height: 800px;
+  margin: 2rem auto;
   position: relative;
-  aspect-ratio: 4 / 3;      /* erzwingt 16:9 Seitenverhältnis */
+  padding: 0 20px;
 }
 
+.layout {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+}
 
+.sidebar {
+  position: fixed;
+  top: 70px; /* Höhe der Topbar */
+  right: -420px; /* Komplett außerhalb des Viewports */
+  width: 420px;
+  height: calc(100vh - 70px);
+  background: rgba(15, 23, 42, 0.98) !important;
+  backdrop-filter: blur(12px);
+  border-left: 2px solid rgba(96, 165, 250, 0.3);
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+  border-radius: 0; /* Kein Radius, da am Rand */
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 0;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
+  z-index: 999; /* Unter der Topbar, aber über der Karte */
+  pointer-events: none; /* Verhindert ungewollte Klicks wenn geschlossen */
+}
 
-/* ...existing code (behalte deine anderen Styles) ... */
+.sidebar.open {
+  right: 0; /* Slide in von rechts */
+  opacity: 1;
+  pointer-events: auto; /* Aktiviert Klicks wenn geöffnet */
+}
+
+.sidebar-content {
+  padding: 60px 20px 24px 20px;
+  color: #e2e8f0;
+}
+
+.sidebar-content h2 {
+  color: #60a5fa;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+}
+
+.lake-section {
+  margin-bottom: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.lake-section h3 {
+  color: #93c5fd;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.lake-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.5rem 0;
+}
+
+.info-label {
+  color: #94a3b8;
+  font-weight: 500;
+  flex-shrink: 0;
+  margin-right: 1rem;
+}
+
+.info-value {
+  color: #e2e8f0;
+  font-weight: 600;
+  text-align: right;
+}
+
+.info-value.free-fishing {
+  color: #4ade80;
+}
+
+.info-value.permit {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.fish-species {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.fish-tag {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.fish-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+}
+
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 24px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: rgba(96, 165, 250, 0.1);
+  color: #60a5fa;
+}
 
 /* Responsive Anpassungen */
+@media (min-width: 1600px) {
+    .map-component-wrapper {
+        width: 90%;
+        max-width: 1800px;
+        height: calc(100vh - 140px);
+        max-height: 900px;
+    }
+}
+
 @media (max-width: 1400px) {
     .map-component-wrapper {
-        width: 85%;
-        height: 550px;
+        width: 92%;
+        height: calc(100vh - 160px);
+        max-height: 700px;
     }
 }
 
 @media (max-width: 1024px) {
     .map-component-wrapper {
-        width: 90%;
-        height: 500px;
+        width: 95%;
+        height: calc(100vh - 180px);
+        max-height: 600px;
+        padding: 0 10px;
     }
 }
 
 @media (max-width: 768px) {
     .map-component-wrapper {
-        width: 95%;
-        height: 450px;
+        width: 98%;
+        height: calc(100vh - 200px);
+        max-height: 500px;
+        min-height: 400px;
+        padding: 0 5px;
+        margin: 1rem auto;
+    }
+    
+    .sidebar {
+        width: 90%;
+        max-width: 400px;
+        right: -90%;
+    }
+    
+    .sidebar.open {
+        right: 0;
     }
 }
 
