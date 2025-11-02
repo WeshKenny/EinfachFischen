@@ -1,12 +1,19 @@
 <main class="home-main">
-  <h1 class="page-title">Meine Karte von der Schweiz</h1>
-
-  <div class="map-container">
-    <div id="map"></div>
-    <div class="error-message" id="error">
-        Please add your Google Maps API key to use this map.
+  <section class="hero">
+    <div class="hero-content">
+      <h1>🏔️ Schweizer Gewässer</h1>
+      <p>Entdecke die schönsten Seen der Schweiz</p>
+      <button class="scroll-btn" (click)="scrollToMap()">
+        Zur Karte
+        <span class="arrow">↓</span>
+      </button>
     </div>
-</div></main>
+  </section>
 
+  <!-- Vereinfachter Container -->
+  <div #mapSection>
+    <app-map (loadFailed)="onMapLoadError()"></app-map>
+  </div>
+</main>
 
 

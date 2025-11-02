@@ -1,10 +1,11 @@
-<header class="topbar">
-  <div class="brand">Meine Seite</div>
+<header class="topbar" [class.hidden]="isTopbarHidden">
+  <div class="brand">
+  <a routerLink="/" style="text-decoration: none; color: inherit;">EinfachFischen</a>
+</div>
   <nav class="topnav" aria-label="Hauptnavigation">
     <ul>
       <li><a routerLink="/details" routerLinkActive="active">Details</a></li>
       <li><a routerLink="/about" routerLinkActive="active">Über uns</a></li>
-      <li><a routerLink="/kontakt" routerLinkActive="active">Kontakt</a></li>
     </ul>
   </nav>
 </header>
