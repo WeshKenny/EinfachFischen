@@ -578,19 +578,17 @@ export class Map implements AfterViewInit {
   async ngAfterViewInit(): Promise<void> {
     if (isPlatformBrowser(this.platformId)) {
       try {
-        // Längere Wartezeit für SSR-Hydration
         await new Promise(resolve => setTimeout(resolve, 300));
         
-        this.L = await import('leaflet');
+        const leafletModule = await import('leaflet');
+        this.L = (leafletModule as any).default || leafletModule;
         this.fixLeafletIconPath();
         
-        // Warte noch etwas nach dem Leaflet-Import
         await new Promise(resolve => setTimeout(resolve, 150));
         
         this.initMap();
         this.addMarkers();
         
-        // Force initial change detection mehrfach
         this.cdr.detectChanges();
         setTimeout(() => this.cdr.detectChanges(), 100);
         setTimeout(() => this.cdr.detectChanges(), 300);
@@ -605,12 +603,14 @@ export class Map implements AfterViewInit {
 
   // ADD THIS NEW METHOD!
   private fixLeafletIconPath(): void {
-    delete (this.L.Icon.Default.prototype as any)._getIconUrl;
-    this.L.Icon.Default.mergeOptions({
-      iconRetinaUrl: 'assets/leaflet/marker-icon-2x.png',
-      iconUrl: 'assets/leaflet/marker-icon.png',
-      shadowUrl: 'assets/leaflet/marker-shadow.png',
-    });
+    if (this.L?.Icon?.Default) {
+      delete (this.L.Icon.Default.prototype as any)._getIconUrl;
+      this.L.Icon.Default.mergeOptions({
+        iconRetinaUrl: 'assets/leaflet/marker-icon-2x.png',
+        iconUrl: 'assets/leaflet/marker-icon.png',
+        shadowUrl: 'assets/leaflet/marker-shadow.png',
+      });
+    }
   }
 
   private initMap(): void {
