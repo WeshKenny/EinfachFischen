@@ -5,7 +5,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 0; /* KEIN Padding auf Body */
     color: #f8fafc;
     background-size: 200% 200%;
     animation: gradientMove 10s ease infinite;

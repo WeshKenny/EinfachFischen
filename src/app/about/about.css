@@ -74,19 +74,19 @@
   margin-bottom: 20px;
 }
 
-.contact-info {
+.education-info {
   background: rgba(0, 0, 0, 0.2);
   padding: 15px;
   border-radius: 8px;
   margin: 15px 0;
 }
 
-.contact-info p {
+.education-info p {
   margin: 5px 0;
   font-size: 0.95rem;
 }
 
-.contact-info strong {
+.education-info strong {
   color: #60a5fa;
 }
 

@@ -15,14 +15,12 @@
   z-index: 1;
 }
 .map-component-wrapper {
-  width: 95%;
-  max-width: 1600px;
-  height: calc(100vh - 150px); /* Dynamische Höhe basierend auf Viewport */
-  min-height: 500px;
-  max-height: 800px;
-  margin: 2rem auto;
+  width: 98% !important;
+  max-width: 2000px !important;
+  height: 700px !important;
+  margin: 1rem auto !important;
   position: relative;
-  padding: 0 20px;
+  padding: 0;
 }
 
 .layout {
