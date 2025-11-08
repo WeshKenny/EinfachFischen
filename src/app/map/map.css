@@ -15,9 +15,9 @@
   z-index: 1;
 }
 .map-component-wrapper {
-  width: 98% !important;
-  max-width: 2000px !important;
-  height: 700px !important;
+  width: 85% !important; /* Weniger breit - von 94% auf 85% */
+  max-width: 1400px !important; /* Kleinere max Breite - von 1800px auf 1400px */
+  height: 850px !important; /* Höher - von 700px auf 850px */
   margin: 1rem auto !important;
   position: relative;
   padding: 0;
@@ -33,21 +33,21 @@
 
 .sidebar {
   position: fixed;
-  top: 70px; /* Höhe der Topbar */
-  right: -420px; /* Komplett außerhalb des Viewports */
+  top: 0; /* Von ganz oben - keine Lücke mehr! */
+  right: -420px;
   width: 420px;
-  height: calc(100vh - 70px);
+  height: 100vh; /* Volle Höhe des Viewports */
   background: rgba(15, 23, 42, 0.98) !important;
   backdrop-filter: blur(12px);
   border-left: 2px solid rgba(96, 165, 250, 0.3);
   transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
-  border-radius: 0; /* Kein Radius, da am Rand */
+  border-radius: 0;
   overflow-y: auto;
   overflow-x: hidden;
   opacity: 0;
   box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
-  z-index: 999; /* Unter der Topbar, aber über der Karte */
-  pointer-events: none; /* Verhindert ungewollte Klicks wenn geschlossen */
+  z-index: 1001; /* ÜBER der Topbar (Topbar hat z-index: 1000) */
+  pointer-events: none;
 }
 
 .sidebar.open {
@@ -57,7 +57,7 @@
 }
 
 .sidebar-content {
-  padding: 60px 20px 24px 20px;
+  padding: 80px 20px 24px 20px; /* Mehr Padding oben wegen Topbar */
   color: #e2e8f0;
 }
 

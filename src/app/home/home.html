@@ -1,10 +1,11 @@
 <main class="home-main">
   <section class="hero">
     <div class="hero-content">
-      <h1>🏔️ Schweizer Gewässer</h1>
-      <p>Entdecke die schönsten Seen der Schweiz</p>
+      <img src="/assets/einfachfischen.png" alt="EinfachFischen Logo" class="hero-logo">
+      <p class="hero-main-text">Dein digitaler Angelbegleiter für die Schweiz</p>
+      <p class="hero-subtitle">Entdecke Schweizer Seen mit detaillierten Informationen zu Fischarten, Angelvorschriften und den besten Angelplätzen</p>
       <button class="scroll-btn" (click)="scrollToMap()">
-        Zur Karte
+        Zur interaktiven Karte
         <span class="arrow">↓</span>
       </button>
     </div>
@@ -15,5 +16,7 @@
     <app-map (loadFailed)="onMapLoadError()"></app-map>
   </div>
 </main>
+
+
 
 
