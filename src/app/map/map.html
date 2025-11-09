@@ -1,3 +1,70 @@
+<!-- Filter-Bereich AUSSERHALB der map-component-wrapper -->
+<div class="filter-section">
+  <div class="filter-container">
+    <button 
+      class="filter-btn" 
+      [class.active]="activeFilter() === 'all'"
+      (click)="filterLakes('all')"
+      title="Alle Seen anzeigen">
+      🗺️ Alle Seen ({{totalLakes}})
+    </button>
+    
+    <button 
+      class="filter-btn free-fishing" 
+      [class.active]="activeFilter() === 'free'"
+      (click)="filterLakes('free')"
+      title="Nur patentfreie Seen">
+      🎣 Gratis Fischen ({{freeFishingCount}})
+    </button>
+
+    <!-- Fischarten Dropdown -->
+    <div class="filter-dropdown" [class.open]="isFishDropdownOpen">
+      <button 
+        class="filter-btn dropdown-toggle" 
+        [class.active]="activeFilter() === 'fish'"
+        (click)="toggleFishDropdown($event)">
+        🐟 Nach Fischart
+      </button>
+      <div class="dropdown-content">
+        <button (click)="filterByFishSpecies('Hecht')" class="dropdown-item">Hecht</button>
+        <button (click)="filterByFishSpecies('Forelle')" class="dropdown-item">Forelle</button>
+        <button (click)="filterByFishSpecies('Zander')" class="dropdown-item">Zander</button>
+        <button (click)="filterByFishSpecies('Barsch')" class="dropdown-item">Barsch</button>
+        <button (click)="filterByFishSpecies('Felchen')" class="dropdown-item">Felchen</button>
+        <button (click)="filterByFishSpecies('Saibling')" class="dropdown-item">Saibling</button>
+      </div>
+    </div>
+
+    <!-- Kantone Dropdown -->
+    <div class="filter-dropdown" [class.open]="isRegionDropdownOpen">
+      <button 
+        class="filter-btn dropdown-toggle" 
+        [class.active]="activeFilter() === 'region'"
+        (click)="toggleRegionDropdown($event)">
+        📍 Nach Kanton
+      </button>
+      <div class="dropdown-content">
+        <button (click)="filterByRegion('Bern')" class="dropdown-item">Bern</button>
+        <button (click)="filterByRegion('Zürich')" class="dropdown-item">Zürich</button>
+        <button (click)="filterByRegion('Luzern')" class="dropdown-item">Luzern</button>
+        <button (click)="filterByRegion('Graubünden')" class="dropdown-item">Graubünden</button>
+        <button (click)="filterByRegion('Tessin')" class="dropdown-item">Tessin</button>
+        <button (click)="filterByRegion('Waadt')" class="dropdown-item">Waadt</button>
+        <button (click)="filterByRegion('Wallis')" class="dropdown-item">Wallis</button>
+      </div>
+    </div>
+
+    <button 
+      class="filter-btn reset-btn" 
+      (click)="filterLakes('all')"
+      *ngIf="activeFilter() !== 'all'"
+      title="Filter zurücksetzen">
+      ❌ Filter zurücksetzen
+    </button>
+  </div>
+</div>
+
+<!-- Karten-Bereich -->
 <div class="map-component-wrapper">
   <div class="layout">
     <div id="map"></div>
