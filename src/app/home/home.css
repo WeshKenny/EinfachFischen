@@ -46,6 +46,7 @@
   font-weight: 600 !important;
   margin-bottom: 1.5rem !important;
   animation: fadeInUp 1s ease 0.3s backwards !important;
+  margin: 0 0 1.5rem 0 !important;
 }
 
 .hero p {

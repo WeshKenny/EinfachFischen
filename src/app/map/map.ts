@@ -53,7 +53,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Bodensee",
-      coords: [47.6067, 9.3950],
+      coords: [47.6400, 9.3700],
       area: "536 km²",
       maxDepth: "252 m",
       elevation: "395 m",
@@ -77,7 +77,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Lago Maggiore",
-      coords: [46.1000, 8.7333],
+      coords: [46.1100, 8.7000],
       area: "212.5 km²",
       maxDepth: "372 m",
       elevation: "193 m",
@@ -89,7 +89,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Vierwaldstättersee",
-      coords: [47.0500, 8.4000],
+      coords: [47.0200, 8.3600],
       area: "113.6 km²",
       maxDepth: "214 m",
       elevation: "434 m",
@@ -113,7 +113,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Luganersee",
-      coords: [46.0051, 8.9718],
+      coords: [46.0100, 8.9600],
       area: "48.7 km²",
       maxDepth: "288 m",
       elevation: "271 m",
@@ -125,7 +125,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Thunersee",
-      coords: [46.6987, 7.6671],
+      coords: [46.6850, 7.6800],
       area: "48.3 km²",
       maxDepth: "217 m",
       elevation: "558 m",
@@ -137,7 +137,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Brienzersee",
-      coords: [46.7314, 8.0394],
+      coords: [46.734726, 7.986529],
       area: "29.8 km²",
       maxDepth: "260 m",
       elevation: "564 m",
@@ -149,7 +149,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Bielersee",
-      coords: [47.0983, 7.1567],
+      coords: [47.098479, 7.190848],
       area: "39.3 km²",
       maxDepth: "74 m",
       elevation: "429 m",
@@ -161,7 +161,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Zugersee",
-      coords: [47.1167, 8.4833],
+      coords: [47.1300, 8.4900],
       area: "38.3 km²",
       maxDepth: "198 m",
       elevation: "413 m",
@@ -173,7 +173,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Walensee",
-      coords: [47.1333, 9.2000],
+      coords: [47.1300, 9.1800],
       area: "24.1 km²",
       maxDepth: "151 m",
       elevation: "419 m",
@@ -197,7 +197,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Hallwilersee",
-      coords: [47.2833, 8.2167],
+      coords: [47.2900, 8.2200],
       area: "10 km²",
       maxDepth: "47 m",
       elevation: "449 m",
@@ -209,7 +209,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Sempachersee",
-      coords: [47.1333, 8.1833],
+      coords: [47.1300, 8.1900],
       area: "14.5 km²",
       maxDepth: "87 m",
       elevation: "504 m",
@@ -221,7 +221,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Baldeggersee",
-      coords: [47.2000, 8.2667],
+      coords: [47.1950, 8.2600],
       area: "5.2 km²",
       maxDepth: "66 m",
       elevation: "463 m",
@@ -233,7 +233,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Ägerisee",
-      coords: [47.1333, 8.6167],
+      coords: [47.1400, 8.6100],
       area: "7.3 km²",
       maxDepth: "82 m",
       elevation: "724 m",
@@ -245,7 +245,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Sihlsee",
-      coords: [47.1333, 8.7833],
+      coords: [47.1200, 8.7700],
       area: "11 km²",
       maxDepth: "23 m",
       elevation: "889 m",
@@ -257,7 +257,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Greifensee",
-      coords: [47.3667, 8.6833],
+      coords: [47.3550, 8.6800],
       area: "8.5 km²",
       maxDepth: "32 m",
       elevation: "435 m",
@@ -269,7 +269,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Pfäffikersee",
-      coords: [47.3667, 8.7833],
+      coords: [47.355050, 8.779200],
       area: "3.3 km²",
       maxDepth: "36 m",
       elevation: "537 m",
@@ -293,7 +293,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Lago di Poschiavo",
-      coords: [46.3333, 10.0667],
+      coords: [46.285218, 10.088104],
       area: "1.98 km²",
       maxDepth: "85 m",
       elevation: "962 m",
@@ -305,7 +305,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Silsersee",
-      coords: [46.4333, 9.7500],
+      coords: [46.4300, 9.7450],
       area: "4.1 km²",
       maxDepth: "77 m",
       elevation: "1797 m",
@@ -317,7 +317,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Silvaplanersee",
-      coords: [46.4500, 9.7833],
+      coords: [46.4550, 9.7900],
       area: "2.7 km²",
       maxDepth: "78 m",
       elevation: "1791 m",
@@ -329,7 +329,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Klöntalersee",
-      coords: [47.0167, 9.0333],
+      coords: [47.0100, 9.0250],
       area: "3.3 km²",
       maxDepth: "47 m",
       elevation: "848 m",
@@ -353,7 +353,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Sarnersee",
-      coords: [46.8833, 8.2167],
+      coords: [46.8900, 8.2300],
       area: "7.4 km²",
       maxDepth: "52 m",
       elevation: "469 m",
@@ -365,7 +365,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Lungerersee",
-      coords: [46.7833, 8.1667],
+      coords: [46.7800, 8.1600],
       area: "2 km²",
       maxDepth: "68 m",
       elevation: "688 m",
@@ -377,7 +377,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Lac de Joux",
-      coords: [46.6333, 6.2833],
+      coords: [46.6400, 6.2700],
       area: "9.5 km²",
       maxDepth: "34 m",
       elevation: "1004 m",
@@ -401,7 +401,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Klingnauer Stausee",
-      coords: [47.5833, 8.2500],
+      coords: [47.5750, 8.2450],
       area: "1.4 km²",
       maxDepth: "9 m",
       elevation: "318 m",
@@ -413,7 +413,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Lac de la Gruyère",
-      coords: [46.6167, 7.0833],
+      coords: [46.674412, 7.094317],
       area: "10 km²",
       maxDepth: "75 m",
       elevation: "677 m",
@@ -425,7 +425,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Schiffenensee",
-      coords: [46.8167, 7.2167],
+      coords: [46.852775, 7.161646],
       area: "4.2 km²",
       maxDepth: "38 m",
       elevation: "532 m",
@@ -449,7 +449,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Untersee (Bodensee)",
-      coords: [47.6667, 9.0000],
+      coords: [47.6650, 9.0000],
       area: "63 km²",
       maxDepth: "46 m",
       elevation: "395 m",
@@ -461,7 +461,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Wägitalersee",
-      coords: [47.0833, 8.9167],
+      coords: [47.0900, 8.9100],
       area: "4.2 km²",
       maxDepth: "65 m",
       elevation: "900 m",
@@ -473,7 +473,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Lauerzersee",
-      coords: [47.0333, 8.6000],
+      coords: [47.0400, 8.6050],
       area: "3.1 km²",
       maxDepth: "14 m",
       elevation: "447 m",
@@ -497,7 +497,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Mattmarksee",
-      coords: [46.0500, 7.9667],
+      coords: [46.0450, 7.9650],
       area: "1.76 km²",
       maxDepth: "93 m",
       elevation: "2197 m",
@@ -509,7 +509,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Caumasee",
-      coords: [46.8333, 9.2833],
+      coords: [46.820247, 9.295548],
       area: "0.1 km²",
       maxDepth: "65 m",
       elevation: "997 m",
@@ -521,7 +521,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Davosersee",
-      coords: [46.7833, 9.8500],
+      coords: [46.7900, 9.8550],
       area: "0.59 km²",
       maxDepth: "54 m",
       elevation: "1559 m",
@@ -533,7 +533,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Lai da Marmorera",
-      coords: [46.5667, 9.6333],
+      coords: [46.502971, 9.635125],
       area: "1.4 km²",
       maxDepth: "65 m",
       elevation: "1680 m",
@@ -545,7 +545,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Arnensee",
-      coords: [46.5167, 7.3500],
+      coords: [46.388766, 7.217464],
       area: "0.46 km²",
       maxDepth: "52 m",
       elevation: "1542 m",
@@ -557,7 +557,7 @@ export class Map implements AfterViewInit {
     },
     {
       name: "Blausee",
-      coords: [46.5333, 7.6833],
+      coords: [46.532426, 7.664888],
       area: "0.006 km²",
       maxDepth: "10 m",
       elevation: "887 m",
@@ -628,7 +628,7 @@ export class Map implements AfterViewInit {
       zoom: 9,
       zoomControl: true,
       minZoom: 8,
-      maxZoom: 13,
+      maxZoom: 16,
       preferCanvas: false
     });
 

@@ -1,6 +1,6 @@
 # 🎣 EinfachFischen.ch
 
-**EinfachFischen** ist eine moderne Web-Plattform für Angelfreunde in der Schweiz. Die Anwendung bietet eine interaktive Karte mit detaillierten Informationen zu über 44 Schweizer Seen, einschließlich Fischereivorschriften, Fischarten und Saison-Empfehlungen.
+**EinfachFischen** ist eine moderne Web-Plattform für Angelfreunde in der Schweiz. Die Anwendung bietet eine interaktive Karte mit detaillierten Informationen zu Schweizer Seen, einschließlich Fischereivorschriften, Fischarten und Saison-Empfehlungen.
 
 ![Angular](https://img.shields.io/badge/Angular-20.3.5-red?logo=angular)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?logo=typescript)
@@ -46,12 +46,12 @@ Das Projekt ist als **Angular Standalone Application** mit **Server-Side Renderi
   - Responsive Design für alle Bildschirmgrößen
 
 #### 2. **Map Component** (`src/app/map/`)
-- **Zweck**: Interaktive Leaflet-Karte mit 44 Schweizer Seen
+- **Zweck**: Interaktive Leaflet-Karte mit Schweizer Seen
 - **Features**:
   - Dynamische Marker für jeden See
   - Click-Handling für See-Auswahl
   - Integration mit der Sidebar
-  - Responsive Kartengröße (98% Breite, max. 2000px)
+  - Responsive Kartengröße für alle Bildschirmgrößen
   - Custom Marker-Styling mit Hover-Effekten
   - SSR-kompatible Implementierung (Client-only Rendering für Leaflet)
 
@@ -179,9 +179,9 @@ EinfachFischen/
 └── README.md                  # Projekt-Dokumentation
 ```
 
-## 🗺️ Verfügbare Seen (Auswahl)
+## 🗺️ Verfügbare Seen
 
-Das Projekt enthält Informationen zu 44 Schweizer Seen, darunter:
+Das Projekt enthält Informationen zu zahlreichen Schweizer Seen und wird kontinuierlich erweitert, darunter:
 
 - **Große Seen**: Genfersee, Bodensee, Neuenburgersee, Vierwaldstättersee, Zürichsee
 - **Patentfreie Seen**: Neuenburgersee, Bielersee, Murtensee
@@ -196,8 +196,21 @@ Jeder See enthält detaillierte Informationen zu:
 
 ## 👥 Team
 
-- **Noe Heimgartner** - Developer / Projektleiter
-- **Kadir** - Unterstützung & Testing
+### Entwickler & Konzept
+
+- **Noe Heimgartner** - Lead Developer & Projektleiter
+  - Verantwortlich für die technische Umsetzung der Plattform
+  - Entwicklung der interaktiven Karte mit Leaflet.js
+  - Strukturierung der See-Daten und Datenbankdesign
+  - Design und Programmierung der Benutzeroberfläche
+  - Einsatz moderner Technologien wie Angular und TypeScript
+
+- **Kadir Dikbas** - Konzept, Dokumentation & Fischereiinformationen
+  - Kreative Ideen und Projektkonzeption
+  - Bereitstellung von Fachwissen über Schweizer Seen und Fischarten
+  - Recherche und Zusammenstellung der Fischereiinformationen
+  - Projektdokumentation und Content-Aufbereitung
+  - Qualitätssicherung der fachlichen Inhalte
 
 ## 📄 Lizenz
 
