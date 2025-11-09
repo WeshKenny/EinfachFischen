@@ -6,30 +6,29 @@
     background: transparent; /* Kein weißer Hintergrund */
 }
 
-/* Filter-Bereich */
 .filter-section {
-  width: auto; /* Automatische Breite basierend auf Inhalt */
-  max-width: 90%; /* Maximale Breite begrenzt */
+  width: 100%; /* Volle Breite für Zentrierung */
   margin: 0 auto 0.75rem auto;
-  padding: 0.6rem 1.25rem; /* Etwas mehr horizontales Padding */
-  background: rgba(30, 41, 59, 0.4); /* Viel transparenter! */
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15); /* Weniger dominant */
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(96, 165, 250, 0.15); /* Subtilere Border */
   position: relative;
   z-index: 100;
-  display: inline-block; /* Passt sich dem Inhalt an */
-  left: 50%; /* Zentriert */
-  transform: translateX(-50%); /* Perfekte Zentrierung */
+  text-align: center; /* Zentriert den Inhalt */
 }
 
+/* Der eigentliche Filter-Container - NUR so groß wie nötig */
 .filter-container {
-  display: flex;
-  gap: 0.5rem; /* Kompakter */
+  display: inline-flex; /* WICHTIG: inline-flex statt flex */
+  gap: 0.5rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  
+  /* Hier kommt das Styling, das vorher bei .filter-section war */
+  padding: 0.6rem 1.25rem;
+  background: rgba(30, 41, 59, 0.4);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(96, 165, 250, 0.15);
 }
 
 .filter-btn {
