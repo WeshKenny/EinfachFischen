@@ -1,19 +1,21 @@
 <main class="home-main">
   <section class="hero">
     <div class="hero-content">
-      <h1>🏔️ Schweizer Gewässer</h1>
-      <p>Entdecke die schönsten Seen der Schweiz</p>
-      <button class="scroll-btn" (click)="scrollToMap()">
-        Zur Karte
+      <img src="/assets/einfachfischen.png" alt="EinfachFischen.ch - Angeln in der Schweiz" class="hero-logo">
+      <h1 class="hero-main-text">Dein digitaler Angelbegleiter für die Schweiz</h1>
+      <p class="hero-subtitle">Entdecke Schweizer Seen mit detaillierten Informationen zu Fischarten, Angelvorschriften und den besten Angelplätzen für Hecht, Zander, Forelle und mehr</p>
+      <button class="scroll-btn" (click)="scrollToMap()" aria-label="Zur interaktiven Karte der Angelgewässer scrollen">
+        Zur interaktiven Karte
         <span class="arrow">↓</span>
       </button>
     </div>
   </section>
 
-  <!-- Vereinfachter Container -->
-  <div #mapSection>
+  <!-- Angelgewässer Karte -->
+  <section #mapSection aria-label="Interaktive Karte der Schweizer Angelgewässer">
     <app-map (loadFailed)="onMapLoadError()"></app-map>
-  </div>
+  </section>
 </main>
+
 
 

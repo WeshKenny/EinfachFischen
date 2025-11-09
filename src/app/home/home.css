@@ -1,8 +1,8 @@
 .home-main {
     min-height: 100vh;
-    padding: 20px;
+    padding: 0; /* KEIN Padding - lässt Karte voll breit werden */
     width: 100%;
-    background: transparent; /* statt weiß: Karte fügt sich in das Seiten-Gradient ein */
+    background: transparent;
 }
 
 .hero {
@@ -11,26 +11,60 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: transparent; /* statt weiß: Karte fügt sich in das Seiten-Gradient ein */
+  background: transparent;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .hero-content {
   padding: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
-.hero h1 {
-  font-size: 3.5rem;
-  color: #60a5fa;
-  margin-bottom: 1rem;
-  animation: fadeInDown 1s ease;
+.hero-logo {
+  width: 650px;
+  height: auto;
+  margin-bottom: 5px;
+  filter: drop-shadow(0 2px 8px rgba(96, 165, 250, 0.3)) brightness(0.88);
+  animation: fadeInDown 1s ease, float 6s ease-in-out 2s infinite;
+}
+
+/* Schwebende Animation für das Logo */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.hero-main-text {
+  font-size: 2rem !important;
+  color: #60a5fa !important;
+  font-weight: 600 !important;
+  margin-bottom: 1.5rem !important;
+  animation: fadeInUp 1s ease 0.3s backwards !important;
+  margin: 0 0 1.5rem 0 !important;
 }
 
 .hero p {
   font-size: 1.5rem;
   color: #94a3b8;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   animation: fadeInUp 1s ease 0.5s backwards;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem !important;
+  color: #cbd5e1 !important;
+  margin-bottom: 2.5rem !important;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  animation: fadeInUp 1s ease 0.6s backwards !important;
 }
 
 .scroll-btn {
@@ -41,12 +75,44 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  animation: fadeIn 1s ease 1s backwards;
+  animation: fadeIn 1s ease 1s backwards, pulse 2s ease-in-out 3s infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pulsierender Effekt für den Button */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(96, 165, 250, 0);
+  }
+}
+
+.scroll-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(96, 165, 250, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.scroll-btn:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .scroll-btn:hover {
   background: #60a5fa;
   color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(96, 165, 250, 0.4);
 }
 
 .arrow {

@@ -23,16 +23,37 @@
 
 
 .brand {
-  font-weight: 700;
-  font-size: 2rem; /* Größer für bessere Präsenz */
-  background: linear-gradient(135deg, #60a5fa 0%, #93c5fd 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.5px;
-  text-shadow: 0 2px 10px rgba(96, 165, 250, 0.3);
   justify-self: start;
-  padding-left: 20px; /* Mehr Abstand zum Rand */
+  padding-left: 20px;
+}
+
+.brand a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  background: rgba(96, 165, 250, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+.brand a:hover {
+  background: rgba(96, 165, 250, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+}
+
+.brand-logo {
+  height: 45px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(96, 165, 250, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.brand a:hover .brand-logo {
+  transform: scale(1.08);
 }
 
 .topnav {
