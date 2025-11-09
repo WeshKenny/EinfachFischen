@@ -31,6 +31,7 @@
     "@angular/platform-server": "^20.3.0",
     "@angular/router": "^20.3.0",
     "@angular/ssr": "^20.3.5",
+    "@netlify/angular-runtime": "^3.0.0",
     "express": "^5.1.0",
     "leaflet": "^1.9.4",
     "rxjs": "~7.8.0",
