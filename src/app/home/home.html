@@ -13,7 +13,16 @@
 
   <!-- Angelgewässer Karte -->
   <section #mapSection aria-label="Interaktive Karte der Schweizer Angelgewässer">
-    <app-map (loadFailed)="onMapLoadError()"></app-map>
+    @defer (on viewport; on timer(100ms)) {
+      <app-map (loadFailed)="onMapLoadError()"></app-map>
+    } @placeholder {
+      <div style="height: 900px; display: flex; align-items: center; justify-content: center; color: #94a3b8;">
+        <div style="text-align: center;">
+          <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">🗺️ Karte wird geladen...</p>
+          <p style="font-size: 0.9rem;">Interaktive Schweizer Seen-Karte</p>
+        </div>
+      </div>
+    }
   </section>
 </main>
 
