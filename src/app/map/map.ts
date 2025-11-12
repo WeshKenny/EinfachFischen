@@ -18,6 +18,7 @@ export class Map implements AfterViewInit {
   @Output() loadFailed = new EventEmitter<void>();
   private map!: L.Map;
   private L: any;
+  private markerClusterGroup: any; // MarkerCluster Group
   private allMarkers: L.Marker[] = []; // Speichert alle Marker
   
   // Verwende Signals für bessere Change Detection
@@ -54,6 +55,10 @@ export class Map implements AfterViewInit {
         
         const leafletModule = await import('leaflet');
         this.L = (leafletModule as any).default || leafletModule;
+        
+        // Import MarkerCluster dynamisch und erweitere Leaflet
+        const markerClusterModule = await import('leaflet.markercluster');
+        
         this.fixLeafletIconPath();
         
         await new Promise(resolve => setTimeout(resolve, 150));
@@ -138,6 +143,32 @@ export class Map implements AfterViewInit {
 
   private addMarkers(): void {
     console.log('Adding markers...');
+    
+    // Erstelle MarkerClusterGroup mit Optionen
+    this.markerClusterGroup = this.L.markerClusterGroup({
+      showCoverageOnHover: false,
+      zoomToBoundsOnClick: true,
+      spiderfyOnMaxZoom: true,
+      removeOutsideVisibleBounds: true,
+      maxClusterRadius: 60,
+      iconCreateFunction: (cluster: any) => {
+        const count = cluster.getChildCount();
+        let size = 'small';
+        
+        if (count > 20) {
+          size = 'large';
+        } else if (count > 10) {
+          size = 'medium';
+        }
+        
+        return this.L.divIcon({
+          html: `<div><span>${count}</span></div>`,
+          className: `marker-cluster marker-cluster-${size}`,
+          iconSize: this.L.point(40, 40)
+        });
+      }
+    });
+    
     const customIcon = this.L.divIcon({
       className: 'custom-marker',
       iconSize: [30, 30],
@@ -146,7 +177,7 @@ export class Map implements AfterViewInit {
 
     const lakes = this.lakeService.getLakes();
     lakes.forEach(lake => {
-      const marker = this.L.marker(lake.coords, { icon: customIcon }).addTo(this.map);
+      const marker = this.L.marker(lake.coords, { icon: customIcon });
       
       // Speichere Marker mit See-Daten für späteres Filtern
       (marker as any).lakeData = lake;
@@ -195,7 +226,13 @@ export class Map implements AfterViewInit {
           }, 50);
         });
       });
+      
+      // Füge Marker zur Cluster-Gruppe hinzu
+      this.markerClusterGroup.addLayer(marker);
     });
+    
+    // Füge die Cluster-Gruppe zur Karte hinzu
+    this.map.addLayer(this.markerClusterGroup);
     
     // Event-Handler für Karten-Klicks (schließt Sidebar)
     this.map.on('click', () => {
@@ -207,7 +244,7 @@ export class Map implements AfterViewInit {
       });
     });
     
-    console.log('Added', lakes.length, 'markers to map');
+    console.log('Added', lakes.length, 'markers to map with clustering');
     console.log('Map setup complete, ready for interaction');
   }
 
@@ -216,9 +253,10 @@ export class Map implements AfterViewInit {
     this.activeFilter.set(filterType);
     
     if (filterType === 'all') {
-      // Zeige alle Marker
+      // Zeige alle Marker mit Clustering
+      this.markerClusterGroup.clearLayers();
       this.allMarkers.forEach(marker => {
-        this.map.addLayer(marker);
+        this.markerClusterGroup.addLayer(marker);
       });
       console.log('Showing all lakes');
     } else if (filterType === 'free') {
@@ -254,18 +292,16 @@ export class Map implements AfterViewInit {
   }
 
   private filterMarkersByLakes(lakes: Lake[]): void {
-    // Entferne alle Marker von der Karte
-    this.allMarkers.forEach(marker => {
-      this.map.removeLayer(marker);
-    });
+    // Entferne alle Marker aus der Cluster-Gruppe
+    this.markerClusterGroup.clearLayers();
     
-    // Füge nur die gefilterten Marker hinzu
+    // Füge nur die gefilterten Marker zur Cluster-Gruppe hinzu
     this.allMarkers.forEach(marker => {
       const lakeData = (marker as any).lakeData as Lake;
       const shouldShow = lakes.some(lake => lake.name === lakeData.name);
       
       if (shouldShow) {
-        this.map.addLayer(marker);
+        this.markerClusterGroup.addLayer(marker);
       }
     });
   }
