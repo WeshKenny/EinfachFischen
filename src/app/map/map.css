@@ -501,40 +501,46 @@
 
 /* Marker Cluster Styling */
 ::ng-deep .marker-cluster-small {
-  background-color: rgba(59, 130, 246, 0.6);
+  background-color: rgba(59, 130, 246, 0.7);
 }
 
 ::ng-deep .marker-cluster-small div {
-  background-color: rgba(59, 130, 246, 0.8);
+  background-color: rgba(59, 130, 246, 0.9);
 }
 
 ::ng-deep .marker-cluster-medium {
-  background-color: rgba(96, 165, 250, 0.6);
+  background-color: rgba(37, 99, 235, 0.7);
 }
 
 ::ng-deep .marker-cluster-medium div {
-  background-color: rgba(96, 165, 250, 0.8);
+  background-color: rgba(37, 99, 235, 0.9);
 }
 
 ::ng-deep .marker-cluster-large {
-  background-color: rgba(37, 99, 235, 0.6);
+  background-color: rgba(29, 78, 216, 0.7);
 }
 
 ::ng-deep .marker-cluster-large div {
-  background-color: rgba(37, 99, 235, 0.8);
+  background-color: rgba(29, 78, 216, 0.95);
 }
 
 ::ng-deep .marker-cluster {
   background-clip: padding-box;
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+::ng-deep .marker-cluster:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
 ::ng-deep .marker-cluster div {
-  width: 30px;
-  height: 30px;
-  margin-left: 5px;
-  margin-top: 5px;
+  width: calc(100% - 13px);
+  height: calc(100% - 13px);
+  margin: 6.5px;
   text-align: center;
   border-radius: 50%;
   font-weight: 700;
@@ -542,9 +548,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 13px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 ::ng-deep .marker-cluster span {
-  line-height: 30px;
+  line-height: 1;
 }

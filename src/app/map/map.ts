@@ -154,25 +154,28 @@ export class Map implements AfterViewInit {
       iconCreateFunction: (cluster: any) => {
         const count = cluster.getChildCount();
         let size = 'small';
+        let iconSize = 45;
         
         if (count > 20) {
           size = 'large';
+          iconSize = 55;
         } else if (count > 10) {
           size = 'medium';
+          iconSize = 50;
         }
         
         return this.L.divIcon({
           html: `<div><span>${count}</span></div>`,
           className: `marker-cluster marker-cluster-${size}`,
-          iconSize: this.L.point(40, 40)
+          iconSize: this.L.point(iconSize, iconSize)
         });
       }
     });
     
     const customIcon = this.L.divIcon({
       className: 'custom-marker',
-      iconSize: [30, 30],
-      iconAnchor: [15, 15]
+      iconSize: [20, 20],
+      iconAnchor: [10, 10]
     });
 
     const lakes = this.lakeService.getLakes();
