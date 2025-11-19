@@ -35,3 +35,6 @@ jobs:
 
     - name: Run tests
       run: npm test -- --watch=false --browsers=ChromeHeadless
+      env:
+        CHROME_BIN: /usr/bin/google-chrome
+        CHROMIUM_FLAGS: --no-sandbox --disable-gpu
