@@ -81,9 +81,10 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/styles.css"],
+            "scripts": [],
+            "karmaConfig": "karma.conf.js",
+            "browsers": "ChromeHeadlessCI"
           }
         }
       }

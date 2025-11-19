@@ -34,7 +34,4 @@ jobs:
       run: npm run build -- --configuration production # Update to match your build script
 
     - name: Run tests
-      run: npm test -- --watch=false --browsers=ChromeHeadless
-      env:
-        CHROME_BIN: /usr/bin/google-chrome
-        CHROMIUM_FLAGS: --no-sandbox --disable-gpu
+      run: npm test -- --watch=false
