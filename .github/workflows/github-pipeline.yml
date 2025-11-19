@@ -1,4 +1,4 @@
-name: test-application
+name: Application Build and Test
 
 on:
   pull_request:
@@ -16,14 +16,22 @@ jobs:
       with: 
         node-version: '20'
         cache: 'npm'
+        
     - name: Install Chrome
-      uses: browser-actions/setup-chrome@v1
-      with:
-        chrome-version: stable
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y wget gnupg
+        wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+        sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+
     - name: Install dependencies
       run: npm ci # Use npm ci for faster installs and CI consistency
+      
     - name: Run tests
       run: npm test -- --watch=false --browsers=ChromeHeadless
+      
     - name: Build Angular project
       run: npm run build -- --configuration production # Update to match your build script
 
