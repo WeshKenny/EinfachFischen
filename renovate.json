@@ -1,0 +1,17 @@
+{
+  "extends": ["config:base"],
+  "baseBranches": ["dev"],
+  "branchPrefix": "renovate/",
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2,
+  "automerge": false,
+  "groupName": "all dependencies",
+  "packageRules": [
+    {
+      "groupName": "all dependencies",
+      "groupSlug": "all-deps",
+      "automerge": false,
+      "matchUpdateTypes": ["minor", "patch", "pin"]
+    }
+  ]
+}
