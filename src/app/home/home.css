@@ -131,3 +131,71 @@
     transform: translateY(-5px);
   }
 }
+
+/* Responsive für Laptops */
+@media (max-width: 1440px) {
+  .hero-logo {
+    width: 550px;
+  }
+  
+  .hero-main-text {
+    font-size: 1.8rem !important;
+  }
+  
+  .hero p {
+    font-size: 1.3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem !important;
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-logo {
+    width: 450px;
+  }
+  
+  .hero-main-text {
+    font-size: 1.6rem !important;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.95rem !important;
+    max-width: 550px;
+  }
+  
+  .scroll-btn {
+    padding: 0.9rem 1.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-logo {
+    width: 350px;
+  }
+  
+  .hero-main-text {
+    font-size: 1.4rem !important;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem !important;
+    max-width: 450px;
+  }
+  
+  .scroll-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}

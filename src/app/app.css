@@ -100,6 +100,34 @@
 }
 
 /* Mobile Anpassungen */
+@media (max-width: 1024px) {
+  .topbar {
+    padding: 0 20px;
+    height: 65px;
+  }
+  
+  .brand {
+    padding-left: 10px;
+  }
+  
+  .brand-logo {
+    height: 38px;
+  }
+  
+  .topnav {
+    padding-right: 20px;
+  }
+  
+  .topnav ul {
+    gap: 16px;
+  }
+  
+  .topnav a {
+    padding: 10px 18px;
+    font-size: 0.95rem;
+  }
+}
+
 @media (max-width: 600px) {
   .topbar {
     padding: 0 16px;
@@ -107,8 +135,11 @@
   }
   
   .brand {
-    font-size: 1.4rem;
-    padding-left: 10px;
+    padding-left: 5px;
+  }
+  
+  .brand-logo {
+    height: 32px;
   }
   
   .topnav {
