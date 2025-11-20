@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, PLATFORM_ID, Inject, Output, EventEmitter, NgZone, ChangeDetectorRef, ChangeDetectionStrategy, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { LakeService, Lake } from '../services/lake.service';
 
 // Only import the type, not the library itself
@@ -9,7 +10,7 @@ import type * as L from 'leaflet';
 @Component({
   selector: 'app-map',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './map.html',
   styleUrls: ['./map.css'],
   changeDetection: ChangeDetectionStrategy.Default
@@ -44,8 +45,12 @@ export class Map implements AfterViewInit {
     private lakeService: LakeService
   ) {
     // Lade Statistiken beim Start
-    this.totalLakes = this.lakeService.getTotalLakeCount();
-    this.freeFishingCount = this.lakeService.getFreeFishingLakeCount();
+    this.loadStatistics();
+  }
+
+  private async loadStatistics(): Promise<void> {
+    this.totalLakes = await this.lakeService.getTotalLakeCount();
+    this.freeFishingCount = await this.lakeService.getFreeFishingLakeCount();
   }
 
   async ngAfterViewInit(): Promise<void> {
@@ -64,7 +69,7 @@ export class Map implements AfterViewInit {
         await new Promise(resolve => setTimeout(resolve, 150));
         
         this.initMap();
-        this.addMarkers();
+        await this.addMarkers();
         
         this.cdr.detectChanges();
         setTimeout(() => this.cdr.detectChanges(), 100);
@@ -141,7 +146,7 @@ export class Map implements AfterViewInit {
     }, 300);
   }
 
-  private addMarkers(): void {
+  private async addMarkers(): Promise<void> {
     console.log('Adding markers...');
     
     // Erstelle MarkerClusterGroup mit Optionen
@@ -178,7 +183,7 @@ export class Map implements AfterViewInit {
       iconAnchor: [10, 10]
     });
 
-    const lakes = this.lakeService.getLakes();
+    const lakes = await this.lakeService.getLakes();
     lakes.forEach(lake => {
       const marker = this.L.marker(lake.coords, { icon: customIcon });
       
@@ -209,7 +214,7 @@ export class Map implements AfterViewInit {
             const lakeCopy = { ...lake };
             this.selectedLakeData = lakeCopy;
             this.isSidebarOpen.set(true);
-            console.log('Lake data set:', this.selectedLakeData?.name);
+            console.log('Lake data set:', this.selectedLakeData?.name, 'ID:', this.selectedLakeData?.id);
             
             // Change Detection für *ngIf - Template wird neu gerendert
             this.cdr.detectChanges();
@@ -252,7 +257,7 @@ export class Map implements AfterViewInit {
   }
 
   // Filter-Methoden
-  filterLakes(filterType: string): void {
+  async filterLakes(filterType: string): Promise<void> {
     this.activeFilter.set(filterType);
     
     if (filterType === 'all') {
@@ -264,7 +269,7 @@ export class Map implements AfterViewInit {
       console.log('Showing all lakes');
     } else if (filterType === 'free') {
       // Zeige nur patentfreie Seen
-      const freeLakes = this.lakeService.getFreeFishingLakes();
+      const freeLakes = await this.lakeService.getFreeFishingLakes();
       this.filterMarkersByLakes(freeLakes);
       console.log('Showing only free fishing lakes');
     }
@@ -272,9 +277,9 @@ export class Map implements AfterViewInit {
     this.cdr.detectChanges();
   }
 
-  filterByFishSpecies(species: string): void {
+  async filterByFishSpecies(species: string): Promise<void> {
     this.activeFilter.set('fish');
-    const filteredLakes = this.lakeService.getLakesByFishSpecies(species);
+    const filteredLakes = await this.lakeService.getLakesByFishSpecies(species);
     this.filterMarkersByLakes(filteredLakes);
     console.log(`Filtering by fish species: ${species}, found ${filteredLakes.length} lakes`);
     
@@ -283,9 +288,9 @@ export class Map implements AfterViewInit {
     this.cdr.detectChanges();
   }
 
-  filterByRegion(region: string): void {
+  async filterByRegion(region: string): Promise<void> {
     this.activeFilter.set('region');
-    const filteredLakes = this.lakeService.getLakesByRegion(region);
+    const filteredLakes = await this.lakeService.getLakesByRegion(region);
     this.filterMarkersByLakes(filteredLakes);
     console.log(`Filtering by region: ${region}, found ${filteredLakes.length} lakes`);
     
@@ -340,5 +345,16 @@ export class Map implements AfterViewInit {
     this.isRegionDropdownOpen = !this.isRegionDropdownOpen;
     this.isFishDropdownOpen = false; // Schließe das andere Dropdown
     this.cdr.detectChanges();
+  }
+
+  // Gibt die ID des Sees zurück (aus Lake-Objekt)
+  getLakeId(name: string): string {
+    // Fallback falls keine ID vorhanden ist
+    return name.toLowerCase()
+      .replace(/ä/g, 'ae')
+      .replace(/ö/g, 'oe')
+      .replace(/ü/g, 'ue')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
   }
 }

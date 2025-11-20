@@ -1,0 +1,186 @@
+<div class="detail-container" *ngIf="lake">
+  <!-- Back Button -->
+  <div class="back-button-container">
+    <a routerLink="/" class="back-button">
+      <span class="arrow">←</span> Zurück zur Karte
+    </a>
+  </div>
+
+  <!-- Bild-Gallery -->
+  <div class="image-gallery">
+    <!-- Bilder vorhanden -->
+    <div class="gallery-container" 
+         *ngIf="lake.images && lake.images.length > 0"
+         (touchstart)="onTouchStart($event)" 
+         (touchend)="onTouchEnd($event)">
+      <img [src]="lake.images[currentImageIndex]" 
+           [alt]="lake.name" 
+           class="gallery-image">
+      
+      <!-- Navigation Arrows -->
+      <button class="gallery-nav prev" 
+              (click)="previousImage()" 
+              *ngIf="currentImageIndex > 0"
+              aria-label="Vorheriges Bild">
+        ‹
+      </button>
+      <button class="gallery-nav next" 
+              (click)="nextImage()" 
+              *ngIf="currentImageIndex < lake.images.length - 1"
+              aria-label="Nächstes Bild">
+        ›
+      </button>
+      
+      <!-- Image Counter -->
+      <div class="image-counter">
+        {{ currentImageIndex + 1 }} / {{ lake.images.length }}
+      </div>
+    </div>
+    
+    <!-- Placeholder wenn keine Bilder -->
+    <div class="gallery-placeholder" *ngIf="!lake.images || lake.images.length === 0">
+      <div class="placeholder-content">
+        <span class="placeholder-icon">📷</span>
+        <p class="placeholder-text">Noch keine Bilder vorhanden</p>
+        <p class="placeholder-hint">Bilder können später in der lakes.json hinzugefügt werden</p>
+      </div>
+    </div>
+    
+    <!-- Thumbnail Dots -->
+    <div class="thumbnail-dots" *ngIf="lake.images && lake.images.length > 0">
+      <button *ngFor="let img of lake.images; let i = index" 
+              class="dot" 
+              [class.active]="i === currentImageIndex"
+              (click)="goToImage(i)"
+              [attr.aria-label]="'Gehe zu Bild ' + (i + 1)">
+      </button>
+    </div>
+  </div>
+
+  <!-- See-Titel -->
+  <div class="lake-header">
+    <h1>{{ lake.name }}</h1>
+    <p class="lake-subtitle">{{ lake.cantons }}</p>
+  </div>
+
+  <!-- Content Grid -->
+  <div class="content-grid">
+    
+    <!-- Allgemeine Informationen -->
+    <div class="info-card">
+      <h2>📊 Allgemeine Informationen</h2>
+      <div class="info-list">
+        <div class="info-item">
+          <span class="label">Fläche:</span>
+          <span class="value">{{ lake.area }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Maximale Tiefe:</span>
+          <span class="value">{{ lake.maxDepth }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Höhe über Meer:</span>
+          <span class="value">{{ lake.elevation }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Beste Saison:</span>
+          <span class="value">{{ lake.bestSeason }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fischarten -->
+    <div class="info-card">
+      <h2>🐟 Fischarten</h2>
+      <div class="fish-tags">
+        <span class="fish-tag" *ngFor="let fish of lake.fishSpecies">{{ fish }}</span>
+      </div>
+    </div>
+
+    <!-- Patent-Preise -->
+    <div class="info-card price-card" *ngIf="hasPrices">
+      <h2>💰 Patent-Preise</h2>
+      <div class="price-list">
+        <div class="price-item" *ngIf="lake.permitPrices?.daily">
+          <span class="price-label">Tagespatent</span>
+          <span class="price-value">{{ lake.permitPrices?.daily }}</span>
+        </div>
+        <div class="price-item" *ngIf="lake.permitPrices?.weekly">
+          <span class="price-label">Wochenpatent</span>
+          <span class="price-value">{{ lake.permitPrices?.weekly }}</span>
+        </div>
+        <div class="price-item" *ngIf="lake.permitPrices?.monthly">
+          <span class="price-label">Monatspatent</span>
+          <span class="price-value">{{ lake.permitPrices?.monthly }}</span>
+        </div>
+        <div class="price-item" *ngIf="lake.permitPrices?.annual">
+          <span class="price-label">Jahrespatent</span>
+          <span class="price-value">{{ lake.permitPrices?.annual }}</span>
+        </div>
+        <div class="price-item" *ngIf="lake.permitPrices?.youth">
+          <span class="price-label">Jugendpatent</span>
+          <span class="price-value">{{ lake.permitPrices?.youth }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bewilligung & Offizielle Webseite -->
+    <div class="info-card">
+      <h2>📋 Bewilligung</h2>
+      
+      <!-- Gratis Fischen Badge -->
+      <div class="free-fishing-badge" *ngIf="lake.freeFishing">
+        ✓ Gratis Fischen möglich - Kein Patent erforderlich
+      </div>
+      
+      <!-- Permit Text -->
+      <p class="permit-text" *ngIf="!lake.freeFishing">{{ lake.permitRequired }}</p>
+      
+      <!-- Offizielle Webseite Button - IMMER anzeigen -->
+      <a [href]="lake.permitPrices?.link || 'https://www.sana.ch/'" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         class="official-website-btn">
+        🌐 Offizielle Webseite besuchen
+      </a>
+    </div>
+
+    <!-- Regeln & Vorschriften -->
+    <div class="info-card regulations-card" *ngIf="hasRegulations">
+      <h2>⚖️ Wichtige Regeln</h2>
+      
+      <div class="regulation-section" *ngIf="lake.regulations?.closedSeasons">
+        <h3>Schonzeiten</h3>
+        <p>{{ lake.regulations?.closedSeasons }}</p>
+      </div>
+      
+      <div class="regulation-section" *ngIf="lake.regulations?.minSizes">
+        <h3>Mindestmaße</h3>
+        <ul class="min-sizes-list">
+          <li *ngFor="let fish of lake.regulations?.minSizes | keyvalue">
+            <strong>{{ fish.key }}:</strong> {{ fish.value }}
+          </li>
+        </ul>
+      </div>
+      
+      <div class="regulation-section" *ngIf="lake.regulations?.bagLimit">
+        <h3>Fangbegrenzung</h3>
+        <p>{{ lake.regulations?.bagLimit }}</p>
+      </div>
+      
+      <div class="regulation-section" *ngIf="lake.regulations?.additionalRules">
+        <h3>Zusätzliche Regeln</h3>
+        <ul class="additional-rules">
+          <li *ngFor="let rule of lake.regulations?.additionalRules">{{ rule }}</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Fallback wenn kein See gefunden -->
+<div class="not-found" *ngIf="!lake">
+  <h1>See nicht gefunden</h1>
+  <a routerLink="/" class="back-button">Zurück zur Karte</a>
+</div>
