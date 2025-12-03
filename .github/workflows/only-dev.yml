@@ -42,8 +42,9 @@ jobs:
           **Current source**: \`${{ github.head_ref }}\`
           **Required source**: \`dev\`
           
-          Please merge your changes into \`dev\` first, then create a PR from \`dev\` to \`main\`."
-      
+          Please merge your changes into \`dev\` first, then create a PR from \`dev\` to \`main\`.
+EOF
+            )"
       - name: Fail workflow if policy violated
         if: steps.check.outcome == 'failure'
         run: exit 1
