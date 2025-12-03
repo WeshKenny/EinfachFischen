@@ -20,13 +20,13 @@
       <!-- Navigation Arrows -->
       <button class="gallery-nav prev" 
               (click)="previousImage()" 
-              *ngIf="currentImageIndex > 0"
+              [disabled]="currentImageIndex === 0"
               aria-label="Vorheriges Bild">
         ‹
       </button>
       <button class="gallery-nav next" 
               (click)="nextImage()" 
-              *ngIf="currentImageIndex < lake.images.length - 1"
+              [disabled]="currentImageIndex >= lake.images.length - 1"
               aria-label="Nächstes Bild">
         ›
       </button>
@@ -42,7 +42,7 @@
       <div class="placeholder-content">
         <span class="placeholder-icon">📷</span>
         <p class="placeholder-text">Noch keine Bilder vorhanden</p>
-        <p class="placeholder-hint">Bilder können später in der lakes.json hinzugefügt werden</p>
+        <p class="placeholder-hint">Bilder können in lakes.json hinzugefügt werden</p>
       </div>
     </div>
     
@@ -61,10 +61,68 @@
   <div class="lake-header">
     <h1>{{ lake.name }}</h1>
     <p class="lake-subtitle">{{ lake.cantons }}</p>
+    
+    <!-- Fehler melden Button -->
+    <button class="report-issue-btn" (click)="reportIssue.open()" title="Fehler melden">
+      🚨 Fehler melden
+    </button>
   </div>
 
   <!-- Content Grid -->
   <div class="content-grid">
+    
+    <!-- Wetter-Karte (NEU!) -->
+    <div class="info-card weather-card" *ngIf="weather || isLoadingWeather">
+      <h2>☀️ Aktuelles Wetter</h2>
+      
+      <!-- Loading Spinner -->
+      <div class="weather-loading" *ngIf="isLoadingWeather">
+        <div class="spinner"></div>
+        <p>Lade Wetterdaten...</p>
+      </div>
+      
+      <!-- Wetter-Daten -->
+      <div class="weather-content" *ngIf="!isLoadingWeather && weather">
+        <div class="weather-main">
+          <div class="weather-icon">
+            <img [src]="'https://openweathermap.org/img/wn/' + weather.icon + '@2x.png'" 
+                 [alt]="weather.description">
+          </div>
+          <div class="weather-temp">
+            <div class="temp-big">{{ weather.temp }}°C</div>
+            <div class="temp-feels">Gefühlt {{ weather.feelsLike }}°C</div>
+            <div class="weather-desc">{{ weather.description }}</div>
+          </div>
+        </div>
+        
+        <div class="weather-details">
+          <div class="weather-detail">
+            <span class="icon">💨</span>
+            <span class="label">Wind:</span>
+            <span class="value">{{ weather.windSpeed }} km/h {{ getWindDirection(weather.windDeg) }}</span>
+          </div>
+          <div class="weather-detail">
+            <span class="icon">💧</span>
+            <span class="label">Luftfeuchtigkeit:</span>
+            <span class="value">{{ weather.humidity }}%</span>
+          </div>
+          <div class="weather-detail">
+            <span class="icon">☁️</span>
+            <span class="label">Bewölkung:</span>
+            <span class="value">{{ weather.clouds }}%</span>
+          </div>
+          <div class="weather-detail">
+            <span class="icon">{{ weather.moonPhaseEmoji }}</span>
+            <span class="label">Mondphase:</span>
+            <span class="value">{{ weather.moonPhase }}</span>
+          </div>
+        </div>
+        
+        <div class="weather-footer">
+          <small>🕐 Daten werden alle 30 Min. aktualisiert</small>
+        </div>
+      </div>
+    </div>
     
     <!-- Allgemeine Informationen -->
     <div class="info-card">
@@ -178,6 +236,13 @@
 
   </div>
 </div>
+
+<!-- Report Issue Modal -->
+<app-report-issue 
+  #reportIssue
+  [lakeName]="lake?.name || ''"
+  [lakeId]="lake?.id || ''">
+</app-report-issue>
 
 <!-- Fallback wenn kein See gefunden -->
 <div class="not-found" *ngIf="!lake">
