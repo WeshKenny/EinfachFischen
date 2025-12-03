@@ -1,0 +1,44 @@
+name: Branch Policy Enforcement
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, reopened, synchronize]
+
+jobs:
+  enforce-branch-policy:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Check source branch
+        id: check
+        run: |
+          if [ "${{ github.head_ref }}" != "dev" ]; then
+            echo "allowed=false" >> $GITHUB_OUTPUT
+            echo "::error::Only 'dev' branch can merge to 'main'"
+            exit 1
+          else
+            echo "allowed=true" >> $GITHUB_OUTPUT
+            echo "::notice::Branch policy check passed ✅"
+          fi
+
+      - name: Block illegal merge
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          gh pr review "$PR_URL" \
+            --request-changes \
+            --body "🚫 **Branch Policy Violation**
+
+          Direct merges to \`main\` are only allowed from the \`dev\` branch.
+          
+          **Current source**: \`${{ github.head_ref }}\`
+          **Required source**: \`dev\`
+          
+          Please merge your changes into \`dev\` first, then create a PR from \`dev\` to \`main\`."
