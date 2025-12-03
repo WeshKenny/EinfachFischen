@@ -1,0 +1,27 @@
+name: Enforce Development Flow
+
+# Trigger: Nur bei PRs, die auf main oder master zielen
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, reopened, synchronize]
+
+jobs:
+  block-illegal-merge:
+    runs-on: ubuntu-latest
+    # Bedingung: Führe den Job NUR aus, wenn der Quell-Branch NICHT 'development' ist
+    if: github.head_ref != 'development'
+    
+    permissions:
+      pull-requests: write  # Wichtig: Erlaubt dem Bot, PR-Reviews zu schreiben
+
+    steps:
+      - name: Request Changes automatically
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          gh pr review "$PR_URL" \
+            --request-changes \
+            --body "🚫 **Policy Violation**: Direkte Merges in 'main' sind nur vom 'dev' Branch erlaubt. Bitte merge zuerst in dev."
