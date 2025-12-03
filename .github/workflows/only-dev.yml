@@ -16,6 +16,7 @@ jobs:
     steps:
       - name: Check source branch
         id: check
+        continue-on-error: true
         run: |
           if [ "${{ github.head_ref }}" != "dev" ]; then
             echo "allowed=false" >> $GITHUB_OUTPUT
@@ -27,7 +28,7 @@ jobs:
           fi
 
       - name: Block illegal merge
-        if: failure()
+        if: steps.check.outcome == 'failure'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
@@ -42,3 +43,7 @@ jobs:
           **Required source**: \`dev\`
           
           Please merge your changes into \`dev\` first, then create a PR from \`dev\` to \`main\`."
+      
+      - name: Fail workflow if policy violated
+        if: steps.check.outcome == 'failure'
+        run: exit 1
