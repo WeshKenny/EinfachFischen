@@ -67,7 +67,8 @@ export class LakeDetail implements OnInit {
     }
 
     this.isLoadingWeather = true;
-    this.weatherService.getWeather(this.lake.coords.lat, this.lake.coords.lon).subscribe({
+    // coords ist ein Array [lat, lon]
+    this.weatherService.getWeather(this.lake.coords[0], this.lake.coords[1]).subscribe({
       next: (data) => {
         this.weather = data;
         this.isLoadingWeather = false;

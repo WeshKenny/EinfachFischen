@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 interface ReportIssue {
   lakeName: string;
   lakeId: string;
-  category: 'patent' | 'regulation' | 'data' | 'other';
+  category: 'Patent-Informationen veraltet' | 'Regeländerung' | 'Falsche Daten' | 'Sonstiges:';
   description: string;
   email?: string;
   timestamp: string;
@@ -31,20 +31,20 @@ export class ReportIssueComponent {
 
   // Form Model
   reportData = {
-    category: 'patent' as const,
+    category: 'Patent-Informationen veraltet' as const,
     description: '',
     email: ''
   };
 
   // Rate Limiting (client-side)
   private readonly COOLDOWN_KEY = 'lastReportTime';
-  private readonly COOLDOWN_MINUTES = 5;
+  private readonly COOLDOWN_MINUTES = 2; // 2 Minuten Wartezeit
 
   categories = [
-    { value: 'patent', label: '💰 Patent-Informationen veraltet' },
-    { value: 'regulation', label: '⚖️ Regeländerung' },
-    { value: 'data', label: '📊 Falsche Daten (Größe, Tiefe, etc.)' },
-    { value: 'other', label: '❓ Sonstiges' }
+    { value: 'Patent-Informationen veraltet', label: '📜 Patent-Informationen veraltet' },
+    { value: 'Regeländerung', label: '⚖️ Regeländerung' },
+    { value: 'Falsche Daten', label: '📊 Falsche Daten' },
+    { value: 'Sonstiges:', label: '❓ Sonstiges' }
   ];
 
   constructor(private cdr: ChangeDetectorRef) {}
@@ -92,12 +92,11 @@ export class ReportIssueComponent {
     };
 
     try {
-      // TESTMODUS: Simuliere erfolgreiche Übermittlung
-      console.log('📧 Meldung würde gesendet werden:', report);
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simuliere Netzwerk-Delay
+      // Google Forms Submission aktiviert!
+      console.log('📧 Sende Meldung an Google Forms:', report);
       
-      // Option 1: Google Forms (empfohlen für dich!)
-      // await this.submitToGoogleForms(report);
+      // Option 1: Google Forms (AKTIVIERT!)
+      await this.submitToGoogleForms(report);
       
       // Option 2: Formspree (Alternative)
       // await this.submitToFormspree(report);
@@ -107,7 +106,7 @@ export class ReportIssueComponent {
       
       setTimeout(() => {
         this.closeModal();
-      }, 2000);
+      }, 2000); // 2 Sekunden Success-Meldung
       
     } catch (error) {
       console.error('Fehler beim Senden:', error);
@@ -124,14 +123,14 @@ export class ReportIssueComponent {
    * 3. Extrahiere entry IDs aus URL
    */
   private async submitToGoogleForms(report: ReportIssue): Promise<void> {
-    // TODO: Ersetze mit deiner Google Form URL und Entry IDs
-    const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/DEINE_FORM_ID/formResponse';
+    // Deine Google Form URL mit Entry IDs
+    const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSeBIgD7gpSKQl81HAHDUWegXnyLa7uV1XD0QOV61pf5c7pCgw/formResponse';
     
     const formData = new URLSearchParams({
-      'entry.12345': report.lakeName,           // Ersetze mit echtem entry.XXX
-      'entry.67890': report.category,           // Ersetze mit echtem entry.XXX
-      'entry.11111': report.description,        // Ersetze mit echtem entry.XXX
-      'entry.22222': report.email || 'Anonym'   // Ersetze mit echtem entry.XXX
+      'entry.938139659': report.lakeName,      // See-Name
+      'entry.1759447220': report.category,     // Kategorie
+      'entry.1188145912': report.description,  // Beschreibung
+      'entry.689485063': report.email || ''    // E-Mail (leer wenn nicht angegeben)
     });
 
     // CORS-Trick: Nutze iframe statt fetch (Google Forms blockt CORS)
@@ -183,7 +182,7 @@ export class ReportIssueComponent {
 
   private resetForm(): void {
     this.reportData = {
-      category: 'patent',
+      category: 'Patent-Informationen veraltet',
       description: '',
       email: ''
     };
