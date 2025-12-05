@@ -71,8 +71,8 @@
   <!-- Content Grid -->
   <div class="content-grid">
     
-    <!-- Wetter-Karte (NEU!) -->
-    <div class="info-card weather-card" *ngIf="weather || isLoadingWeather">
+    <!-- Wetter-Karte (UNABHÄNGIG!) -->
+    <div class="weather-card" *ngIf="weather || isLoadingWeather">
       <h2>☀️ Aktuelles Wetter</h2>
       
       <!-- Loading Spinner -->
@@ -83,43 +83,56 @@
       
       <!-- Wetter-Daten -->
       <div class="weather-content" *ngIf="!isLoadingWeather && weather">
-        <div class="weather-main">
-          <div class="weather-icon">
-            <img [src]="'https://openweathermap.org/img/wn/' + weather.icon + '@2x.png'" 
-                 [alt]="weather.description">
-          </div>
-          <div class="weather-temp">
-            <div class="temp-big">{{ weather.temp }}°C</div>
-            <div class="temp-feels">Gefühlt {{ weather.feelsLike }}°C</div>
-            <div class="weather-desc">{{ weather.description }}</div>
+        <!-- Hauptanzeige: Icon + Temperatur -->
+        <div class="weather-hero">
+          <div class="weather-icon-large">{{ weather.icon }}</div>
+          <div class="weather-primary">
+            <div class="temp-display">{{ weather.temp }}°C</div>
+            <div class="temp-secondary">Gefühlt {{ weather.feelsLike }}°C</div>
+            <div class="weather-status">{{ weather.description }}</div>
           </div>
         </div>
         
-        <div class="weather-details">
-          <div class="weather-detail">
-            <span class="icon">💨</span>
-            <span class="label">Wind:</span>
-            <span class="value">{{ weather.windSpeed }} km/h {{ getWindDirection(weather.windDeg) }}</span>
+        <!-- Details Grid -->
+        <div class="weather-grid">
+          <div class="weather-item">
+            <div class="weather-item-icon">💨</div>
+            <div class="weather-item-content">
+              <div class="weather-item-label">Wind</div>
+              <div class="weather-item-value">{{ weather.windSpeed }} km/h</div>
+              <div class="weather-item-extra">{{ getWindDirection(weather.windDeg) }}</div>
+            </div>
           </div>
-          <div class="weather-detail">
-            <span class="icon">💧</span>
-            <span class="label">Luftfeuchtigkeit:</span>
-            <span class="value">{{ weather.humidity }}%</span>
+          
+          <div class="weather-item">
+            <div class="weather-item-icon">💧</div>
+            <div class="weather-item-content">
+              <div class="weather-item-label">Luftfeuchtigkeit</div>
+              <div class="weather-item-value">{{ weather.humidity }}%</div>
+            </div>
           </div>
-          <div class="weather-detail">
-            <span class="icon">☁️</span>
-            <span class="label">Bewölkung:</span>
-            <span class="value">{{ weather.clouds }}%</span>
+          
+          <div class="weather-item">
+            <div class="weather-item-icon">☁️</div>
+            <div class="weather-item-content">
+              <div class="weather-item-label">Bewölkung</div>
+              <div class="weather-item-value">{{ weather.clouds }}%</div>
+            </div>
           </div>
-          <div class="weather-detail">
-            <span class="icon">{{ weather.moonPhaseEmoji }}</span>
-            <span class="label">Mondphase:</span>
-            <span class="value">{{ weather.moonPhase }}</span>
+          
+          <div class="weather-item">
+            <div class="weather-item-icon">{{ weather.moonPhaseEmoji }}</div>
+            <div class="weather-item-content">
+              <div class="weather-item-label">Mondphase</div>
+              <div class="weather-item-value">{{ weather.moonPhase }}</div>
+            </div>
           </div>
         </div>
         
-        <div class="weather-footer">
-          <small>🕐 Daten werden alle 30 Min. aktualisiert</small>
+        <!-- Footer -->
+        <div class="weather-info">
+          <span class="weather-update-icon">🕐</span>
+          <span class="weather-update-text">Daten werden alle 30 Min. aktualisiert</span>
         </div>
       </div>
     </div>

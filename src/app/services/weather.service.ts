@@ -29,10 +29,8 @@ interface CachedWeather {
   providedIn: 'root'
 })
 export class WeatherService {
-  // WICHTIG: Ersetze mit deinem OpenWeatherMap API Key
-  // Hol dir einen kostenlosen Key: https://openweathermap.org/api
-  private readonly API_KEY = 'DEIN_API_KEY_HIER'; // TODO: API Key eintragen!
-  private readonly API_URL = 'https://api.openweathermap.org/data/2.5/weather';
+  // Open-Meteo API - KEIN API Key nötig! 🎉
+  private readonly API_URL = 'https://api.open-meteo.com/v1/forecast';
   
   // Cache Konfiguration
   private readonly CACHE_DURATION_MS = 30 * 60 * 1000; // 30 Minuten
@@ -43,6 +41,7 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {
     this.loadCacheFromStorage();
+    console.log('✅ WeatherService initialisiert (Open-Meteo - keine Anmeldung nötig!)');
   }
 
   /**
@@ -72,20 +71,14 @@ export class WeatherService {
   }
 
   /**
-   * Holt Wetterdaten von OpenWeatherMap API
+   * Holt Wetterdaten von Open-Meteo API (kein API Key nötig!)
    */
   private fetchWeatherFromAPI(lat: number, lon: number, cacheKey: string): Observable<WeatherData | null> {
-    if (this.API_KEY === 'DEIN_API_KEY_HIER') {
-      console.warn('⚠️ OpenWeatherMap API Key nicht konfiguriert!');
-      return of(null);
-    }
-
     const params = {
-      lat: lat.toString(),
-      lon: lon.toString(),
-      units: 'metric',
-      lang: 'de',
-      appid: this.API_KEY
+      latitude: lat.toString(),
+      longitude: lon.toString(),
+      current: 'temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,cloud_cover,wind_speed_10m,wind_direction_10m',
+      timezone: 'Europe/Zurich'
     };
 
     return this.http.get<any>(this.API_URL, { params }).pipe(
@@ -98,7 +91,7 @@ export class WeatherService {
         };
         this.memoryCache.set(cacheKey, cached);
         this.saveCacheToStorage(cacheKey, cached);
-        console.log(`✅ Wetter erfolgreich geladen und gecacht`);
+        console.log(`✅ Wetter erfolgreich geladen und gecacht (Open-Meteo)`);
       }),
       catchError(error => {
         console.error('❌ Fehler beim Laden des Wetters:', error);
@@ -108,27 +101,64 @@ export class WeatherService {
   }
 
   /**
-   * Parst OpenWeatherMap Response zu unserem WeatherData Format
+   * Parst Open-Meteo Response zu unserem WeatherData Format
    */
   private parseWeatherResponse(response: any): WeatherData {
     const moonPhase = this.calculateMoonPhase(new Date());
+    const current = response.current;
+    
+    // WMO Weather Code zu Beschreibung (Deutsch)
+    const weatherDesc = this.getWeatherDescription(current.weather_code);
     
     return {
-      temp: Math.round(response.main.temp),
-      feelsLike: Math.round(response.main.feels_like),
-      description: response.weather[0].description,
-      icon: response.weather[0].icon,
-      windSpeed: Math.round(response.wind.speed * 3.6), // m/s -> km/h
-      windDeg: response.wind.deg,
-      humidity: response.main.humidity,
-      pressure: response.main.pressure,
-      clouds: response.clouds.all,
-      rainChance: response.rain?.['1h'] || 0,
-      sunrise: response.sys.sunrise,
-      sunset: response.sys.sunset,
+      temp: Math.round(current.temperature_2m),
+      feelsLike: Math.round(current.apparent_temperature),
+      description: weatherDesc.description,
+      icon: weatherDesc.icon,
+      windSpeed: Math.round(current.wind_speed_10m),
+      windDeg: current.wind_direction_10m,
+      humidity: current.relative_humidity_2m,
+      pressure: 1013, // Open-Meteo Free hat keinen Druck, Standardwert
+      clouds: current.cloud_cover,
+      rainChance: 0, // Nicht in aktuellen Daten
+      sunrise: 0, // Würde extra API call brauchen
+      sunset: 0,  // Würde extra API call brauchen
       moonPhase: moonPhase.phase,
       moonPhaseEmoji: moonPhase.emoji
     };
+  }
+
+  /**
+   * Konvertiert WMO Weather Code zu deutscher Beschreibung
+   * https://open-meteo.com/en/docs
+   */
+  private getWeatherDescription(code: number): { description: string; icon: string } {
+    // WMO Code Mapping
+    const weatherCodes: { [key: number]: { description: string; icon: string } } = {
+      0: { description: 'Klar', icon: '☀️' },
+      1: { description: 'Überwiegend klar', icon: '🌤️' },
+      2: { description: 'Teilweise bewölkt', icon: '⛅' },
+      3: { description: 'Bewölkt', icon: '☁️' },
+      45: { description: 'Nebel', icon: '🌫️' },
+      48: { description: 'Gefrierender Nebel', icon: '🌫️' },
+      51: { description: 'Leichter Nieselregen', icon: '🌦️' },
+      53: { description: 'Nieselregen', icon: '🌦️' },
+      55: { description: 'Starker Nieselregen', icon: '🌧️' },
+      61: { description: 'Leichter Regen', icon: '🌧️' },
+      63: { description: 'Regen', icon: '🌧️' },
+      65: { description: 'Starker Regen', icon: '⛈️' },
+      71: { description: 'Leichter Schneefall', icon: '🌨️' },
+      73: { description: 'Schneefall', icon: '🌨️' },
+      75: { description: 'Starker Schneefall', icon: '❄️' },
+      80: { description: 'Regenschauer', icon: '🌦️' },
+      81: { description: 'Kräftiger Regenschauer', icon: '⛈️' },
+      82: { description: 'Heftiger Regenschauer', icon: '⛈️' },
+      95: { description: 'Gewitter', icon: '⛈️' },
+      96: { description: 'Gewitter mit Hagel', icon: '⛈️' },
+      99: { description: 'Schweres Gewitter mit Hagel', icon: '⛈️' }
+    };
+
+    return weatherCodes[code] || { description: 'Unbekannt', icon: '🌡️' };
   }
 
   /**
