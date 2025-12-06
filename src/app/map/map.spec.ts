@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
 import { Map } from './map';
 import { routes } from '../app.routes';
 
@@ -13,7 +14,8 @@ describe('Map', () => {
       imports: [Map],
       providers: [
         provideZonelessChangeDetection(),
-        provideRouter(routes)
+        provideRouter(routes),
+        provideHttpClient()
       ]
     })
     .compileComponents();
