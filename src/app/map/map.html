@@ -76,7 +76,11 @@
   <button class="close-button" (click)="closeSidebar()">&times;</button>
   <div class="sidebar-content" *ngIf="selectedLakeData">
     <h2>{{selectedLakeData.name}}</h2>
-      
+    
+    <!-- Link zur Detail-Seite -->
+    <a [routerLink]="['/lake', selectedLakeData.id || getLakeId(selectedLakeData.name)]" class="detail-link">
+      📋 Alle Details ansehen
+    </a>
     
     <div class="lake-section">
       <h3>📊 Allgemeine Informationen</h3>

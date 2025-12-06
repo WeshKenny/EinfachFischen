@@ -160,13 +160,15 @@
   z-index: 1;
 }
 .map-component-wrapper {
-  width: 85% !important; /* Weniger breit - von 94% auf 85% */
-  max-width: 1400px !important; /* Kleinere max Breite - von 1800px auf 1400px */
-  height: 850px !important; /* Höher - von 700px auf 850px */
+  width: 85% !important;
+  max-width: 1400px !important;
+  height: 75vh !important; /* Viewport-basiert statt fester Höhe */
+  max-height: 850px !important;
+  min-height: 500px !important;
   margin: 1rem auto !important;
   position: relative;
   padding: 0;
-  z-index: 1; /* NIEDRIGER als Filter-Section! */
+  z-index: 1;
 }
 
 .layout {
@@ -214,6 +216,28 @@
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+}
+
+.detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.detail-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
 }
 
 .lake-section {
@@ -313,77 +337,82 @@
 /* Responsive Anpassungen */
 @media (min-width: 1600px) {
     .map-component-wrapper {
-        width: 90%;
-        max-width: 1800px;
-        height: calc(100vh - 140px);
+        width: 88%;
+        max-width: 1600px;
+        height: 80vh;
         max-height: 900px;
     }
     
     .filter-section {
-        width: 90%;
-        max-width: 1800px;
+        width: 88%;
+        max-width: 1600px;
     }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1440px) {
     .map-component-wrapper {
-        width: 92%;
-        height: calc(100vh - 160px);
-        max-height: 700px;
+        width: 90%;
+        height: 70vh;
+        max-height: 750px;
     }
     
     .filter-section {
-        width: 92%;
+        width: 90%;
+    }
+    
+    .filter-btn {
+        padding: 0.45rem 0.9rem;
+        font-size: 0.85rem;
     }
 }
 
 @media (max-width: 1024px) {
     .map-component-wrapper {
-        width: 95%;
-        height: calc(100vh - 180px);
-        max-height: 600px;
-        padding: 0 10px;
+        width: 92%;
+        height: 65vh;
+        max-height: 650px;
+        min-height: 450px;
     }
     
     .filter-section {
-        width: auto;
-        max-width: 95%;
-        padding: 0.6rem 1rem;
+        width: 92%;
+    }
+    
+    .filter-container {
+        gap: 0.4rem;
+        padding: 0.5rem 1rem;
     }
     
     .filter-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
+        padding: 0.4rem 0.85rem;
+        font-size: 0.8rem;
     }
 }
 
 @media (max-width: 768px) {
     .map-component-wrapper {
-        width: 98%;
-        height: calc(100vh - 200px);
+        width: 96%;
+        height: 60vh;
         max-height: 500px;
         min-height: 400px;
-        padding: 0 5px;
-        margin: 1rem auto;
+        margin: 0.75rem auto;
     }
     
     .filter-section {
-        width: auto;
-        max-width: 98%;
-        padding: 0.5rem 0.85rem;
+        width: 96%;
         margin-bottom: 0.5rem;
-        border-radius: 10px;
     }
     
     .filter-container {
-        gap: 0.35rem;
+        gap: 0.3rem;
+        padding: 0.45rem 0.85rem;
     }
     
     .filter-btn {
-        padding: 0.4rem 0.7rem;
+        padding: 0.35rem 0.75rem;
         font-size: 0.75rem;
         white-space: nowrap;
-        border-width: 1px; /* Dünnere Border auf Mobile */
+        border-width: 1px;
     }
     
     .dropdown-content {
@@ -497,4 +526,61 @@
 
 ::ng-deep .leaflet-container a.leaflet-popup-close-button:hover {
   color: #60a5fa;
+}
+
+/* Marker Cluster Styling */
+::ng-deep .marker-cluster-small {
+  background-color: rgba(59, 130, 246, 0.7);
+}
+
+::ng-deep .marker-cluster-small div {
+  background-color: rgba(59, 130, 246, 0.9);
+}
+
+::ng-deep .marker-cluster-medium {
+  background-color: rgba(37, 99, 235, 0.7);
+}
+
+::ng-deep .marker-cluster-medium div {
+  background-color: rgba(37, 99, 235, 0.9);
+}
+
+::ng-deep .marker-cluster-large {
+  background-color: rgba(29, 78, 216, 0.7);
+}
+
+::ng-deep .marker-cluster-large div {
+  background-color: rgba(29, 78, 216, 0.95);
+}
+
+::ng-deep .marker-cluster {
+  background-clip: padding-box;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+::ng-deep .marker-cluster:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+::ng-deep .marker-cluster div {
+  width: calc(100% - 13px);
+  height: calc(100% - 13px);
+  margin: 6.5px;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+::ng-deep .marker-cluster span {
+  line-height: 1;
 }
