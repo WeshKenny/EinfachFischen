@@ -50,15 +50,6 @@ export class LakeDetail implements OnInit {
     }
   }
 
-  private createId(name: string): string {
-    return name.toLowerCase()
-      .replace(/ä/g, 'ae')
-      .replace(/ö/g, 'oe')
-      .replace(/ü/g, 'ue')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '');
-  }
-
   // === Wetter laden ===
   loadWeather() {
     if (!this.lake?.coords) {

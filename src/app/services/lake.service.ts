@@ -78,8 +78,13 @@ export class LakeService {
    * Gibt alle Seen zurück (wartet auf Laden falls nötig)
    */
   async getLakes(): Promise<Lake[]> {
-    await this.loadLakes();
-    return this.lakes;
+    try {
+      await this.loadLakes();
+      return this.lakes;
+    } catch (error) {
+      console.error('❌ Fehler beim Abrufen der Seen:', error);
+      throw error; // Fehler weitergeben für besseres Error-Handling
+    }
   }
 
   /**

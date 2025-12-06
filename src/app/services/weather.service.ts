@@ -173,18 +173,17 @@ export class WeatherService {
     let c = 0;
     let e = 0;
     let jd = 0;
-    let b = 0;
 
     if (month < 3) {
       const yearTemp = year - 1;
       const monthTemp = month + 12;
-      c = yearTemp / 100;
-      e = 2 - c + (c / 4);
-      jd = (365.25 * (yearTemp + 4716)) + (30.6001 * (monthTemp + 1)) + day + e - 1524.5;
+      c = Math.floor(yearTemp / 100);
+      e = 2 - c + Math.floor(c / 4);
+      jd = Math.floor(365.25 * (yearTemp + 4716)) + Math.floor(30.6001 * (monthTemp + 1)) + day + e - 1524.5;
     } else {
-      c = year / 100;
-      e = 2 - c + (c / 4);
-      jd = (365.25 * (year + 4716)) + (30.6001 * (month + 1)) + day + e - 1524.5;
+      c = Math.floor(year / 100);
+      e = 2 - c + Math.floor(c / 4);
+      jd = Math.floor(365.25 * (year + 4716)) + Math.floor(30.6001 * (month + 1)) + day + e - 1524.5;
     }
 
     const daysSinceNew = jd - 2451549.5;
