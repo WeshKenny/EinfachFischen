@@ -16,22 +16,36 @@ jobs:
     steps:
       - name: Check source branch
         id: check
-        continue-on-error: true
         run: |
           if [ "${{ github.head_ref }}" != "dev" ]; then
             echo "allowed=false" >> $GITHUB_OUTPUT
+            echo "❌ Branch policy violation detected!"
             echo "::error::Only 'dev' branch can merge to 'main'"
+            echo "::error::Current source branch: ${{ github.head_ref }}"
             exit 1
           else
-            echo "::notice::Branch policy check passed ✅"
+            echo "allowed=true" >> $GITHUB_OUTPUT
+            echo "✅ Branch policy check passed!"
+            echo "::notice::Source branch 'dev' is allowed to merge to 'main'"
           fi
 
+      - name: Success - Dev branch detected
+        if: github.head_ref == 'dev'
+        run: |
+          echo "🎉 Branch Policy Enforcement: SUCCESS"
+          echo "================================================"
+          echo "✅ Source Branch: dev"
+          echo "✅ Target Branch: main"
+          echo "✅ Status: Policy compliant - merge allowed"
+          echo "================================================"
+
       - name: Block illegal merge
-        if: steps.check.outcome == 'failure'
+        if: github.head_ref != 'dev'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
         run: |
+          echo "🚫 Blocking merge - sending review comment..."
           gh pr review "$PR_URL" \
             --request-changes \
             --body "🚫 **Branch Policy Violation**
@@ -44,5 +58,7 @@ jobs:
           Please merge your changes into \`dev\` first, then create a PR from \`dev\` to \`main\`."
           
       - name: Fail workflow if policy violated
-        if: steps.check.outcome == 'failure'
-        run: exit 1
+        if: github.head_ref != 'dev'
+        run: |
+          echo "❌ WORKFLOW FAILED: Branch policy violation"
+          exit 1
