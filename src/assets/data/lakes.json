@@ -1,0 +1,1599 @@
+[
+  {
+    "name": "Genfersee",
+    "area": "580.03 km²",
+    "maxDepth": "310 m",
+    "elevation": "372 m",
+    "cantons": "Genf, Waadt, Wallis",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "SaNa + Kantonales Patent (GE/VD/VS) erforderlich",
+    "coords": [
+      46.4528,
+      6.5395
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Hecht",
+      "Zander",
+      "Barsch",
+      "Felchen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 50.00",
+      "monthly": "CHF 120.00",
+      "annual": "CHF 300.00",
+      "youth": "CHF 80.00"
+    },
+    "id": "genfersee"
+  },
+  {
+    "name": "Bodensee",
+    "area": "536 km²",
+    "maxDepth": "252 m",
+    "elevation": "395 m",
+    "cantons": "Thurgau, St. Gallen",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Bodensee-Patent (TG/SG) erforderlich",
+    "coords": [
+      47.64,
+      9.37
+    ],
+    "fishSpecies": [
+      "Felchen",
+      "Hecht",
+      "Zander",
+      "Barsch",
+      "Karpfen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "bodensee"
+  },
+  {
+    "name": "Neuenburgersee",
+    "area": "217.9 km²",
+    "maxDepth": "152 m",
+    "elevation": "429 m",
+    "cantons": "Neuenburg, Waadt, Freiburg",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "Kein Patent erforderlich - Freies Fischen!",
+    "coords": [
+      46.9048,
+      6.8631
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Hecht",
+      "Barsch",
+      "Felchen"
+    ],
+    "freeFishing": true,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "neuenburgersee"
+  },
+  {
+    "name": "Lago Maggiore",
+    "area": "212.5 km²",
+    "maxDepth": "372 m",
+    "elevation": "193 m",
+    "cantons": "Tessin",
+    "bestSeason": "März - November",
+    "permitRequired": "Licenza di pesca cantonale Ticino erforderlich",
+    "coords": [
+      46.11,
+      8.7
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Hecht",
+      "Barsch",
+      "Aal"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "lago-maggiore"
+  },
+  {
+    "name": "Vierwaldstättersee",
+    "area": "113.6 km²",
+    "maxDepth": "214 m",
+    "elevation": "434 m",
+    "cantons": "Luzern, Uri, Schwyz, Nidwalden",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "SaNa + Vierwaldstättersee-Patent erforderlich",
+    "coords": [
+      47.02,
+      8.36
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Hecht",
+      "Felchen",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00",
+      "link": "https://www.sana.ch/"
+    },
+    "id": "vierwaldstaettersee"
+  },
+  {
+    "name": "Zürichsee",
+    "area": "88.17 km²",
+    "maxDepth": "136 m",
+    "elevation": "406 m",
+    "cantons": "Zürich, St. Gallen, Schwyz",
+    "bestSeason": "März - November",
+    "permitRequired": "SaNa + Zürichsee-Patent (ZH/SG/SZ) erforderlich",
+    "coords": [
+      47.2269,
+      8.7248
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Hecht",
+      "Zander",
+      "Barsch",
+      "Felchen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 30.00",
+      "weekly": "CHF 60.00",
+      "monthly": "CHF 140.00",
+      "annual": "CHF 350.00",
+      "youth": "CHF 100.00"
+    },
+    "id": "zuerichsee"
+  },
+  {
+    "name": "Luganersee",
+    "area": "48.7 km²",
+    "maxDepth": "288 m",
+    "elevation": "271 m",
+    "cantons": "Tessin",
+    "bestSeason": "März - November",
+    "permitRequired": "Licenza di pesca cantonale Ticino erforderlich",
+    "coords": [
+      46.01,
+      8.96
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Barsch",
+      "Hecht",
+      "Aal"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "luganersee"
+  },
+  {
+    "name": "Thunersee",
+    "area": "48.3 km²",
+    "maxDepth": "217 m",
+    "elevation": "558 m",
+    "cantons": "Bern",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "SaNa + Berner Patent erforderlich",
+    "coords": [
+      46.685,
+      7.68
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Hecht",
+      "Felchen",
+      "Egli"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 20.00",
+      "weekly": "CHF 45.00",
+      "monthly": "CHF 110.00",
+      "annual": "CHF 280.00",
+      "youth": "CHF 70.00"
+    },
+    "id": "thunersee"
+  },
+  {
+    "name": "Brienzersee",
+    "area": "29.8 km²",
+    "maxDepth": "260 m",
+    "elevation": "564 m",
+    "cantons": "Bern",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Berner Fischereipatent erforderlich",
+    "coords": [
+      46.734726,
+      7.986529
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Saibling",
+      "Felchen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00",
+      "link": "https://www.be.ch/fischerei"
+    },
+    "id": "brienzersee"
+  },
+  {
+    "name": "Bielersee",
+    "area": "39.3 km²",
+    "maxDepth": "74 m",
+    "elevation": "429 m",
+    "cantons": "Bern, Neuenburg",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "Kein Patent erforderlich - Freies Fischen!",
+    "coords": [
+      47.098479,
+      7.190848
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Barsch",
+      "Felchen",
+      "Aal"
+    ],
+    "freeFishing": true,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "bielersee"
+  },
+  {
+    "name": "Zugersee",
+    "area": "38.3 km²",
+    "maxDepth": "198 m",
+    "elevation": "413 m",
+    "cantons": "Zug, Schwyz, Luzern",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "SaNa + Kantonales Patent (ZG/SZ/LU) erforderlich",
+    "coords": [
+      47.13,
+      8.49
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Hecht",
+      "Felchen",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "zugersee"
+  },
+  {
+    "name": "Walensee",
+    "area": "24.1 km²",
+    "maxDepth": "151 m",
+    "elevation": "419 m",
+    "cantons": "St. Gallen, Glarus",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Kantonales Patent (SG/GL) erforderlich",
+    "coords": [
+      47.13,
+      9.18
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Saibling",
+      "Felchen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "walensee"
+  },
+  {
+    "name": "Murtensee",
+    "area": "22.8 km²",
+    "maxDepth": "45 m",
+    "elevation": "429 m",
+    "cantons": "Freiburg, Waadt",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "Kein Patent erforderlich - Freies Fischen!",
+    "coords": [
+      46.9267,
+      7.0833
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Barsch",
+      "Felchen"
+    ],
+    "freeFishing": true,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "murtensee"
+  },
+  {
+    "name": "Hallwilersee",
+    "area": "10 km²",
+    "maxDepth": "47 m",
+    "elevation": "449 m",
+    "cantons": "Aargau, Luzern",
+    "bestSeason": "April - September",
+    "permitRequired": "SaNa + Aargauer Fischereipatent erforderlich",
+    "coords": [
+      47.29,
+      8.22
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Barsch",
+      "Forelle"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "hallwilersee"
+  },
+  {
+    "name": "Sempachersee",
+    "area": "14.5 km²",
+    "maxDepth": "87 m",
+    "elevation": "504 m",
+    "cantons": "Luzern",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "SaNa + Luzerner Fischereipatent erforderlich",
+    "coords": [
+      47.13,
+      8.19
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Zander",
+      "Barsch",
+      "Felchen",
+      "Forelle"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "sempachersee"
+  },
+  {
+    "name": "Baldeggersee",
+    "area": "5.2 km²",
+    "maxDepth": "66 m",
+    "elevation": "463 m",
+    "cantons": "Luzern",
+    "bestSeason": "April - September",
+    "permitRequired": "SaNa + Luzerner Fischereipatent erforderlich",
+    "coords": [
+      47.195,
+      8.26
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Barsch",
+      "Felchen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "baldeggersee"
+  },
+  {
+    "name": "Ägerisee",
+    "area": "7.3 km²",
+    "maxDepth": "82 m",
+    "elevation": "724 m",
+    "cantons": "Zug",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Zuger Fischereipatent erforderlich",
+    "coords": [
+      47.14,
+      8.61
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Hecht",
+      "Saibling",
+      "Felchen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "aegerisee"
+  },
+  {
+    "name": "Sihlsee",
+    "area": "11 km²",
+    "maxDepth": "23 m",
+    "elevation": "889 m",
+    "cantons": "Schwyz",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Schwyzer Fischereipatent erforderlich",
+    "coords": [
+      47.12,
+      8.77
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Forelle",
+      "Saibling",
+      "Egli"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "sihlsee"
+  },
+  {
+    "name": "Greifensee",
+    "area": "8.5 km²",
+    "maxDepth": "32 m",
+    "elevation": "435 m",
+    "cantons": "Zürich",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "SaNa + Zürcher Fischereipatent erforderlich",
+    "coords": [
+      47.355,
+      8.68
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Zander",
+      "Barsch",
+      "Karpfen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "greifensee"
+  },
+  {
+    "name": "Pfäffikersee",
+    "area": "3.3 km²",
+    "maxDepth": "36 m",
+    "elevation": "537 m",
+    "cantons": "Zürich",
+    "bestSeason": "April - September",
+    "permitRequired": "SaNa + Zürcher Fischereipatent erforderlich",
+    "coords": [
+      47.35505,
+      8.7792
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Barsch",
+      "Karpfen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "pfaeffikersee"
+  },
+  {
+    "name": "Türlersee",
+    "area": "0.5 km²",
+    "maxDepth": "22 m",
+    "elevation": "647 m",
+    "cantons": "Zürich",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Zürcher Fischereipatent erforderlich",
+    "coords": [
+      47.2717,
+      8.5
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Hecht",
+      "Karpfen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "tuerlersee"
+  },
+  {
+    "name": "Lago di Poschiavo",
+    "area": "1.98 km²",
+    "maxDepth": "85 m",
+    "elevation": "962 m",
+    "cantons": "Graubünden",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Bündner Fischereipatent erforderlich",
+    "coords": [
+      46.285218,
+      10.088104
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Saibling",
+      "Hecht"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "lago-di-poschiavo"
+  },
+  {
+    "name": "Silsersee",
+    "area": "4.1 km²",
+    "maxDepth": "77 m",
+    "elevation": "1797 m",
+    "cantons": "Graubünden",
+    "bestSeason": "Juni - September",
+    "permitRequired": "SaNa + Bündner Fischereipatent erforderlich",
+    "coords": [
+      46.43,
+      9.745
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "silsersee"
+  },
+  {
+    "name": "Silvaplanersee",
+    "area": "2.7 km²",
+    "maxDepth": "78 m",
+    "elevation": "1791 m",
+    "cantons": "Graubünden",
+    "bestSeason": "Juni - September",
+    "permitRequired": "SaNa + Bündner Fischereipatent erforderlich",
+    "coords": [
+      46.455,
+      9.79
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "silvaplanersee"
+  },
+  {
+    "name": "Klöntalersee",
+    "area": "3.3 km²",
+    "maxDepth": "47 m",
+    "elevation": "848 m",
+    "cantons": "Glarus",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Glarner Fischereipatent erforderlich",
+    "coords": [
+      47.01,
+      9.025
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Saibling",
+      "Hecht"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "kloentalersee"
+  },
+  {
+    "name": "Oeschinensee",
+    "area": "1.1 km²",
+    "maxDepth": "56 m",
+    "elevation": "1578 m",
+    "cantons": "Bern",
+    "bestSeason": "Juni - September",
+    "permitRequired": "SaNa + Berner Fischereipatent erforderlich",
+    "coords": [
+      46.4983,
+      7.7283
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "oeschinensee"
+  },
+  {
+    "name": "Sarnersee",
+    "area": "7.4 km²",
+    "maxDepth": "52 m",
+    "elevation": "469 m",
+    "cantons": "Obwalden",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "SaNa + Obwaldner Fischereipatent erforderlich",
+    "coords": [
+      46.866148,
+      8.213805
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Hecht",
+      "Felchen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "sarnersee"
+  },
+  {
+    "name": "Lungerersee",
+    "area": "2 km²",
+    "maxDepth": "68 m",
+    "elevation": "688 m",
+    "cantons": "Obwalden",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Obwaldner Fischereipatent erforderlich",
+    "coords": [
+      46.794802,
+      8.157837
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "lungerersee"
+  },
+  {
+    "name": "Lac de Joux",
+    "area": "9.5 km²",
+    "maxDepth": "34 m",
+    "elevation": "1004 m",
+    "cantons": "Waadt",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Waadtländer Fischereipatent erforderlich",
+    "coords": [
+      46.64,
+      6.27
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Hecht",
+      "Barsch"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "lac-de-joux"
+  },
+  {
+    "name": "Klingnauer Stausee",
+    "area": "1.4 km²",
+    "maxDepth": "9 m",
+    "elevation": "318 m",
+    "cantons": "Aargau",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "SaNa + Aargauer Fischereipatent erforderlich",
+    "coords": [
+      47.575,
+      8.245
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Zander",
+      "Barsch",
+      "Karpfen",
+      "Wels"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "klingnauer-stausee"
+  },
+  {
+    "name": "Lac de la Gruyère",
+    "area": "10 km²",
+    "maxDepth": "75 m",
+    "elevation": "677 m",
+    "cantons": "Freiburg",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "SaNa + Freiburger Fischereipatent erforderlich",
+    "coords": [
+      46.674412,
+      7.094317
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Hecht",
+      "Felchen",
+      "Egli"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "lac-de-la-gruy-re"
+  },
+  {
+    "name": "Schiffenensee",
+    "area": "4.2 km²",
+    "maxDepth": "38 m",
+    "elevation": "532 m",
+    "cantons": "Freiburg",
+    "bestSeason": "April - September",
+    "permitRequired": "SaNa + Freiburger Fischereipatent erforderlich",
+    "coords": [
+      46.852775,
+      7.161646
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Barsch",
+      "Felchen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "schiffenensee"
+  },
+  {
+    "name": "Untersee (Bodensee)",
+    "area": "63 km²",
+    "maxDepth": "46 m",
+    "elevation": "395 m",
+    "cantons": "Thurgau",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Bodensee-Patent (TG) erforderlich",
+    "coords": [
+      47.665,
+      9.0
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Zander",
+      "Barsch",
+      "Felchen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "untersee-bodensee"
+  },
+  {
+    "name": "Wägitalersee",
+    "area": "4.2 km²",
+    "maxDepth": "65 m",
+    "elevation": "900 m",
+    "cantons": "Schwyz",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Schwyzer Fischereipatent erforderlich",
+    "coords": [
+      47.09,
+      8.91
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "waegitalersee"
+  },
+  {
+    "name": "Lauerzersee",
+    "area": "3.1 km²",
+    "maxDepth": "14 m",
+    "elevation": "447 m",
+    "cantons": "Schwyz",
+    "bestSeason": "April - September",
+    "permitRequired": "SaNa + Schwyzer Fischereipatent erforderlich",
+    "coords": [
+      47.04,
+      8.605
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Barsch",
+      "Karpfen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "lauerzersee"
+  },
+  {
+    "name": "Lac de Salanfe",
+    "area": "0.5 km²",
+    "maxDepth": "48 m",
+    "elevation": "1925 m",
+    "cantons": "Wallis",
+    "bestSeason": "Juni - September",
+    "permitRequired": "SaNa + Walliser Fischereipatent erforderlich",
+    "coords": [
+      46.15,
+      6.9833
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "lac-de-salanfe"
+  },
+  {
+    "name": "Mattmarksee",
+    "area": "1.76 km²",
+    "maxDepth": "93 m",
+    "elevation": "2197 m",
+    "cantons": "Wallis",
+    "bestSeason": "Juli - September",
+    "permitRequired": "SaNa + Walliser Fischereipatent erforderlich",
+    "coords": [
+      46.045,
+      7.965
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "mattmarksee"
+  },
+  {
+    "name": "Caumasee",
+    "area": "0.1 km²",
+    "maxDepth": "65 m",
+    "elevation": "997 m",
+    "cantons": "Graubünden",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Bündner Fischereipatent erforderlich",
+    "coords": [
+      46.820247,
+      9.295548
+    ],
+    "fishSpecies": [
+      "Forelle"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "caumasee"
+  },
+  {
+    "name": "Blausee",
+    "area": "0.006 km²",
+    "maxDepth": "10 m",
+    "elevation": "887 m",
+    "cantons": "Bern",
+    "bestSeason": "Ganzjährig (Naturpark)",
+    "permitRequired": "Nur mit Sondergenehmigung - Naturschutzgebiet",
+    "coords": [
+      46.532426,
+      7.664888
+    ],
+    "fishSpecies": [
+      "Forelle"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "blausee"
+  },
+  {
+    "name": "Seealpsee",
+    "area": "0.136 km²",
+    "maxDepth": "15 m",
+    "elevation": "1142 m",
+    "cantons": "Appenzell Innerrhoden",
+    "bestSeason": "Mai - September",
+    "permitRequired": "Tagespatent Bergseen: CHF 10-40, SaNa erforderlich",
+    "coords": [
+      47.268889,
+      9.4
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Regenbogenforelle"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "seealpsee"
+  },
+  {
+    "name": "Sämtisersee",
+    "area": "0.13 km²",
+    "maxDepth": "20 m",
+    "elevation": "1209 m",
+    "cantons": "Appenzell Innerrhoden",
+    "bestSeason": "Mai - September (Mo-Sa)",
+    "permitRequired": "Tagespatent Bergseen: CHF 10-40, nur Montag-Samstag",
+    "coords": [
+      47.25412,
+      9.37186
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "saemtisersee"
+  },
+  {
+    "name": "Fählensee",
+    "area": "0.12 km²",
+    "maxDepth": "31 m",
+    "elevation": "1446 m",
+    "cantons": "Appenzell Innerrhoden",
+    "bestSeason": "Mai - September",
+    "permitRequired": "Tagespatent Bergseen: CHF 10-40, SaNa erforderlich",
+    "coords": [
+      47.255,
+      9.43
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling",
+      "Amerikanischer Seesaibling (Namaycush)"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "faehlensee"
+  },
+  {
+    "name": "Melchsee",
+    "area": "0.54 km²",
+    "maxDepth": "20 m",
+    "elevation": "1891 m",
+    "cantons": "Obwalden",
+    "bestSeason": "Juni - September",
+    "permitRequired": "SaNa + Obwaldner Fischereipatent erforderlich",
+    "coords": [
+      46.773056,
+      8.276389
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Regenbogenforelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "melchsee"
+  },
+  {
+    "name": "Tannensee",
+    "area": "0.31 km²",
+    "maxDepth": "47 m",
+    "elevation": "1976 m",
+    "cantons": "Obwalden",
+    "bestSeason": "Juni - September",
+    "permitRequired": "SaNa + Obwaldner Fischereipatent erforderlich",
+    "coords": [
+      46.774125,
+      8.305763
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "tannensee"
+  },
+  {
+    "name": "Engstlensee",
+    "area": "0.44 km²",
+    "maxDepth": "42 m",
+    "elevation": "1851 m",
+    "cantons": "Bern",
+    "bestSeason": "Juni - September",
+    "permitRequired": "SaNa + Berner Fischereipatent erforderlich",
+    "coords": [
+      46.77279,
+      8.357606
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "engstlensee"
+  },
+  {
+    "name": "Ritomsee",
+    "area": "1.49 km²",
+    "maxDepth": "69 m",
+    "elevation": "1850 m",
+    "cantons": "Tessin",
+    "bestSeason": "1. Juni - 30. September",
+    "permitRequired": "2-Tages-Patent: CHF 60, 7-Tages-Patent: CHF 120",
+    "coords": [
+      46.530833,
+      8.694722
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Regenbogenforelle",
+      "Seesaibling",
+      "Bachsaibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "ritomsee"
+  },
+  {
+    "name": "Lago d'Arbola",
+    "area": "0.08 km²",
+    "maxDepth": "12 m",
+    "elevation": "1152 m",
+    "cantons": "Tessin",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "Licenza di pesca cantonale Ticino erforderlich",
+    "coords": [
+      46.219722,
+      8.808056
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "lago-d-arbola"
+  },
+  {
+    "name": "Laghetto Moesola",
+    "area": "0.12 km²",
+    "maxDepth": "28 m",
+    "elevation": "2062 m",
+    "cantons": "Tessin",
+    "bestSeason": "Juni - September",
+    "permitRequired": "Licenza di pesca cantonale Ticino erforderlich",
+    "coords": [
+      46.44,
+      8.825278
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "laghetto-moesola"
+  },
+  {
+    "name": "Oberer Murgsee",
+    "area": "0.39 km²",
+    "maxDepth": "42 m",
+    "elevation": "1820 m",
+    "cantons": "St. Gallen",
+    "bestSeason": "1. April - 30. September",
+    "permitRequired": "SaNa-Ausweis, Schonmass 27cm, max. 4 Fische/Tag",
+    "coords": [
+      47.0425,
+      9.21
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling",
+      "Regenbogenforelle",
+      "Seeforelle"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "oberer-murgsee"
+  },
+  {
+    "name": "Mittlerer Murgsee",
+    "area": "0.15 km²",
+    "maxDepth": "28 m",
+    "elevation": "1805 m",
+    "cantons": "St. Gallen",
+    "bestSeason": "1. April - 30. September",
+    "permitRequired": "Nur Fliegenfischerei erlaubt, SaNa-Ausweis erforderlich",
+    "coords": [
+      47.043611,
+      9.206944
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling",
+      "Regenbogenforelle"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "mittlerer-murgsee"
+  },
+  {
+    "name": "St. Moritzersee",
+    "area": "0.78 km²",
+    "maxDepth": "44 m",
+    "elevation": "1768 m",
+    "cantons": "Graubünden",
+    "bestSeason": "Mai - Oktober",
+    "permitRequired": "SaNa + Bündner Fischereipatent erforderlich",
+    "coords": [
+      46.492222,
+      9.846111
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling",
+      "Hecht"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "st-moritzersee"
+  },
+  {
+    "name": "Zervreilasee",
+    "area": "1.61 km²",
+    "maxDepth": "140 m",
+    "elevation": "1862 m",
+    "cantons": "Graubünden",
+    "bestSeason": "Juni - September",
+    "permitRequired": "SaNa + Bündner Fischereipatent erforderlich",
+    "coords": [
+      46.566184,
+      9.098408
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "zervreilasee"
+  },
+  {
+    "name": "Guraletschsee",
+    "area": "0.18 km²",
+    "maxDepth": "45 m",
+    "elevation": "2409 m",
+    "cantons": "Graubünden",
+    "bestSeason": "Juli - September",
+    "permitRequired": "SaNa + Bündner Fischereipatent erforderlich",
+    "coords": [
+      46.561103,
+      9.13754
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "guraletschsee"
+  },
+  {
+    "name": "Lagh de Cama",
+    "area": "0.16 km²",
+    "maxDepth": "32 m",
+    "elevation": "1265 m",
+    "cantons": "Graubünden",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Bündner Fischereipatent erforderlich",
+    "coords": [
+      46.304167,
+      9.191667
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "lagh-de-cama"
+  },
+  {
+    "name": "Lag da Barcuns",
+    "area": "0.05 km²",
+    "maxDepth": "8 m",
+    "elevation": "1362 m",
+    "cantons": "Graubünden",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Bündner Fischereipatent erforderlich",
+    "coords": [
+      46.739528,
+      8.896726
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "lag-da-barcuns"
+  },
+  {
+    "name": "Davosersee",
+    "area": "0.59 km²",
+    "maxDepth": "54 m",
+    "elevation": "1559 m",
+    "cantons": "Graubünden",
+    "bestSeason": "Juni - September",
+    "permitRequired": "SaNa + Bündner Fischereipatent erforderlich",
+    "coords": [
+      46.79,
+      9.855
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "davosersee"
+  },
+  {
+    "name": "Lai da Marmorera",
+    "area": "1.4 km²",
+    "maxDepth": "65 m",
+    "elevation": "1680 m",
+    "cantons": "Graubünden",
+    "bestSeason": "Juni - September",
+    "permitRequired": "SaNa + Bündner Fischereipatent erforderlich",
+    "coords": [
+      46.502971,
+      9.635125
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "lai-da-marmorera"
+  },
+  {
+    "name": "Lac de Taney",
+    "area": "0.17 km²",
+    "maxDepth": "28 m",
+    "elevation": "1408 m",
+    "cantons": "Wallis",
+    "bestSeason": "Mai - November",
+    "permitRequired": "2-Tages-Patent: CHF 25",
+    "coords": [
+      46.275,
+      6.831667
+    ],
+    "fishSpecies": [
+      "Regenbogenforelle",
+      "Bachforelle",
+      "Seesaibling",
+      "Namaycush",
+      "Egli"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "lac-de-taney"
+  },
+  {
+    "name": "Arnensee",
+    "area": "0.46 km²",
+    "maxDepth": "52 m",
+    "elevation": "1542 m",
+    "cantons": "Bern",
+    "bestSeason": "Juni - September",
+    "permitRequired": "SaNa + Berner Fischereipatent erforderlich",
+    "coords": [
+      46.388766,
+      7.217464
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "weekly": "CHF 55.00",
+      "monthly": "CHF 130.00",
+      "annual": "CHF 320.00",
+      "youth": "CHF 90.00"
+    },
+    "id": "arnensee"
+  }
+]

@@ -1,0 +1,93 @@
+<div class="modal-overlay" *ngIf="isOpen" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    
+    <!-- Header -->
+    <div class="modal-header">
+      <h2>🚨 Fehler melden</h2>
+      <button class="close-btn" (click)="closeModal()">&times;</button>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" *ngIf="isSuccess">
+      <div class="success-icon">✅</div>
+      <p>Vielen Dank für Ihre Meldung!</p>
+      <p class="success-sub">Wir werden die Informationen prüfen.</p>
+    </div>
+
+    <!-- Form -->
+    <form *ngIf="!isSuccess" (ngSubmit)="submitReport()">
+      
+      <!-- Lake Name (readonly) -->
+      <div class="form-group">
+        <label>See</label>
+        <input type="text" [value]="lakeName" readonly class="readonly-input">
+      </div>
+
+      <!-- Category -->
+      <div class="form-group">
+        <label for="category">Was ist das Problem?</label>
+        <select 
+          id="category" 
+          [(ngModel)]="reportData.category" 
+          name="category"
+          required>
+          <option *ngFor="let cat of categories" [value]="cat.value">
+            {{ cat.label }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label for="description">Beschreibung *</label>
+        <textarea 
+          id="description"
+          [(ngModel)]="reportData.description"
+          name="description"
+          placeholder="Bitte beschreiben Sie das Problem (z.B. 'Patent-Link funktioniert nicht' oder 'Preis ist veraltet')..."
+          rows="4"
+          required
+          maxlength="500">
+        </textarea>
+        <small class="char-count">{{ reportData.description.length }}/500</small>
+      </div>
+
+      <!-- Email (optional) -->
+      <div class="form-group">
+        <label for="email">E-Mail (optional)</label>
+        <input 
+          type="email" 
+          id="email"
+          [(ngModel)]="reportData.email"
+          name="email"
+          placeholder="ihre@email.ch (falls wir Rückfragen haben)">
+        <small class="help-text">Optional - nur wenn Sie eine Rückmeldung wünschen</small>
+      </div>
+
+      <!-- Error Message -->
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" (click)="closeModal()">
+          Abbrechen
+        </button>
+        <button 
+          type="submit" 
+          class="btn-submit"
+          [disabled]="isSubmitting || !reportData.description.trim()">
+          <span *ngIf="!isSubmitting">Melden</span>
+          <span *ngIf="isSubmitting">Wird gesendet...</span>
+        </button>
+      </div>
+
+      <!-- Privacy Note -->
+      <p class="privacy-note">
+        🔒 Ihre Daten werden nur zur Bearbeitung der Meldung verwendet und nicht weitergegeben.
+      </p>
+    </form>
+
+  </div>
+</div>
