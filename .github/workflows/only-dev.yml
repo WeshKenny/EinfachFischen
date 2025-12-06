@@ -34,17 +34,15 @@ jobs:
         run: |
           gh pr review "$PR_URL" \
             --request-changes \
-            --body "$(cat <<'EOF'
-🚫 **Branch Policy Violation**
+            --body "🚫 **Branch Policy Violation**
 
           Direct merges to \`main\` are only allowed from the \`dev\` branch.
           
           **Current source**: \`${{ github.head_ref }}\`
           **Required source**: \`dev\`
           
-          Please merge your changes into \`dev\` first, then create a PR from \`dev\` to \`main\`.
-EOF
-            )"
+          Please merge your changes into \`dev\` first, then create a PR from \`dev\` to \`main\`."
+          
       - name: Fail workflow if policy violated
         if: steps.check.outcome == 'failure'
         run: exit 1
