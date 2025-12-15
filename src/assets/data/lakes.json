@@ -35,7 +35,7 @@
     "elevation": "395 m",
     "cantons": "Thurgau, St. Gallen",
     "bestSeason": "Mai - September",
-    "permitRequired": "SaNa + Bodensee-Patent (TG/SG) erforderlich",
+    "permitRequired": "Freiangelrecht vom Ufer! Patent für Boot erforderlich",
     "coords": [
       47.64,
       9.37
@@ -47,13 +47,11 @@
       "Barsch",
       "Karpfen"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "daily": "Tagespatent CHF 15 für Boot",
+      "annual": "Verschiedene Patentarten - Internationale Regelung CH/D/AT",
+      "info": "1 Rute mit Zapfen, einfache Angel, natürlicher Köder (KEIN Köderfisch)"
     },
     "id": "bodensee"
   },
@@ -62,9 +60,9 @@
     "area": "217.9 km²",
     "maxDepth": "152 m",
     "elevation": "429 m",
-    "cantons": "Neuenburg, Waadt, Freiburg",
+    "cantons": "Neuenburg, Waadt, Freiburg, Bern",
     "bestSeason": "April - Oktober",
-    "permitRequired": "Kein Patent erforderlich - Freies Fischen!",
+    "permitRequired": "Freiangelrecht: 3 schwimmende Angeln erlaubt!",
     "coords": [
       46.9048,
       6.8631
@@ -77,11 +75,7 @@
     ],
     "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "info": "Besonderheit: 3 schwimmende Angeln mit festem Schwimmer & einfachem Haken! Patentfrei!"
     },
     "id": "neuenburgersee"
   },
@@ -118,27 +112,54 @@
     "area": "113.6 km²",
     "maxDepth": "214 m",
     "elevation": "434 m",
-    "cantons": "Luzern, Uri, Schwyz, Nidwalden",
-    "bestSeason": "April - Oktober",
-    "permitRequired": "SaNa + Vierwaldstättersee-Patent erforderlich",
+    "cantons": "Luzern, Uri, Schwyz, Nidwalden, Obwalden",
+    "bestSeason": "Ganzjährig (Schonzeiten beachten!)",
+    "permitRequired": "Freiangelrecht vom Ufer (LU)! Interkantonales Gewässer",
     "coords": [
       47.02,
       8.36
     ],
     "fishSpecies": [
       "Forelle",
+      "Seeforelle",
       "Hecht",
       "Felchen",
-      "Saibling"
+      "Balchen",
+      "Saibling",
+      "Rötel",
+      "Barsch",
+      "Zander",
+      "Äsche"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00",
+      "annual": "Nur Jahrespatent für LU-Zonen 12 & 14 mit SaNa",
+      "info": "Aal & Edelfisch: Fangverbot! Verschiedene Kantone - Regelungen beachten",
       "link": "https://www.sana.ch/"
+    },
+    "regulations": {
+      "closedSeasons": "Forellen: 1.10.-25.12., Rötel/Albeli: 1.10.-25.12., Balchen: 15.10.-25.12., Hecht: 15.3.-30.4., Zander: 15.4.-31.5., Äsche: 1.1.-30.9.",
+      "minSizes": {
+        "Forelle": "35 cm",
+        "Rötel (Seesaibling)": "22 cm",
+        "Albeli": "22 cm",
+        "Balchen": "30 cm (Alpnachersee 25 cm)",
+        "Hecht": "50 cm",
+        "Zander": "40 cm",
+        "Egli": "15 cm",
+        "Äsche": "30 cm"
+      },
+      "additionalRules": [
+        "Aal: Fangverbot ganzjährig!",
+        "Edelfisch: Fangverbot ganzjährig!",
+        "Interkantonales Gewässer (LU, UR, NW, OW, SZ) - verschiedene Regelungen beachten!",
+        "Fischereizeit: 1h vor bis 1h nach Sonnenaufgang/-untergang",
+        "Schleppfischerei nur bei Tageslicht",
+        "Horwerbucht: Schleppfischerei verboten",
+        "Steinibachried: Sperrzone (Fischereiverbot)",
+        "Freiangelrecht nur Luzerner Teil: Einfacher Angel ohne Widerhaken, nur natürliche Köder",
+        "Keine Tages-/Wochenpatente für LU-Zonen 12 & 14"
+      ]
     },
     "id": "vierwaldstaettersee"
   },
@@ -149,7 +170,7 @@
     "elevation": "406 m",
     "cantons": "Zürich, St. Gallen, Schwyz",
     "bestSeason": "März - November",
-    "permitRequired": "SaNa + Zürichsee-Patent (ZH/SG/SZ) erforderlich",
+    "permitRequired": "Freiangelrecht vom Ufer! Patent nur für Boot erforderlich",
     "coords": [
       47.2269,
       8.7248
@@ -161,13 +182,22 @@
       "Barsch",
       "Felchen"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 30.00",
-      "weekly": "CHF 60.00",
-      "monthly": "CHF 140.00",
-      "annual": "CHF 350.00",
-      "youth": "CHF 100.00"
+      "daily": "Tagespatent verfügbar",
+      "annual": "Jahrespatent mit SaNa",
+      "info": "Dreiseen-Patent für Zürich-, Greifen- und Pfäffikersee"
+    },
+    "regulations": {
+      "additionalRules": [
+        "Freiangelrecht Zeit: Sommerzeit 4:00-23:00 Uhr, Winterzeit 5:00-22:00 Uhr",
+        "1 Angelrute/Schnur, 1 einziger Köder, einfacher Haken OHNE Widerhaken",
+        "Erlaubte Köder: Natürliche Köder, Lebensmittel, künstliche Fliegen (max. Grösse 8)",
+        "VERBOTEN: Köderfische!",
+        "Mit Patent: Boot, mehrere Ruten, Kunstköder, Widerhaken (mit SaNa)",
+        "Schiffsmelde-/Reinigungspflicht ab 1.4.2025 (Quaggamuschel)",
+        "Jugendliche ab 10 Jahren"
+      ]
     },
     "id": "zuerichsee"
   },
@@ -206,24 +236,40 @@
     "elevation": "558 m",
     "cantons": "Bern",
     "bestSeason": "April - Oktober",
-    "permitRequired": "SaNa + Berner Patent erforderlich",
+    "permitRequired": "Freiangelrecht vom Ufer! Patent für Boot/erweiterte Fischerei",
     "coords": [
       46.685,
       7.68
     ],
     "fishSpecies": [
       "Forelle",
+      "Seeforelle",
       "Hecht",
       "Felchen",
-      "Egli"
+      "Seesaibling",
+      "Egli",
+      "Trüsche"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 20.00",
-      "weekly": "CHF 45.00",
-      "monthly": "CHF 110.00",
-      "annual": "CHF 280.00",
-      "youth": "CHF 70.00"
+      "daily": "Tagespatent ohne SaNa",
+      "weekly": "Wochenpatent ohne SaNa",
+      "monthly": "Monatspatent mit SaNa",
+      "annual": "Jahrespatent mit SaNa",
+      "info": "217m tief, beliebtes Hegenen- und Schleppfischen"
+    },
+    "regulations": {
+      "additionalRules": [
+        "217m tiefer See - Typischer Felchen-, Saiblings-, Seeforellensee",
+        "Hegenenfischerei sehr beliebt",
+        "Schleppfischerei auf Seeforellen",
+        "Freiangelrecht: Vom Ufer mit 1 Rute, einfacher Haken ohne Widerhaken, natürliche Köder",
+        "Mit Patent: Vom Ufer UND Boot, mehrere Fangmethoden, Kunstköder erlaubt",
+        "SaNa nur für Jahres-/Monatspatent erforderlich",
+        "Kurzzeitpatente (Tages-/Wochen) ohne SaNa erhältlich",
+        "Auch 6 Bergseen und 5 Stauseen im Berner Patent enthalten",
+        "Infos: weu.be.ch oder bkfv-fcbp.ch"
+      ]
     },
     "id": "thunersee"
   },
@@ -234,23 +280,23 @@
     "elevation": "564 m",
     "cantons": "Bern",
     "bestSeason": "Mai - September",
-    "permitRequired": "SaNa + Berner Fischereipatent erforderlich",
+    "permitRequired": "Freiangelrecht vom Ufer! Patent für Boot/erweiterte Fischerei",
     "coords": [
       46.734726,
       7.986529
     ],
     "fishSpecies": [
       "Forelle",
+      "Seeforelle",
       "Saibling",
+      "Seesaibling",
       "Felchen"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00",
+      "daily": "Tagespatent ohne SaNa",
+      "weekly": "Wochenpatent ohne SaNa",
+      "annual": "Jahres-/Monatspatent mit SaNa",
       "link": "https://www.be.ch/fischerei"
     },
     "id": "brienzersee"
@@ -290,7 +336,7 @@
     "elevation": "413 m",
     "cantons": "Zug, Schwyz, Luzern",
     "bestSeason": "April - Oktober",
-    "permitRequired": "SaNa + Kantonales Patent (ZG/SZ/LU) erforderlich",
+    "permitRequired": "Eingeschränktes Freiangelrecht vom Ufer",
     "coords": [
       47.13,
       8.49
@@ -301,13 +347,9 @@
       "Felchen",
       "Saibling"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "info": "Freiangelrecht: 1 Rute mit einfachem Angel, Schwimmer & natürlichem Köder. Verboten: Köderfisch, Löffel, Spinner"
     },
     "id": "zugersee"
   },
@@ -318,23 +360,22 @@
     "elevation": "419 m",
     "cantons": "St. Gallen, Glarus",
     "bestSeason": "Mai - September",
-    "permitRequired": "SaNa + Kantonales Patent (SG/GL) erforderlich",
+    "permitRequired": "Freiangelrecht vom Ufer! Patent nur für Boot erforderlich",
     "coords": [
       47.13,
       9.18
     ],
     "fishSpecies": [
       "Forelle",
+      "Seeforelle",
       "Saibling",
-      "Felchen"
+      "Felchen",
+      "Trüsche"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "annual": "Nur Wochen- oder Jahrespatente (GL/SG) - Keine Tagespatente!",
+      "info": "Interkantonales Gewässer GL/SG. Gute Trüschenfischerei im Freiangelrecht"
     },
     "id": "walensee"
   },
@@ -371,8 +412,8 @@
     "maxDepth": "47 m",
     "elevation": "449 m",
     "cantons": "Aargau, Luzern",
-    "bestSeason": "April - September",
-    "permitRequired": "SaNa + Aargauer Fischereipatent erforderlich",
+    "bestSeason": "März - Oktober (Freiangelrecht: 1.3.-31.10.)",
+    "permitRequired": "Freianglerkarte CHF 50 oder Hallwilerseekarte CHF 150",
     "coords": [
       47.29,
       8.22
@@ -382,13 +423,10 @@
       "Barsch",
       "Forelle"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "annual": "Freianglerkarte CHF 50 (Ufer, 1 Rute, natürliche Köder)",
+      "info": "Hallwilerseekarte CHF 150 für Boot & lebende Köderfische. Interkantonales Gewässer AG/LU"
     },
     "id": "hallwilersee"
   },
@@ -398,8 +436,8 @@
     "maxDepth": "87 m",
     "elevation": "504 m",
     "cantons": "Luzern",
-    "bestSeason": "April - Oktober",
-    "permitRequired": "SaNa + Luzerner Fischereipatent erforderlich",
+    "bestSeason": "Ganzjährig (Schonzeiten beachten!)",
+    "permitRequired": "Freiangelrecht vom Ufer! Patent für Boot/erweiterte Fischerei",
     "coords": [
       47.13,
       8.19
@@ -409,15 +447,38 @@
       "Zander",
       "Barsch",
       "Felchen",
-      "Forelle"
+      "Balchen",
+      "Forelle",
+      "Seesaibling"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "daily": "Tagespatent",
+      "weekly": "Wochenpatent",
+      "monthly": "Monatspatent",
+      "annual": "Jahrespatent mit SaNa",
+      "info": "Aal: Fangverbot! Widerhaken nur mit Patent+SaNa"
+    },
+    "regulations": {
+      "closedSeasons": "Forellen: 1.10.-25.12., Seesaibling: 1.10.-25.12., Balchen: 15.11.-25.12., Hecht: 15.3.-30.4., Zander: 1.4.-31.5.",
+      "minSizes": {
+        "Forelle": "35 cm",
+        "Seesaibling": "22 cm",
+        "Balchen": "25 cm (max. 15/Tag!)",
+        "Hecht": "45 cm",
+        "Zander": "40 cm",
+        "Barsch": "15 cm"
+      },
+      "additionalRules": [
+        "Aal: Fangverbot ganzjährig!",
+        "Fischereizeit: 1h vor Sonnenaufgang bis 1h nach Sonnenuntergang",
+        "Über Balchenberg: 15.11.-15.1. Fischereiverbot",
+        "Naturvorranggebiete mit zeitlichen Einschränkungen beachten!",
+        "Freiangelrecht: Einfacher Angel ohne Widerhaken, nur natürliche Köder (keine Köderfische)",
+        "Mit Patent: 2 Angelruten, Hegenenfischerei (2 Ruten, je max. 6 Haken)",
+        "Schleppfischerei: 6 Anbissstellen pro Boot",
+        "Boot-/Stegfischen: Patent erforderlich"
+      ]
     },
     "id": "sempachersee"
   },
@@ -482,8 +543,8 @@
     "maxDepth": "23 m",
     "elevation": "889 m",
     "cantons": "Schwyz",
-    "bestSeason": "Mai - September",
-    "permitRequired": "SaNa + Schwyzer Fischereipatent erforderlich",
+    "bestSeason": "16. März - 31. Dezember",
+    "permitRequired": "SaNa-Pflicht! Pachtgewässer - Nur online auf sihlsee-fisch.ch",
     "coords": [
       47.12,
       8.77
@@ -491,16 +552,44 @@
     "fishSpecies": [
       "Hecht",
       "Forelle",
+      "Felchen",
       "Saibling",
+      "Zander",
+      "Karpfen",
+      "Wels",
       "Egli"
     ],
     "freeFishing": false,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "daily": "CHF 21 (Jugend CHF 10) + Kaution CHF 10/5",
+      "weekly": "CHF 52 + Kaution CHF 10",
+      "annual": "Innerkantonal CHF 170, Ausserkantonal CHF 240 + Kaution CHF 30",
+      "info": "Hecht: 55-80cm & ab 120cm! Wels: Entnahmepflicht! Catch & Release verboten!"
+    },
+    "regulations": {
+      "closedSeasons": "Alle Forellen: 1.10.-31.12., Raubfische südl./oberer Seeteil: bis 31.5., Bei Fluss-/Bacheinläufen: ab 1.10. im 100m Umkreis",
+      "minSizes": {
+        "Forelle": "ab 40 cm",
+        "Felchen": "ab 28 cm",
+        "Hecht": "55-80 cm UND ab 120 cm (Entnahmefenster!)",
+        "Karpfen": "40-60 cm (Entnahmefenster!)",
+        "Zander": "ab 45 cm"
+      },
+      "bagLimit": "16.3.-31.5.: Max. 1 Fisch (Forelle, Hecht oder Zander) | Ab 1.6.: Max. 3 Fische, davon höchstens 1 Forelle",
+      "additionalRules": [
+        "SaNa-PFLICHT für alle Patente! (Jugendliche bis 14 J. mit Begleitung befreit)",
+        "Saison: 16. März bis Ende Jahr, Zeit: 4:00-24:00 Uhr",
+        "2 Schnüre, Hegene max. 5 Köder, Tiefseeschleike/Downrigger erlaubt",
+        "Seehund verboten! Lebende Köderfische verboten!",
+        "HECHT: Entnahmefenster 55-80cm UND ab 120cm (dazwischen zurücksetzen!)",
+        "KARPFEN: Entnahmefenster 40-60cm (darüber/darunter zurücksetzen!)",
+        "WELS: Entnahmepflicht (darf NICHT zurückgesetzt werden)",
+        "Catch & Release VERBOTEN!",
+        "Statistikabgabe bis 5.1. (sonst Kautionsverlust!)",
+        "Schongebiete mit Bojen/Tafeln markiert",
+        "Eisfischerei nicht gestattet",
+        "Bezug nur online: sihlsee-fisch.ch"
+      ]
     },
     "id": "sihlsee"
   },
@@ -511,7 +600,7 @@
     "elevation": "435 m",
     "cantons": "Zürich",
     "bestSeason": "April - Oktober",
-    "permitRequired": "SaNa + Zürcher Fischereipatent erforderlich",
+    "permitRequired": "Freiangelrecht vom Ufer! Patent nur für Boot erforderlich",
     "coords": [
       47.355,
       8.68
@@ -520,15 +609,25 @@
       "Hecht",
       "Zander",
       "Barsch",
-      "Karpfen"
+      "Karpfen",
+      "Forelle"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "annual": "Dreiseen-Patent mit SaNa",
+      "info": "25m Abstand zum Schilf beachten"
+    },
+    "regulations": {
+      "additionalRules": [
+        "Im Schutzgebiet nur von Wegen/Stegen fischen (nicht verlassen!)",
+        "25m Abstand zum Schilf auf dem See einhalten",
+        "Seeschutzzonen dürfen nicht befahren werden",
+        "Keine Motorboote erlaubt",
+        "Glatt: Fischen verboten (Wehr bis Schwerzenbachstr.)",
+        "Freiangelrecht: 1 Rute, einfacher Haken ohne Widerhaken",
+        "Natürliche Köder, Lebensmittel, Fliegen (Grösse 8)",
+        "Schiffsmeldepflicht ab 1.4.2025"
+      ]
     },
     "id": "greifensee"
   },
@@ -538,8 +637,8 @@
     "maxDepth": "36 m",
     "elevation": "537 m",
     "cantons": "Zürich",
-    "bestSeason": "April - September",
-    "permitRequired": "SaNa + Zürcher Fischereipatent erforderlich",
+    "bestSeason": "Ganzjährig",
+    "permitRequired": "Freiangelrecht vom Ufer! Patent nur für Boot erforderlich",
     "coords": [
       47.35505,
       8.7792
@@ -547,15 +646,23 @@
     "fishSpecies": [
       "Hecht",
       "Barsch",
-      "Karpfen"
+      "Karpfen",
+      "Forelle",
+      "Felchen"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "annual": "Dreiseen-Patent mit SaNa",
+      "info": "Keine zeitliche Beschränkung beim Freiangelrecht"
+    },
+    "regulations": {
+      "additionalRules": [
+        "KEINE zeitliche Beschränkung beim Freiangelrecht (im Gegensatz zu Zürich- und Greifensee)",
+        "1 Rute, einfacher Haken ohne Widerhaken",
+        "Natürliche Köder, Lebensmittel, künstliche Fliegen (Grösse 8)",
+        "Keine Köderfische erlaubt",
+        "Boot- und Uferfischerei mit Dreiseen-Patent"
+      ]
     },
     "id": "pfaeffikersee"
   },
@@ -565,8 +672,8 @@
     "maxDepth": "22 m",
     "elevation": "647 m",
     "cantons": "Zürich",
-    "bestSeason": "Mai - September",
-    "permitRequired": "SaNa + Zürcher Fischereipatent erforderlich",
+    "bestSeason": "März - Dezember (Saison: 16.3.-31.12.)",
+    "permitRequired": "Eingeschränktes Freiangelrecht - Pachtgewässer",
     "coords": [
       47.2717,
       8.5
@@ -574,15 +681,30 @@
     "fishSpecies": [
       "Forelle",
       "Hecht",
+      "Felchen",
       "Karpfen"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "info": "Freiangelrecht: 1 Rute, nur natürliche Köder (Würmer, Brot, Mais). Kunstköder verboten!"
+    },
+    "regulations": {
+      "closedSeasons": "Hecht: 1.3.-30.4., Felchen: 20.11.-31.12. | 1.3.-30.4.: Nur Hegene + Freiangelrecht!",
+      "minSizes": {
+        "Hecht": "50 cm",
+        "Felchen": "25 cm"
+      },
+      "additionalRules": [
+        "Freiangelrecht: 1 Angelrute für Zapfen-/Grundfischerei, 1 einfache Angel",
+        "Erlaubte Köder: Würmer, Brot, Mais, Teig, Maden",
+        "VERBOTEN: Tote Köderfische, alle Kunstköder (Löffel, Spinner, Twister)",
+        "Mit Jahres-/Gastkarte: 1 weitere Rute mit totem Köderfisch oder Kunstköder",
+        "Vom verankerten Boot: 3 Angelruten mit je 1 Anbissstelle",
+        "Boote: Nur immatrikulierte Ruderboote",
+        "Statistikpflicht bis 15.12.",
+        "Zuflüsse: Nur für Pächter",
+        "Kontakt: Pachtgesellschaft via tuerlerseefischer.ch"
+      ]
     },
     "id": "tuerlersee"
   },
@@ -672,7 +794,7 @@
     "elevation": "848 m",
     "cantons": "Glarus",
     "bestSeason": "Mai - September",
-    "permitRequired": "SaNa + Glarner Fischereipatent erforderlich",
+    "permitRequired": "Freiangelrecht vom Ufer! Patent für Boot/erweiterte Fischerei",
     "coords": [
       47.01,
       9.025
@@ -682,13 +804,10 @@
       "Saibling",
       "Hecht"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "annual": "Glarner Jahrespatent mit SaNa für Boot",
+      "info": "1 Rute, einfacher Haken ohne Widerhaken, natürliche Köder oder Fliege"
     },
     "id": "kloentalersee"
   },
@@ -804,8 +923,8 @@
     "maxDepth": "9 m",
     "elevation": "318 m",
     "cantons": "Aargau",
-    "bestSeason": "April - Oktober",
-    "permitRequired": "SaNa + Aargauer Fischereipatent erforderlich",
+    "bestSeason": "März - Oktober (Freiangelrecht: 1.3.-31.10.)",
+    "permitRequired": "Freianglerkarte CHF 50 oder Jahres-/Wochen-/Tageskarte",
     "coords": [
       47.575,
       8.245
@@ -815,15 +934,15 @@
       "Zander",
       "Barsch",
       "Karpfen",
-      "Wels"
+      "Wels",
+      "Forelle"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "daily": "Tageskarte",
+      "weekly": "Wochenkarte",
+      "annual": "Freianglerkarte CHF 50 (5:00-23:00, nur Ufer, 1 Rute)",
+      "info": "Boot nur in Revier 12 mit Patent. Anfüttern & Kunstköder verboten bei Freiangelrecht"
     },
     "id": "klingnauer-stausee"
   },
@@ -943,7 +1062,7 @@
     "elevation": "447 m",
     "cantons": "Schwyz",
     "bestSeason": "April - September",
-    "permitRequired": "SaNa + Schwyzer Fischereipatent erforderlich",
+    "permitRequired": "Eingeschränktes Freiangelrecht vom Ufer",
     "coords": [
       47.04,
       8.605
@@ -953,13 +1072,9 @@
       "Barsch",
       "Karpfen"
     ],
-    "freeFishing": false,
+    "freeFishing": true,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "info": "1 Rute mit Einfachhaken ohne Widerhaken, mit Schwimmer, nur natürliche Köder (keine Köderfische). Anfüttern & Hältern verboten"
     },
     "id": "lauerzersee"
   },
@@ -1071,23 +1186,40 @@
     "maxDepth": "15 m",
     "elevation": "1142 m",
     "cantons": "Appenzell Innerrhoden",
-    "bestSeason": "Mai - September",
-    "permitRequired": "Tagespatent Bergseen: CHF 10-40, SaNa erforderlich",
+    "bestSeason": "1. Mai - 15. September (KEINE Sonn-/Feiertage!)",
+    "permitRequired": "SaNa + Tagespatent CHF 33-40 erforderlich",
     "coords": [
       47.268889,
       9.4
     ],
     "fishSpecies": [
       "Bachforelle",
-      "Regenbogenforelle"
+      "Regenbogenforelle",
+      "Amerikanischer Seesaibling"
     ],
     "freeFishing": false,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "daily": "CHF 33-40 (Jugend CHF 15)",
+      "info": "Nur vom Ufer! Boot verboten! Mindestmass 24cm, max. 3-5 Fische/Tag. Zeit: 5:30-22:00. SONN- & FEIERTAGE: FISCHEREIVERBOT!"
+    },
+    "regulations": {
+      "closedSeasons": "SONN- UND FEIERTAGE: FISCHEREIVERBOT! | Bergseen allgemein: 12. April bis 27. September",
+      "minSizes": {
+        "Alle Forellen": "24 cm"
+      },
+      "bagLimit": "Max. 5 Fische/Tag (Saisonpatent), 3 Fische (Tages-/Wochenpatent)",
+      "additionalRules": [
+        "SaNa/Fischerbrevet ERFORDERLICH!",
+        "Nur vom Ufer fischen - Boot VERBOTEN!",
+        "Keine Widerhaken erlaubt",
+        "Zeit: 5:30-22:00 Uhr",
+        "SONN- UND FEIERTAGE: FISCHEREIVERBOT!",
+        "Feiertage 2025: Karfreitag, Ostermontag, Auffahrt, Pfingsten, Fronleichnam, 1. August, Maria Himmelfahrt, St. Mauritius",
+        "Amerikanische Seesaiblinge: Keine Mengenbeschränkung, Entnahmepflicht",
+        "Keine Patente im Gasthaus Forelle erhältlich!",
+        "Online bestellen: ai.ch/fischerei",
+        "Kontakt: Amt für Umwelt AI, 071 788 92 86"
+      ]
     },
     "id": "seealpsee"
   },
@@ -1097,8 +1229,8 @@
     "maxDepth": "20 m",
     "elevation": "1209 m",
     "cantons": "Appenzell Innerrhoden",
-    "bestSeason": "Mai - September (Mo-Sa)",
-    "permitRequired": "Tagespatent Bergseen: CHF 10-40, nur Montag-Samstag",
+    "bestSeason": "12. April - 27. September (KEINE Sonn-/Feiertage!)",
+    "permitRequired": "SaNa + Tagespatent CHF 33 erforderlich",
     "coords": [
       47.25412,
       9.37186
@@ -1109,11 +1241,23 @@
     ],
     "freeFishing": false,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "daily": "CHF 33 (Jugend CHF 15)",
+      "info": "Mindestmass 28cm! Nur vom Ufer. Max. 3-5 Fische/Tag. SONN- & FEIERTAGE: FISCHEREIVERBOT!"
+    },
+    "regulations": {
+      "closedSeasons": "SONN- UND FEIERTAGE: FISCHEREIVERBOT! | Saison: 12. April - 27. September",
+      "minSizes": {
+        "Alle Forellen/Saiblinge": "28 cm (höher als Seealpsee!)"
+      },
+      "bagLimit": "Max. 5 Fische/Tag (Saisonpatent), 3 Fische (Tages-/Wochenpatent)",
+      "additionalRules": [
+        "SaNa erforderlich!",
+        "Nur vom Ufer - Boot verboten",
+        "Keine Widerhaken",
+        "SONN- UND FEIERTAGE: FISCHEREIVERBOT!",
+        "Feiertage 2025: Karfreitag, Ostermontag, Auffahrt, Pfingsten, Fronleichnam, 1. August, Maria Himmelfahrt, St. Mauritius",
+        "Online bestellen: ai.ch/fischerei"
+      ]
     },
     "id": "saemtisersee"
   },
@@ -1123,8 +1267,8 @@
     "maxDepth": "31 m",
     "elevation": "1446 m",
     "cantons": "Appenzell Innerrhoden",
-    "bestSeason": "Mai - September",
-    "permitRequired": "Tagespatent Bergseen: CHF 10-40, SaNa erforderlich",
+    "bestSeason": "12. April - 27. September (KEINE Sonn-/Feiertage!)",
+    "permitRequired": "SaNa + Tagespatent CHF 33 erforderlich",
     "coords": [
       47.255,
       9.43
@@ -1136,11 +1280,24 @@
     ],
     "freeFishing": false,
     "permitPrices": {
-      "daily": "CHF 25.00",
-      "weekly": "CHF 55.00",
-      "monthly": "CHF 130.00",
-      "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "daily": "CHF 33 (Jugend CHF 15)",
+      "info": "Mindestmass 28cm! Nur vom Ufer. Max. 3-5 Fische/Tag. SONN- & FEIERTAGE: FISCHEREIVERBOT!"
+    },
+    "regulations": {
+      "closedSeasons": "SONN- UND FEIERTAGE: FISCHEREIVERBOT! | Saison: 12. April - 27. September",
+      "minSizes": {
+        "Alle Forellen/Saiblinge": "28 cm"
+      },
+      "bagLimit": "Max. 5 Fische/Tag (Saisonpatent), 3 Fische (Tages-/Wochenpatent)",
+      "additionalRules": [
+        "SaNa erforderlich!",
+        "Nur vom Ufer - Boot verboten",
+        "Keine Widerhaken",
+        "SONN- UND FEIERTAGE: FISCHEREIVERBOT!",
+        "Feiertage 2025: Karfreitag, Ostermontag, Auffahrt, Pfingsten, Fronleichnam, 1. August, Maria Himmelfahrt, St. Mauritius",
+        "Alle Regelungen identisch mit Seealpsee und Sämtisersee",
+        "Online bestellen: ai.ch/fischerei"
+      ]
     },
     "id": "faehlensee"
   },
