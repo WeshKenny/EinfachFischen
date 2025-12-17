@@ -1,10 +1,15 @@
 {
-  "extends": ["config:base"],
-  "baseBranches": ["dev"],
+  "extends": ["config:recommended"],
+  "baseBranchPatterns": ["dev"],
   "branchPrefix": "renovate/",
   "prConcurrentLimit": 5,
   "prHourlyLimit": 2,
   "automerge": false,
+  "rangeStrategy": "update-lockfile",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 3am on Monday"]
+  },
   "groupName": "all dependencies",
   "packageRules": [
     {
