@@ -1,11 +1,12 @@
 {
   "extends": ["config:recommended"],
-  "baseBranchPatterns": ["test"],
+  "baseBranchPatterns": ["dev""test"],
   "branchPrefix": "renovate/",
   "prConcurrentLimit": 5,
   "prHourlyLimit": 2,
   "automerge": false,
   "rangeStrategy": "update-lockfile",
+  "rebaseWhen": "never",
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["before 3am on Monday"]
@@ -14,7 +15,8 @@
     {
       "groupName": "Angular",
       "matchPackagePatterns": ["^@angular/"],
-      "matchUpdateTypes": ["major", "minor", "patch"]
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "rangeStrategy": "bump"
     },
     {
       "groupName": "all other dependencies",
