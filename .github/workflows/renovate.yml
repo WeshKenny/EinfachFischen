@@ -25,7 +25,5 @@ jobs:
         env:
           # Renovate Log Level (optional)
           LOG_LEVEL: 'info'
-          # Repository automatisch erkennen
-          RENOVATE_AUTODISCOVER: 'true'
-          # Alternativ: Explizit Repository angeben
-          # RENOVATE_REPOSITORIES: '${{ github.repository }}'
+          # Nur dieses Repository scannen
+          RENOVATE_REPOSITORIES: '${{ github.repository }}'
