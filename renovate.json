@@ -6,15 +6,22 @@
   "prHourlyLimit": 2,
   "automerge": false,
   "rangeStrategy": "update-lockfile",
+  "rebaseWhen": "never",
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["before 3am on Monday"]
   },
-  "groupName": "all dependencies",
   "packageRules": [
     {
-      "groupName": "all dependencies",
+      "groupName": "Angular",
+      "matchPackagePatterns": ["^@angular/"],
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "groupName": "all other dependencies",
       "groupSlug": "all-deps",
+      "excludePackagePatterns": ["^@angular/"],
       "automerge": false,
       "matchUpdateTypes": ["minor", "patch", "pin"]
     }
