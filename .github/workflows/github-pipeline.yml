@@ -5,7 +5,11 @@ on:
     branches:
       - dev
       - main
+      - test
     types: [opened, synchronize, reopened]  # Läuft bei jedem neuen Commit im PR
+  push:
+    branches:
+      - test
 jobs:
   build:
     runs-on: ubuntu-latest

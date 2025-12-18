@@ -10,11 +10,16 @@
     "enabled": true,
     "schedule": ["before 3am on Monday"]
   },
-  "groupName": "all dependencies",
   "packageRules": [
     {
-      "groupName": "all dependencies",
+      "groupName": "Angular",
+      "matchPackagePatterns": ["^@angular/"],
+      "matchUpdateTypes": ["major", "minor", "patch"]
+    },
+    {
+      "groupName": "all other dependencies",
       "groupSlug": "all-deps",
+      "excludePackagePatterns": ["^@angular/"],
       "automerge": false,
       "matchUpdateTypes": ["minor", "patch", "pin"]
     }
