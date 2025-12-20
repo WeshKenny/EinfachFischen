@@ -6,6 +6,7 @@
   "prHourlyLimit": 2,
   "automerge": false,
   "rangeStrategy": "update-lockfile",
+  "recreateClosed": true,
   "rebaseWhen": "never",
   "lockFileMaintenance": {
     "enabled": true,
