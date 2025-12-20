@@ -1,22 +1,25 @@
 {
   "extends": ["config:recommended"],
-  "baseBranchPatterns": ["dev"],
+  "baseBranchPatterns": ["dev", "test"],
   "branchPrefix": "renovate/",
   "prConcurrentLimit": 5,
   "prHourlyLimit": 2,
   "automerge": false,
-  "rangeStrategy": "update-lockfile",
+  "rangeStrategy": "replace",
+  "rebaseWhen": "never",
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["before 3am on Monday"]
   },
-  "groupName": "all dependencies",
   "packageRules": [
     {
-      "groupName": "all dependencies",
+      "groupName": "All Dependencies",
       "groupSlug": "all-deps",
-      "automerge": false,
-      "matchUpdateTypes": ["minor", "patch", "pin"]
+      "matchUpdateTypes": ["major", "minor", "patch", "pin"]
+    },
+    {
+      "matchPackagePatterns": ["^@angular/"],
+      "rangeStrategy": "replace"
     }
   ]
 }
