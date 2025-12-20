@@ -5,7 +5,7 @@
   "prConcurrentLimit": 5,
   "prHourlyLimit": 2,
   "automerge": false,
-  "rangeStrategy": "replace",
+  "rangeStrategy": "update-lockfile",
   "rebaseWhen": "never",
   "lockFileMaintenance": {
     "enabled": true,
@@ -18,7 +18,7 @@
       "matchUpdateTypes": ["major", "minor", "patch", "pin"]
     },
     {
-      "matchPackagePatterns": ["^@angular/"],
+      "matchPackageNames": ["@angular/animations", "@angular/build", "@angular/common", "@angular/compiler", "@angular/compiler-cli", "@angular/core", "@angular/forms", "@angular/platform-browser", "@angular/platform-browser-dynamic", "@angular/platform-server", "@angular/router", "@angular/ssr", "zone.js"],
       "rangeStrategy": "replace"
     }
   ]
