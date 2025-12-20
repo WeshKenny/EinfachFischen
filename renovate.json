@@ -8,6 +8,7 @@
   "recreateClosed": true,
   "rebaseWhen": "never",
   "rangeStrategy": "update-lockfile",
+
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["before 3am on Monday"]
@@ -15,16 +16,22 @@
 
   "packageRules": [
     {
-      "groupName": "All Dependencies",
-      "groupSlug": "all-deps",
-      "matchUpdateTypes": ["major", "minor", "patch", "pin"],
+      "groupName": "ALL Dependency Upgrades - ONE PR",
+      "groupSlug": "all-upgrades-one-pr",
+      
       "rangeStrategy": "replace"
     },
     {
-      "matchSourceUrls": ["https://github.com/angular/angular-cli"],
-      "groupName": "All Dependencies",
-      "groupSlug": "all-deps",
-      "rangeStrategy": "replace"
+        "groupName": "ALL Dependency Upgrades - ONE PR",
+        "groupSlug": "all-upgrades-one-pr",
+        "matchPackagePatterns": ["^@angular/", "^zone\\.js$"], 
+        "rangeStrategy": "replace"
+    },
+    {
+        "groupName": "ALL Dependency Upgrades - ONE PR",
+        "groupSlug": "all-upgrades-one-pr",
+        "matchSourceUrls": ["https://github.com/angular/angular-cli"],
+        "rangeStrategy": "replace"
     }
   ]
 }
