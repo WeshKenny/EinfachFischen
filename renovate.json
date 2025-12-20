@@ -19,7 +19,9 @@
       "matchUpdateTypes": ["major", "minor", "patch", "pin"]
     },
     {
-      "matchPackageNames": ["@angular/animations", "@angular/build", "@angular/common", "@angular/compiler", "@angular/compiler-cli", "@angular/core", "@angular/forms", "@angular/platform-browser", "@angular/platform-browser-dynamic", "@angular/platform-server", "@angular/router", "@angular/ssr", "zone.js"],
+      "groupName": "All Dependencies",
+      "groupSlug": "all-deps",
+      "matchPackagePatterns": ["^@angular/"],
       "rangeStrategy": "replace"
     }
   ]
