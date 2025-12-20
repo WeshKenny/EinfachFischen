@@ -24,6 +24,6 @@ jobs:
           token: ${{ secrets.RENOVATE_TOKEN }}
         env:
           # Renovate Log Level (optional)
-          LOG_LEVEL: 'info'
+          LOG_LEVEL: 'debug'
           # Nur dieses Repository scannen
           RENOVATE_REPOSITORIES: '${{ github.repository }}'
