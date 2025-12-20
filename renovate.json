@@ -5,30 +5,25 @@
   "prConcurrentLimit": 5,
   "prHourlyLimit": 2,
   "automerge": false,
-  "rangeStrategy": "update-lockfile",
   "recreateClosed": true,
   "rebaseWhen": "never",
+  "rangeStrategy": "update-lockfile",
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["before 3am on Monday"]
   },
+
   "packageRules": [
     {
       "groupName": "All Dependencies",
       "groupSlug": "all-deps",
-      "matchUpdateTypes": ["major", "minor", "patch", "pin"]
-    },
-    {
-      "groupName": "All Dependencies",
-      "groupSlug": "all-deps",
-
-      "matchPackagePatterns": ["^@angular/", "^zone\\.js$"], 
+      "matchUpdateTypes": ["major", "minor", "patch", "pin"],
       "rangeStrategy": "replace"
     },
     {
+      "matchSourceUrls": ["https://github.com/angular/angular-cli"],
       "groupName": "All Dependencies",
       "groupSlug": "all-deps",
-      "matchSourceUrls": ["https://github.com/angular/angular-cli"],
       "rangeStrategy": "replace"
     }
   ]
