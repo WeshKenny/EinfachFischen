@@ -21,7 +21,14 @@
     {
       "groupName": "All Dependencies",
       "groupSlug": "all-deps",
-      "matchPackagePatterns": ["^@angular/"],
+
+      "matchPackagePatterns": ["^@angular/", "^zone\\.js$"], 
+      "rangeStrategy": "replace"
+    },
+    {
+      "groupName": "All Dependencies",
+      "groupSlug": "all-deps",
+      "matchSourceUrls": ["https://github.com/angular/angular-cli"],
       "rangeStrategy": "replace"
     }
   ]
