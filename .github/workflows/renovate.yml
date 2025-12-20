@@ -25,4 +25,5 @@ jobs:
         env:
           # Renovate Log Level (optional)
           LOG_LEVEL: 'info'
+          # Nur dieses Repository scannen
           RENOVATE_REPOSITORIES: '${{ github.repository }}'
