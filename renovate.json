@@ -7,7 +7,7 @@
   "automerge": false,
   "recreateClosed": true,
   "rebaseWhen": "never",
-  "rangeStrategy": "update-lockfile",
+  "rangeStrategy": "replace", 
 
   "lockFileMaintenance": {
     "enabled": true,
@@ -16,22 +16,11 @@
 
   "packageRules": [
     {
-      "groupName": "ALL Dependency Upgrades - ONE PR",
-      "groupSlug": "all-upgrades-one-pr",
-      
-      "rangeStrategy": "replace"
-    },
-    {
-        "groupName": "ALL Dependency Upgrades - ONE PR",
-        "groupSlug": "all-upgrades-one-pr",
-        "matchPackagePatterns": ["^@angular/", "^zone\\.js$"], 
-        "rangeStrategy": "replace"
-    },
-    {
-        "groupName": "ALL Dependency Upgrades - ONE PR",
-        "groupSlug": "all-upgrades-one-pr",
-        "matchSourceUrls": ["https://github.com/angular/angular-cli"],
-        "rangeStrategy": "replace"
+      "groupName": "ALL Dependencies - ONE PR",
+      "groupSlug": "all-in-one-final",
+      "matchUpdateTypes": ["major", "minor", "patch", "pin"],
+      "matchPackagePatterns": ["*"], 
+      "rangeStrategy": "replace" 
     }
   ]
 }
