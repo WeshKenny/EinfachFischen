@@ -1,7 +1,5 @@
 {
   "extends": ["config:recommended"],
-  "autodiscover": false,
-  "repositories": ["WeshKenny/EinfachFischen"],
   "baseBranchPatterns": ["dev", "test"],
   "branchPrefix": "renovate/",
   "prConcurrentLimit": 5,
