@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UiPreferencesService } from '../services/ui-preferences.service';
 
 @Component({
   selector: 'app-about',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './about.css'
 })
 export class About {
-
+  constructor(public prefs: UiPreferencesService) {}
 }

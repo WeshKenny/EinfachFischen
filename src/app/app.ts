@@ -1,17 +1,23 @@
 import { Component, signal, HostListener } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { UiPreferencesService, AppLanguage } from './services/ui-preferences.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('my-app');
+  languages: AppLanguage[] = ['de', 'fr', 'it', 'en'];
+  isLanguageMenuOpen = false;
 
   private lastScrollPosition = 0;
   isTopbarHidden = false;
+
+  constructor(public prefs: UiPreferencesService) {}
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -25,5 +31,23 @@ export class App {
     }
     
     this.lastScrollPosition = currentScroll;
+  }
+
+  @HostListener('document:click')
+  onDocumentClick() {
+    this.isLanguageMenuOpen = false;
+  }
+
+  setLanguage(language: AppLanguage) {
+    this.prefs.setLanguage(language);
+    this.isLanguageMenuOpen = false;
+  }
+
+  toggleLanguageMenu() {
+    this.isLanguageMenuOpen = !this.isLanguageMenuOpen;
+  }
+
+  closeLanguageMenu() {
+    this.isLanguageMenuOpen = false;
   }
 }

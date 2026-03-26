@@ -1,47 +1,14 @@
 <div class="about-container">
-  <div class="profile-cards">
-    <!-- Erste Profilkarte -->
-    <div class="profile-card">
-      <div class="image-container">
-        <!-- Hier kommt später dein Bild rein -->
-        <img src="/assets/image.png" alt="Noé" class="profile-image">
-      </div>
-      <div class="profile-content">
-        <h2>Noe Heimgartner</h2>
-        <p class="role">Lead Developer</p>
-        <div class="education-info">
-          <p><strong>Ausbildung:</strong> Informatiker EFZ Plattformentwicklung</p>
-          <p><strong>Schule:</strong> Gibb Berufsfachschule Bern</p>
-        </div>
-        <p class="bio">
-          Noe hat als Entwickler und Projektleiter die technische Umsetzung der Plattform übernommen. 
-          Er war verantwortlich für die Entwicklung der interaktiven Karte mit Leaflet.js, die Strukturierung 
-          der See-Daten sowie das Design und die Programmierung der Benutzeroberfläche. Dabei kamen moderne 
-          Technologien wie Angular und TypeScript zum Einsatz.
-        </p>
-      </div>
-    </div>
-
-    <!-- Zweite Profilkarte -->
-    <div class="profile-card">
-      <div class="image-container">
-        <!-- Hier kommt später dein Bild rein -->
-        <img src="/assets/image.png" alt="Kadir" class="profile-image">
-      </div>
-      <div class="profile-content">
-        <h2>Kadir Dikbas</h2>
-        <p class="role">Konzept & Dokumentation</p>
-        <div class="education-info">
-          <p><strong>Ausbildung:</strong> Informatiker EFZ Plattformentwicklung</p>
-          <p><strong>Schule:</strong> Gibb Berufsfachschule Bern</p>
-        </div>
-        <p class="bio">
-          Kadir brachte die kreativen Ideen ins Projekt ein und kümmerte sich um die inhaltliche Seite. 
-          Als Fischer-Experte lieferte er das gesamte Fachwissen über die Schweizer Seen, Fischarten und 
-          Angelbedingungen. Zusätzlich war er für die Projektdokumentation zuständig und sorgte dafür, 
-          dass alle Inhalte fachlich korrekt und verständlich aufbereitet wurden.
-        </p>
-      </div>
+  <div class="about-card">
+    <p class="eyebrow">{{ prefs.t('aboutEyebrow') }}</p>
+    <h1>{{ prefs.t('aboutTitle') }}</h1>
+    <p class="about-text">{{ prefs.t('aboutText1') }}</p>
+    <p class="about-text">{{ prefs.t('aboutText2') }}</p>
+    <div class="language-list" aria-label="Geplante Sprachen">
+      <span>DE</span>
+      <span>FR</span>
+      <span>IT</span>
+      <span>EN</span>
     </div>
   </div>
 </div>

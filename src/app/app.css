@@ -1,71 +1,54 @@
 .topbar {
   position: fixed;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;  /* 3 equal sections */
+  grid-template-columns: 1fr auto 1fr;
   top: 0;
   left: 0;
   right: 0;
-  height: 70px; /* Etwas höher für bessere Proportion */
+  height: 74px;
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
-  background: linear-gradient(135deg, rgba(30, 60, 114, 0.95) 0%, rgba(42, 82, 152, 0.95) 100%);
+  background: var(--surface);
   z-index: 1000;
-  border-bottom: 2px solid rgba(99, 179, 237, 0.3);
+  border-bottom: 1px solid var(--border);
   backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px var(--shadow);
+  transition: transform 0.3s ease;
 }
 
 .topbar.hidden {
   transform: translateY(-100%);
 }
 
-
 .brand {
+  display: flex;
+  align-items: center;
   justify-self: start;
-  padding-left: 20px;
 }
 
 .brand a {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  background: rgba(96, 165, 250, 0.1);
-  border: 1px solid rgba(96, 165, 250, 0.2);
-}
-
-.brand a:hover {
-  background: rgba(96, 165, 250, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
 }
 
 .brand-logo {
-  height: 45px;
+  height: 42px;
   width: auto;
-  filter: drop-shadow(0 2px 4px rgba(96, 165, 250, 0.3));
-  transition: transform 0.3s ease;
-}
-
-.brand a:hover .brand-logo {
-  transform: scale(1.08);
+  filter: drop-shadow(0 10px 22px var(--shadow));
 }
 
 .topnav {
-  justify-self: center; /* Zentriert die Navigation */
-  margin-left: auto; /* Schiebt die Navigation nach rechts */
-  padding-right: 40px; /* Mehr Abstand nach rechts */
+  display: flex;
+  align-items: center;
+  justify-self: center;
 }
 
 .topnav ul {
   list-style: none;
   display: flex;
-  gap: 24px; /* Größerer Abstand zwischen den Links */
+  gap: 10px;
   align-items: center;
   margin: 0;
   padding: 0;
@@ -73,85 +56,183 @@
 
 .topnav a {
   text-decoration: none;
-  color: #e0f2fe;
-  padding: 12px 24px; /* Größere Klickfläche */
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  font-size: 1.1rem; /* Etwas größer */
+  color: var(--text-main);
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+  font-weight: 600;
+  font-size: 0.98rem;
   border: 1px solid transparent;
-  background: transparent;
-  letter-spacing: 0.5px; /* Bessere Lesbarkeit */
 }
 
 .topnav a:hover {
-  background: rgba(96, 165, 250, 0.15);
-  color: #bfdbfe;
-  transform: translateY(-2px);
-  border: 1px solid rgba(96, 165, 250, 0.3);
-  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+  background: var(--accent-soft);
+  border-color: var(--border);
 }
 
 .topnav a.active {
-  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
   color: white;
-  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 28px var(--shadow);
 }
 
-/* Mobile Anpassungen */
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-self: end;
+  position: relative;
+}
+
+.language-trigger,
+.language-btn {
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+  color: var(--text-main);
+  border-radius: 999px;
+  padding: 0.6rem 0.85rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.language-trigger:hover,
+.language-btn:hover {
+  background: var(--accent-soft);
+}
+
+.language-menu {
+  position: absolute;
+  top: calc(100% - 2px);
+  right: 0;
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.45rem;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 18px 40px var(--shadow);
+}
+
+.language-btn.active {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  color: white;
+  border-color: var(--accent-strong);
+}
+
+.theme-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-main);
+  box-shadow: 0 16px 35px var(--shadow);
+  cursor: pointer;
+  z-index: 1100;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.theme-fab:hover {
+  background: var(--accent-soft);
+}
+
+.theme-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.sun-icon {
+  font-size: 1.4rem;
+}
+
+.moon-icon {
+  font-size: 1.9rem;
+  transform: translateX(1px);
+}
+
+main {
+  min-height: 100vh;
+}
+
+.content {
+  padding-top: 74px;
+}
+
 @media (max-width: 1024px) {
   .topbar {
     padding: 0 20px;
-    height: 65px;
+    height: 68px;
+    grid-template-columns: auto 1fr auto;
   }
-  
-  .brand {
-    padding-left: 10px;
-  }
-  
+
   .brand-logo {
-    height: 38px;
+    height: 36px;
   }
-  
-  .topnav {
-    padding-right: 20px;
+
+  .content {
+    padding-top: 68px;
   }
-  
-  .topnav ul {
-    gap: 16px;
-  }
-  
-  .topnav a {
-    padding: 10px 18px;
-    font-size: 0.95rem;
-  }
+
+  .toolbar-actions { gap: 0.45rem; }
 }
 
 @media (max-width: 600px) {
   .topbar {
-    padding: 0 16px;
-    height: 60px;
+    padding: 0 12px;
+    height: auto;
+    min-height: 64px;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.5rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
-  
-  .brand {
-    padding-left: 5px;
-  }
-  
+
   .brand-logo {
-    height: 32px;
+    height: 26px;
   }
-  
+
   .topnav {
-    padding-right: 10px;
+    justify-self: center;
+    width: 100%;
+    overflow-x: auto;
   }
-  
+
   .topnav ul {
-    gap: 12px;
+    gap: 8px;
+    justify-content: center;
+    width: max-content;
+    min-width: 100%;
   }
-  
+
   .topnav a {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.84rem;
+    white-space: nowrap;
+  }
+
+  .content {
+    padding-top: 64px;
+  }
+
+  .language-trigger,
+  .language-btn {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.78rem;
+  }
+
+  .theme-fab {
+    right: 14px;
+    bottom: 14px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.35rem;
   }
 }

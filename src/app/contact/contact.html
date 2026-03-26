@@ -1,0 +1,37 @@
+<section class="contact-page">
+  <div class="contact-card">
+    <p class="eyebrow">{{ prefs.t('contactEyebrow') }}</p>
+    <h1>{{ prefs.t('contactTitle') }}</h1>
+    <p>
+      {{ prefs.t('contactText') }}
+    </p>
+
+    <form class="contact-form" (ngSubmit)="submitContactForm()">
+      <div class="form-row">
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="formData.name"
+          [placeholder]="prefs.t('name')">
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="formData.email"
+          [placeholder]="prefs.t('email')">
+      </div>
+
+      <textarea
+        name="message"
+        [(ngModel)]="formData.message"
+        [placeholder]="prefs.t('message')"
+        rows="6"
+        required>
+      </textarea>
+
+      <div class="contact-actions">
+        <button type="submit" class="contact-submit">{{ prefs.t('sendMessage') }}</button>
+        <a href="mailto:info@einfachfischen.ch" class="contact-link">{{ prefs.t('contactDirect') }}</a>
+      </div>
+    </form>
+  </div>
+</section>
