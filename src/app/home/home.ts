@@ -1,18 +1,20 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Map } from '../map/map';
 import { CommonModule } from '@angular/common';
-
+import { UiPreferencesService } from '../services/ui-preferences.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [Map, CommonModule],    // ← Import the Map component
+  imports: [Map, CommonModule],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
 export class Home {
   loadError = false;
   @ViewChild('mapSection') mapSection!: ElementRef;
+
+  constructor(public prefs: UiPreferencesService) {}
 
   scrollToMap() {
     this.mapSection.nativeElement.scrollIntoView({ 

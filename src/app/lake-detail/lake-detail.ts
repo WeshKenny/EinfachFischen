@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { LakeService, Lake } from '../services/lake.service';
 import { WeatherService, WeatherData } from '../services/weather.service';
 import { ReportIssueComponent } from '../report-issue/report-issue.component';
+import { UiPreferencesService } from '../services/ui-preferences.service';
 
 @Component({
   selector: 'app-lake-detail',
@@ -26,7 +27,8 @@ export class LakeDetail implements OnInit {
     private router: Router,
     private lakeService: LakeService,
     private weatherService: WeatherService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public prefs: UiPreferencesService
   ) {}
 
   async ngOnInit() {

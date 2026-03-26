@@ -1,201 +1,121 @@
 .home-main {
-    min-height: 100vh;
-    padding: 0; /* KEIN Padding - lässt Karte voll breit werden */
-    width: 100%;
-    background: transparent;
+  min-height: 100vh;
+  padding: 0 0 3rem;
+  width: 100%;
+  background: transparent;
 }
 
 .hero {
-  height: 100vh;
+  min-height: calc(88vh - 70px);
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   background: transparent;
-  margin-bottom: 2rem;
+  padding: 2rem 1.5rem 1rem;
+  margin-bottom: 0.5rem;
   position: relative;
 }
 
 .hero-content {
-  padding: 2rem;
-  position: relative;
-  z-index: 1;
+  width: min(840px, 100%);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  color: var(--accent-strong);
+  font-weight: 700;
 }
 
 .hero-logo {
-  width: 650px;
+  width: min(420px, 90%);
   height: auto;
-  margin-bottom: 5px;
-  filter: drop-shadow(0 2px 8px rgba(96, 165, 250, 0.3)) brightness(0.88);
-  animation: fadeInDown 1s ease, float 6s ease-in-out 2s infinite;
-}
-
-/* Schwebende Animation für das Logo */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  margin: 0 auto 0.5rem;
+  filter: drop-shadow(0 12px 30px var(--shadow));
 }
 
 .hero-main-text {
-  font-size: 2rem !important;
-  color: #60a5fa !important;
-  font-weight: 600 !important;
-  margin-bottom: 1.5rem !important;
-  animation: fadeInUp 1s ease 0.3s backwards !important;
-  margin: 0 0 1.5rem 0 !important;
-}
-
-.hero p {
-  font-size: 1.5rem;
-  color: #94a3b8;
-  margin-bottom: 1rem;
-  animation: fadeInUp 1s ease 0.5s backwards;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--text-main);
+  font-weight: 700;
+  line-height: 1.12;
+  margin: 0 0 1rem;
 }
 
 .hero-subtitle {
-  font-size: 1.15rem !important;
-  color: #cbd5e1 !important;
-  margin-bottom: 2.5rem !important;
-  max-width: 750px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.7;
-  animation: fadeInUp 1s ease 0.6s backwards !important;
+  font-size: 1.02rem;
+  color: var(--text-muted);
+  margin: 0 auto 1.5rem;
+  line-height: 1.65;
+  max-width: 680px;
 }
 
 .scroll-btn {
-  background: transparent;
-  border: 2px solid #60a5fa;
-  color: #60a5fa;
-  padding: 1rem 2rem;
-  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  border: 1px solid var(--accent-strong);
+  color: white;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
   cursor: pointer;
   transition: all 0.3s ease;
-  animation: fadeIn 1s ease 1s backwards, pulse 2s ease-in-out 3s infinite;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Pulsierender Effekt für den Button */
-@keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.7);
-  }
-  50% {
-    box-shadow: 0 0 0 15px rgba(96, 165, 250, 0);
-  }
-}
-
-.scroll-btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(96, 165, 250, 0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-.scroll-btn:hover::before {
-  width: 300px;
-  height: 300px;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .scroll-btn:hover {
-  background: #60a5fa;
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(96, 165, 250, 0.4);
+  filter: brightness(1.03);
+  transform: translateY(-1px);
 }
 
-.arrow {
-  display: inline-block;
-  animation: bounce 2s infinite;
+.map-shell {
+  width: min(1180px, calc(100% - 3rem));
+  margin: 0 auto;
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
+.map-shell {
+  padding-top: 0;
 }
 
-/* Responsive für Laptops */
-@media (max-width: 1440px) {
-  .hero-logo {
-    width: 550px;
-  }
-  
-  .hero-main-text {
-    font-size: 1.8rem !important;
-  }
-  
-  .hero p {
-    font-size: 1.3rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1rem !important;
-    max-width: 650px;
-  }
+.map-placeholder {
+  height: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  border-radius: 28px;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+}
+
+.map-placeholder div {
+  text-align: center;
+}
+
+.map-placeholder p:first-child {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--text-main);
 }
 
 @media (max-width: 1024px) {
-  .hero-logo {
-    width: 450px;
-  }
-  
-  .hero-main-text {
-    font-size: 1.6rem !important;
-  }
-  
-  .hero p {
-    font-size: 1.2rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 0.95rem !important;
-    max-width: 550px;
-  }
-  
-  .scroll-btn {
-    padding: 0.9rem 1.8rem;
-    font-size: 0.95rem;
+  .hero {
+    min-height: auto;
   }
 }
 
 @media (max-width: 768px) {
-  .hero-logo {
-    width: 350px;
+  .home-main {
+    padding-bottom: 3rem;
   }
-  
+
+  .hero {
+    padding: 1.5rem 1rem 1rem;
+  }
+
   .hero-main-text {
-    font-size: 1.4rem !important;
-  }
-  
-  .hero p {
-    font-size: 1rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 0.9rem !important;
-    max-width: 450px;
-  }
-  
-  .scroll-btn {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
+    font-size: 2.35rem;
   }
 }

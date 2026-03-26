@@ -1,0 +1,59 @@
+.lakes-page {
+  width: min(980px, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 7rem 0 4rem;
+}
+
+.lakes-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 40px var(--shadow);
+  border-radius: 28px;
+  padding: 2rem;
+}
+
+.lakes-card h1 {
+  margin: 0 0 1.5rem;
+  color: var(--text-main);
+}
+
+.lakes-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  min-height: 2rem;
+}
+
+.lake-link {
+  display: block;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  text-decoration: none;
+}
+
+.lake-link strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--text-main);
+}
+
+.lake-link span {
+  color: var(--text-muted);
+}
+
+.lake-link:hover {
+  background: var(--accent-soft);
+}
+
+@media (max-width: 768px) {
+  .lakes-page {
+    width: min(100% - 1.5rem, 980px);
+    padding-top: 6rem;
+  }
+
+  .lakes-list {
+    grid-template-columns: 1fr;
+  }
+}

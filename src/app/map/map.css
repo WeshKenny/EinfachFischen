@@ -14,6 +14,26 @@
   text-align: center; /* Zentriert den Inhalt */
 }
 
+.active-filter-chips {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.active-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  color: var(--accent-strong);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
 /* Der eigentliche Filter-Container - NUR so groß wie nötig */
 .filter-container {
   display: inline-flex; /* WICHTIG: inline-flex statt flex */
@@ -24,19 +44,19 @@
   
   /* Hier kommt das Styling, das vorher bei .filter-section war */
   padding: 0.6rem 1.25rem;
-  background: rgba(30, 41, 59, 0.4);
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  background: var(--surface-soft);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px var(--shadow);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(96, 165, 250, 0.15);
+  border: 1px solid var(--border);
 }
 
 .filter-btn {
   padding: 0.5rem 1rem; /* Kompakter */
-  background: rgba(30, 41, 59, 0.6); /* Leicht transparent */
-  color: #e2e8f0;
-  border: 1.5px solid rgba(96, 165, 250, 0.25); /* Dünnere Border */
-  border-radius: 8px; /* Weniger rund */
+  background: var(--surface-strong);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  border-radius: 999px;
   cursor: pointer;
   font-size: 0.875rem; /* Etwas kleiner */
   font-weight: 500;
@@ -48,32 +68,32 @@
 }
 
 .filter-btn:hover {
-  background: rgba(59, 130, 246, 0.15); /* Subtiler Hover */
-  border-color: rgba(96, 165, 250, 0.5);
+  background: var(--accent-soft);
+  border-color: var(--border);
   transform: translateY(-1px); /* Weniger Movement */
-  box-shadow: 0 3px 10px rgba(96, 165, 250, 0.2);
+  box-shadow: 0 10px 24px var(--shadow);
 }
 
 .filter-btn.active {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.7) 0%, rgba(29, 78, 216, 0.7) 100%);
-  border-color: #60a5fa;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  border-color: var(--accent-strong);
   color: white;
-  box-shadow: 0 3px 12px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 12px 28px var(--shadow);
 }
 
 .filter-btn.free-fishing.active {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.7) 0%, rgba(5, 150, 105, 0.7) 100%);
-  border-color: #34d399;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  border-color: var(--accent-strong);
 }
 
 .filter-btn.reset-btn {
-  background: rgba(239, 68, 68, 0.08);
-  border-color: rgba(239, 68, 68, 0.25);
+  background: var(--accent-soft);
+  border-color: var(--border);
 }
 
 .filter-btn.reset-btn:hover {
-  background: rgba(239, 68, 68, 0.15);
-  border-color: rgba(239, 68, 68, 0.5);
+  background: var(--accent-soft);
+  border-color: var(--accent);
 }
 
 /* Dropdown Styling */
@@ -100,11 +120,11 @@
   top: 100%;
   left: 0;
   margin-top: 0.4rem; /* Näher am Button */
-  background: rgba(30, 41, 59, 0.97); /* Konsistenter mit Filter-Section */
-  border: 1.5px solid rgba(96, 165, 250, 0.3);
-  border-radius: 10px; /* Weniger rund */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-  min-width: 160px; /* Schmaler */
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 18px 35px var(--shadow);
+  min-width: 250px;
   z-index: 300;
   backdrop-filter: blur(10px);
   overflow: hidden;
@@ -131,13 +151,13 @@
   width: 100%;
   padding: 0.6rem 1rem; /* Kompakter */
   background: transparent;
-  color: #e2e8f0;
+  color: var(--text-main);
   border: none;
   text-align: left;
   cursor: pointer;
   font-size: 0.85rem; /* Kleiner */
   transition: all 0.2s ease;
-  border-bottom: 1px solid rgba(96, 165, 250, 0.08); /* Subtiler */
+  border-bottom: 1px solid var(--border);
 }
 
 .dropdown-item:last-child {
@@ -145,9 +165,48 @@
 }
 
 .dropdown-item:hover {
-  background: rgba(59, 130, 246, 0.15); /* Konsistent mit Buttons */
-  color: #60a5fa;
+  background: var(--accent-soft);
+  color: var(--text-main);
   padding-left: 1.15rem; /* Weniger Shift */
+}
+
+.fish-option {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.fish-option.selected {
+  background: var(--accent-soft);
+  color: var(--text-main);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.region-option.selected {
+  background: var(--accent-soft);
+  color: var(--text-main);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.fish-option-state {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.25rem 0.5rem;
+}
+
+.fish-option-image {
+  width: 76px;
+  height: 46px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  flex-shrink: 0;
 }
 
 #map {
@@ -186,9 +245,9 @@
   right: -420px;
   width: 420px;
   height: 100vh; /* Volle Höhe des Viewports */
-  background: rgba(15, 23, 42, 0.98) !important;
+  background: var(--sidebar-bg) !important;
   backdrop-filter: blur(12px);
-  border-left: 2px solid rgba(96, 165, 250, 0.3);
+  border-left: 2px solid var(--border);
   transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
   border-radius: 0;
   overflow-y: auto;
@@ -207,15 +266,15 @@
 
 .sidebar-content {
   padding: 80px 20px 24px 20px; /* Mehr Padding oben wegen Topbar */
-  color: #e2e8f0;
+  color: var(--text-main);
 }
 
 .sidebar-content h2 {
-  color: #60a5fa;
+  color: var(--accent);
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+  border-bottom: 2px solid var(--border);
 }
 
 .detail-link {
@@ -223,32 +282,32 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.9rem 1.5rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
   color: white;
   text-decoration: none;
   border-radius: 10px;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 15px var(--shadow);
   margin-bottom: 1.5rem;
   font-size: 1rem;
 }
 
 .detail-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  box-shadow: 0 6px 20px var(--shadow);
+  background: linear-gradient(135deg, var(--accent-strong) 0%, #1e40af 100%);
 }
 
 .lake-section {
   margin-bottom: 1.5rem;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--sidebar-surface);
   padding: 1rem;
   border-radius: 12px;
 }
 
 .lake-section h3 {
-  color: #93c5fd;
+  color: var(--accent);
   font-size: 1.1rem;
   margin-bottom: 1rem;
   font-weight: 600;
@@ -268,20 +327,20 @@
 }
 
 .info-label {
-  color: #94a3b8;
+  color: var(--text-muted);
   font-weight: 500;
   flex-shrink: 0;
   margin-right: 1rem;
 }
 
 .info-value {
-  color: #e2e8f0;
+  color: var(--text-main);
   font-weight: 600;
   text-align: right;
 }
 
 .info-value.free-fishing {
-  color: #4ade80;
+  color: var(--success);
 }
 
 .info-value.permit {
@@ -296,19 +355,19 @@
 }
 
 .fish-tag {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 500;
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 8px var(--shadow);
   transition: all 0.3s ease;
 }
 
 .fish-tag:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 4px 12px var(--shadow);
 }
 
 .close-button {
@@ -317,7 +376,7 @@
   right: 16px;
   background: transparent;
   border: none;
-  color: #94a3b8;
+  color: var(--text-muted);
   font-size: 24px;
   cursor: pointer;
   width: 32px;
@@ -330,8 +389,8 @@
 }
 
 .close-button:hover {
-  background: rgba(96, 165, 250, 0.1);
-  color: #60a5fa;
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 /* Responsive Anpassungen */
@@ -416,7 +475,7 @@
     }
     
     .dropdown-content {
-        min-width: 130px;
+        min-width: 220px;
     }
     
     .dropdown-item {
@@ -438,23 +497,23 @@
 .header h1 {
   font-size: 24px;
   font-weight: 700;
-  color: #60a5fa;
+  color: var(--accent);
   margin-bottom: 5px;
 }
 
 .header p {
   font-size: 14px;
-  color: #94a3b8;
+  color: var(--text-muted);
 }
 
 /* Rest of your marker and popup styles stay the same... */
 ::ng-deep .custom-marker {
-  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%) !important;
   width: 30px !important;
   height: 30px !important;
   border-radius: 50% !important;
   border: 3px solid white !important;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.6) !important;
+  box-shadow: 0 4px 12px var(--shadow) !important;
   cursor: pointer !important;
 }
 
@@ -466,16 +525,16 @@
 
 ::ng-deep .custom-marker:hover {
   transform: scale(1.2);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.8) !important;
+  box-shadow: 0 6px 20px var(--shadow) !important;
 }
 
 ::ng-deep .leaflet-popup-content-wrapper {
-  background: rgba(15, 23, 42, 0.98);
+  background: var(--surface-strong);
   backdrop-filter: blur(10px);
-  color: #e2e8f0;
+  color: var(--text-main);
   border-radius: 12px;
-  border: 1px solid rgba(96, 165, 250, 0.3);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px var(--shadow);
 }
 
 ::ng-deep .leaflet-popup-content {
@@ -485,12 +544,12 @@
 }
 
 ::ng-deep .leaflet-popup-content h3 {
-  color: #60a5fa;
+  color: var(--accent);
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 12px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+  border-bottom: 1px solid var(--border);
 }
 
 ::ng-deep .lake-info {
@@ -505,7 +564,7 @@
 }
 
 ::ng-deep .info-label {
-  color: #94a3b8;
+  color: var(--text-muted);
   font-weight: 500;
 }
 
@@ -515,17 +574,17 @@
 }
 
 ::ng-deep .leaflet-popup-tip {
-  background: rgba(15, 23, 42, 0.98);
-  border: 1px solid rgba(96, 165, 250, 0.3);
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
 }
 
 ::ng-deep .leaflet-container a.leaflet-popup-close-button {
-  color: #94a3b8;
+  color: var(--text-muted);
   font-size: 20px;
 }
 
 ::ng-deep .leaflet-container a.leaflet-popup-close-button:hover {
-  color: #60a5fa;
+  color: var(--accent);
 }
 
 /* Marker Cluster Styling */
