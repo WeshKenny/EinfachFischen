@@ -2,7 +2,7 @@
   <!-- Back Button -->
   <div class="back-button-container">
     <a routerLink="/" class="back-button">
-      <span class="arrow">←</span> Zurück zur Karte
+      <span class="arrow">←</span> {{ prefs.t('toMap') }}
     </a>
   </div>
 
@@ -139,22 +139,22 @@
     
     <!-- Allgemeine Informationen -->
     <div class="info-card">
-      <h2>📊 Allgemeine Informationen</h2>
+      <h2>{{ prefs.t('generalInfo') }}</h2>
       <div class="info-list">
         <div class="info-item">
-          <span class="label">Fläche:</span>
+          <span class="label">{{ prefs.t('area') }}:</span>
           <span class="value">{{ lake.area }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Maximale Tiefe:</span>
+          <span class="label">{{ prefs.t('maxDepth') }}:</span>
           <span class="value">{{ lake.maxDepth }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Höhe über Meer:</span>
+          <span class="label">{{ prefs.t('elevation') }}:</span>
           <span class="value">{{ lake.elevation }}</span>
         </div>
         <div class="info-item">
-          <span class="label">Beste Saison:</span>
+          <span class="label">{{ prefs.t('bestSeason') }}:</span>
           <span class="value">{{ lake.bestSeason }}</span>
         </div>
       </div>
@@ -162,7 +162,7 @@
 
     <!-- Fischarten -->
     <div class="info-card">
-      <h2>🐟 Fischarten</h2>
+      <h2>{{ prefs.t('fishSpecies') }}</h2>
       <div class="fish-tags">
         <span class="fish-tag" *ngFor="let fish of lake.fishSpecies">{{ fish }}</span>
       </div>
@@ -170,7 +170,7 @@
 
     <!-- Patent-Preise -->
     <div class="info-card price-card" *ngIf="hasPrices">
-      <h2>💰 Patent-Preise</h2>
+      <h2>Patent-Preise</h2>
       <div class="price-list">
         <div class="price-item" *ngIf="lake.permitPrices?.daily">
           <span class="price-label">Tagespatent</span>
@@ -197,7 +197,7 @@
 
     <!-- Bewilligung & Offizielle Webseite -->
     <div class="info-card">
-      <h2>📋 Bewilligung</h2>
+      <h2>{{ prefs.t('permit') }}</h2>
       
       <!-- Gratis Fischen Badge -->
       <div class="free-fishing-badge" *ngIf="lake.freeFishing">
@@ -212,13 +212,13 @@
          target="_blank" 
          rel="noopener noreferrer"
          class="official-website-btn">
-        🌐 Offizielle Webseite besuchen
+        Offizielle Webseite besuchen
       </a>
     </div>
 
     <!-- Regeln & Vorschriften -->
     <div class="info-card regulations-card" *ngIf="hasRegulations">
-      <h2>⚖️ Wichtige Regeln</h2>
+      <h2>Wichtige Regeln</h2>
       
       <div class="regulation-section" *ngIf="lake.regulations?.closedSeasons">
         <h3>Schonzeiten</h3>

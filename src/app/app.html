@@ -6,11 +6,33 @@
   </div>
   <nav class="topnav" aria-label="Hauptnavigation">
     <ul>
-      <li><a routerLink="/details" routerLinkActive="active">Details</a></li>
-      <li><a routerLink="/about" routerLinkActive="active">Über uns</a></li>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ prefs.t('home') }}</a></li>
+      <li><a routerLink="/lakes" routerLinkActive="active">{{ prefs.t('lakes') }}</a></li>
+      <li><a routerLink="/about" routerLinkActive="active">{{ prefs.t('about') }}</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active">{{ prefs.t('contact') }}</a></li>
     </ul>
   </nav>
+  <div class="toolbar-actions" (click)="$event.stopPropagation()">
+    <button class="language-trigger" type="button" (click)="toggleLanguageMenu(); $event.stopPropagation()">
+      {{ prefs.language().toUpperCase() }}
+    </button>
+    <div class="language-menu" *ngIf="isLanguageMenuOpen">
+      <button
+        *ngFor="let language of languages"
+        type="button"
+        class="language-btn"
+        [class.active]="prefs.language() === language"
+        (click)="setLanguage(language)">
+        {{ language.toUpperCase() }}
+      </button>
+    </div>
+  </div>
 </header>
+
+<button class="theme-fab" type="button" (click)="prefs.toggleTheme()" [attr.aria-label]="prefs.theme() === 'dark' ? prefs.t('themeLight') : prefs.t('themeDark')">
+  <span *ngIf="prefs.theme() === 'dark'" class="theme-icon sun-icon">☀</span>
+  <span *ngIf="prefs.theme() === 'light'" class="theme-icon moon-icon">☾</span>
+</button>
 
 <main>
   <section class="content">
