@@ -41,22 +41,19 @@ export class ReportIssueComponent {
   private readonly COOLDOWN_MINUTES = 2; // 2 Minuten Wartezeit
 
   categories = [
-    { value: 'Patent-Informationen veraltet', label: '📜 Patent-Informationen veraltet' },
-    { value: 'Regeländerung', label: '⚖️ Regeländerung' },
-    { value: 'Falsche Daten', label: '📊 Falsche Daten' },
-    { value: 'Sonstiges:', label: '❓ Sonstiges' }
+    { value: 'Patent-Informationen veraltet', label: 'Patent-Informationen veraltet' },
+    { value: 'Regeländerung', label: 'Regeländerung' },
+    { value: 'Falsche Daten', label: 'Falsche Daten' },
+    { value: 'Sonstiges:', label: 'Sonstiges' }
   ];
 
   constructor(private cdr: ChangeDetectorRef) {}
 
   open() {
-    console.log('🚨 Report Issue Modal öffnen...');
-    
     // Check Rate Limit nur beim Submit, nicht beim Öffnen
     this.isOpen = true;
     this.resetForm();
     this.cdr.detectChanges(); // Force UI update
-    console.log('✅ Modal isOpen:', this.isOpen);
   }
 
   closeModal() {
@@ -74,7 +71,7 @@ export class ReportIssueComponent {
 
     // Rate Limiting Check
     if (!this.canSubmit()) {
-      this.errorMessage = `⏱️ Sie haben kürzlich bereits eine Meldung gesendet. Bitte warten Sie ${this.COOLDOWN_MINUTES} Minuten.`;
+      this.errorMessage = `Sie haben kürzlich bereits eine Meldung gesendet. Bitte warten Sie ${this.COOLDOWN_MINUTES} Minuten.`;
       return;
     }
 
@@ -92,9 +89,6 @@ export class ReportIssueComponent {
     };
 
     try {
-      // Google Forms Submission aktiviert!
-      console.log('📧 Sende Meldung an Google Forms:', report);
-      
       // Option 1: Google Forms (AKTIVIERT!)
       await this.submitToGoogleForms(report);
       
@@ -110,7 +104,7 @@ export class ReportIssueComponent {
       
     } catch (error) {
       console.error('Fehler beim Senden:', error);
-      this.errorMessage = '❌ Fehler beim Senden. Bitte versuchen Sie es später erneut.';
+      this.errorMessage = 'Fehler beim Senden. Bitte versuchen Sie es später erneut.';
     } finally {
       this.isSubmitting = false;
     }

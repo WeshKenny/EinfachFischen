@@ -1,7 +1,7 @@
 .lakes-page {
   width: min(980px, calc(100% - 3rem));
   margin: 0 auto;
-  padding: 7rem 0 4rem;
+  padding: 4.75rem 0 3rem;
 }
 
 .lakes-card {
@@ -50,7 +50,7 @@
 @media (max-width: 768px) {
   .lakes-page {
     width: min(100% - 1.5rem, 980px);
-    padding-top: 6rem;
+    padding-top: 4.1rem;
   }
 
   .lakes-list {
