@@ -40,6 +40,7 @@ export class Map implements AfterViewInit {
   public isRegionDropdownOpen: boolean = false;
   public selectedFishFilters: string[] = [];
   public selectedRegionFilters: string[] = [];
+  public freeFishingOnly = false;
   public regionFilterOptions = ['Bern', 'Zürich', 'Luzern', 'Graubünden', 'Tessin', 'Waadt', 'Wallis'];
   public fishFilterOptions = [
     { name: 'Hecht', image: '/assets/fish-pike.svg' },
@@ -246,24 +247,25 @@ export class Map implements AfterViewInit {
 
   // Filter-Methoden
   async filterLakes(filterType: string): Promise<void> {
-    this.activeFilter.set(filterType);
-    this.selectedFishFilters = [];
-    this.selectedRegionFilters = [];
-    
     if (filterType === 'all') {
-      // Zeige alle Marker mit Clustering
+      this.activeFilter.set('all');
+      this.selectedFishFilters = [];
+      this.selectedRegionFilters = [];
+      this.freeFishingOnly = false;
       this.markerClusterGroup.clearLayers();
       this.allMarkers.forEach(marker => {
         this.markerClusterGroup.addLayer(marker);
       });
-      console.log('Showing all lakes');
-    } else if (filterType === 'free') {
-      // Zeige nur patentfreie Seen
-      const freeLakes = await this.lakeService.getFreeFishingLakes();
-      this.filterMarkersByLakes(freeLakes);
-      console.log('Showing only free fishing lakes');
+      this.cdr.detectChanges();
+      return;
     }
-    
+
+    if (filterType === 'free') {
+      this.freeFishingOnly = !this.freeFishingOnly;
+      this.activeFilter.set(this.freeFishingOnly ? 'free' : (this.selectedFishFilters.length > 0 ? 'fish' : (this.selectedRegionFilters.length > 0 ? 'region' : 'all')));
+      await this.applyCombinedFilters();
+    }
+
     this.cdr.detectChanges();
   }
 
@@ -280,7 +282,7 @@ export class Map implements AfterViewInit {
       return;
     }
 
-    this.activeFilter.set('fish');
+    this.activeFilter.set(this.freeFishingOnly ? 'free' : 'fish');
     await this.applyCombinedFilters();
     this.cdr.detectChanges();
   }
@@ -293,7 +295,15 @@ export class Map implements AfterViewInit {
       ? this.selectedRegionFilters.filter((entry) => entry !== region)
       : [...this.selectedRegionFilters, region];
 
-    this.activeFilter.set(this.selectedRegionFilters.length > 0 ? 'region' : (this.selectedFishFilters.length > 0 ? 'fish' : 'all'));
+    this.activeFilter.set(
+      this.freeFishingOnly
+        ? 'free'
+        : this.selectedRegionFilters.length > 0
+          ? 'region'
+          : this.selectedFishFilters.length > 0
+            ? 'fish'
+            : 'all'
+    );
     await this.applyCombinedFilters();
     this.cdr.detectChanges();
   }
@@ -312,10 +322,12 @@ export class Map implements AfterViewInit {
           lake.cantons.toLowerCase().includes(regionFilter.toLowerCase())
         );
 
-      return matchesFish && matchesRegion;
+      const matchesFreeFishing = !this.freeFishingOnly || lake.freeFishing;
+
+      return matchesFish && matchesRegion && matchesFreeFishing;
     });
 
-    if (this.selectedFishFilters.length === 0 && this.selectedRegionFilters.length === 0) {
+    if (this.selectedFishFilters.length === 0 && this.selectedRegionFilters.length === 0 && !this.freeFishingOnly) {
       this.activeFilter.set('all');
     }
 

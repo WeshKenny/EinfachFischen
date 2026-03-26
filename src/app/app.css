@@ -187,19 +187,35 @@ main {
 @media (max-width: 600px) {
   .topbar {
     padding: 0 12px;
-    height: 64px;
+    height: auto;
+    min-height: 64px;
     grid-template-columns: auto 1fr auto;
+    gap: 0.5rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   .brand-logo {
-    height: 32px;
+    height: 26px;
   }
 
-  .topnav ul { gap: 6px; }
+  .topnav {
+    justify-self: center;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .topnav ul {
+    gap: 8px;
+    justify-content: center;
+    width: max-content;
+    min-width: 100%;
+  }
 
   .topnav a {
-    padding: 0.55rem 0.75rem;
-    font-size: 0.88rem;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.84rem;
+    white-space: nowrap;
   }
 
   .content {

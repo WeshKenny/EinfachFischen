@@ -11,7 +11,7 @@
     
     <button 
       class="filter-btn free-fishing" 
-      [class.active]="activeFilter() === 'free'"
+      [class.active]="freeFishingOnly"
       (click)="filterLakes('free')"
       title="Nur patentfreie Seen">
       {{ prefs.t('freeFishing') }} ({{freeFishingCount}})
@@ -69,7 +69,8 @@
     </button>
   </div>
 
-  <div class="active-filter-chips" *ngIf="selectedFishFilters.length > 0 || selectedRegionFilters.length > 0">
+  <div class="active-filter-chips" *ngIf="freeFishingOnly || selectedFishFilters.length > 0 || selectedRegionFilters.length > 0">
+    <span class="active-filter-chip" *ngIf="freeFishingOnly">{{ prefs.t('freeFishing') }}</span>
     <span class="active-filter-chip" *ngFor="let fish of selectedFishFilters">{{ fish }}</span>
     <span class="active-filter-chip" *ngFor="let region of selectedRegionFilters">{{ region }}</span>
   </div>
