@@ -1,7 +1,7 @@
 .contact-page {
   width: min(760px, calc(100% - 3rem));
   margin: 0 auto;
-  padding: 7rem 0 4rem;
+  padding: 4.75rem 0 3rem;
 }
 
 .eyebrow {
@@ -94,7 +94,7 @@
 @media (max-width: 768px) {
   .contact-page {
     width: min(100% - 1.5rem, 1180px);
-    padding-top: 6rem;
+    padding-top: 4.1rem;
   }
 
   .contact-card {

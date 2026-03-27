@@ -40,7 +40,6 @@
     <!-- Placeholder wenn keine Bilder -->
     <div class="gallery-placeholder" *ngIf="!lake.images || lake.images.length === 0">
       <div class="placeholder-content">
-        <span class="placeholder-icon">📷</span>
         <p class="placeholder-text">Noch keine Bilder vorhanden</p>
         <p class="placeholder-hint">Bilder können in lakes.json hinzugefügt werden</p>
       </div>
@@ -64,7 +63,7 @@
     
     <!-- Fehler melden Button -->
     <button class="report-issue-btn" (click)="reportIssue.open()" title="Fehler melden">
-      🚨 Fehler melden
+      Fehler melden
     </button>
   </div>
 
@@ -73,7 +72,7 @@
     
     <!-- Wetter-Karte (UNABHÄNGIG!) -->
     <div class="weather-card" *ngIf="weather || isLoadingWeather">
-      <h2>☀️ Aktuelles Wetter</h2>
+      <h2>Aktuelles Wetter</h2>
       
       <!-- Loading Spinner -->
       <div class="weather-loading" *ngIf="isLoadingWeather">
@@ -83,7 +82,6 @@
       
       <!-- Wetter-Daten -->
       <div class="weather-content" *ngIf="!isLoadingWeather && weather">
-        <!-- Hauptanzeige: Icon + Temperatur -->
         <div class="weather-hero">
           <div class="weather-icon-large">{{ weather.icon }}</div>
           <div class="weather-primary">
@@ -131,7 +129,6 @@
         
         <!-- Footer -->
         <div class="weather-info">
-          <span class="weather-update-icon">🕐</span>
           <span class="weather-update-text">Daten werden alle 30 Min. aktualisiert</span>
         </div>
       </div>

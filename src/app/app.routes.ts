@@ -7,7 +7,8 @@ import { Lakes } from './lakes/lakes';
 
 export const routes: Routes = [
   { path: '', component: Home },                    // Default route (home page)
-  { path: 'lakes', component: Lakes },              // /lakes route
+  { path: 'seen', component: Lakes },               // /seen route
+  { path: 'lakes', redirectTo: 'seen', pathMatch: 'full' },
   { path: 'about', component: About },              // /about route
   { path: 'contact', component: Contact },          // /contact route
   { path: 'lake/:id', component: LakeDetail },      // /lake/:id route für See-Details

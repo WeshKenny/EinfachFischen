@@ -1,9 +1,9 @@
 .about-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 90vh;
-  padding: 7rem 20px 4rem;
+  align-items: flex-start;
+  min-height: auto;
+  padding: 4.75rem 20px 3rem;
 }
 
 .about-card {
@@ -54,6 +54,10 @@
 }
 
 @media (max-width: 768px) {
+  .about-container {
+    padding-top: 4.1rem;
+  }
+
   .about-card {
     padding: 1.5rem;
   }
