@@ -3,10 +3,17 @@ import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LakeService, Lake } from '../services/lake.service';
+import { getFishImageAsset } from '../fish-image-map';
+import { getCantonImageAsset } from '../canton-image-map';
 
 import type * as L from 'leaflet';
 
 interface FishFilterOption {
+  value: string;
+  image: string;
+}
+
+interface RegionFilterOption {
   value: string;
   image: string;
 }
@@ -43,7 +50,7 @@ export class Map implements AfterViewInit, OnDestroy {
   public freeFishingOnly = false;
 
   public fishFilterOptions: FishFilterOption[] = [];
-  public regionFilterOptions: string[] = [];
+  public regionFilterOptions: RegionFilterOption[] = [];
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -229,9 +236,12 @@ export class Map implements AfterViewInit, OnDestroy {
 
     this.fishFilterOptions = uniqueSpecies.map(value => ({
       value,
-      image: this.getFishImage(value)
+      image: getFishImageAsset(value)
     }));
-    this.regionFilterOptions = uniqueCantons;
+    this.regionFilterOptions = uniqueCantons.map(value => ({
+      value,
+      image: getCantonImageAsset(value)
+    }));
   }
 
   private extractCantons(rawCantons: string): string[] {
@@ -239,33 +249,6 @@ export class Map implements AfterViewInit, OnDestroy {
       .split(',')
       .map(canton => canton.trim())
       .filter(Boolean);
-  }
-
-  private getFishImage(species: string): string {
-    const lower = species.toLowerCase();
-
-    if (lower.includes('hecht')) return '/assets/fish-pike.svg';
-    if (lower.includes('zander')) return '/assets/fish-zander.svg';
-    if (lower.includes('barsch') || lower.includes('egli')) return '/assets/fish-perch.svg';
-    if (lower.includes('forelle')) return '/assets/fish-trout.svg';
-    if (
-      lower.includes('saibling') ||
-      lower.includes('rötel') ||
-      lower.includes('roetel') ||
-      lower.includes('namaycush')
-    ) {
-      return '/assets/fish-char.svg';
-    }
-    if (
-      lower.includes('felchen') ||
-      lower.includes('balchen') ||
-      lower.includes('äsche') ||
-      lower.includes('aesche')
-    ) {
-      return '/assets/fish-whitefish.svg';
-    }
-
-    return '/assets/fish-whitefish.svg';
   }
 
   private async applyCombinedFilters(): Promise<void> {

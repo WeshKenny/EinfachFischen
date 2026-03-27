@@ -30,7 +30,7 @@
           [class.selected]="isFishSelected(fish.value)"
           (click)="toggleFishFilter(fish.value, $event)">
           <span class="dropdown-item-main">
-            <span class="fish-option-image">
+            <span class="filter-option-image fish-option-image">
               <img [src]="fish.image" [alt]="fish.value">
             </span>
             <span class="dropdown-item-label">{{ fish.value }}</span>
@@ -51,10 +51,15 @@
         <button
           *ngFor="let region of regionFilterOptions"
           class="dropdown-item region-dropdown-item"
-          [class.selected]="isRegionSelected(region)"
-          (click)="toggleRegionFilter(region, $event)">
-          <span class="dropdown-item-label">{{ region }}</span>
-          <span class="selected-badge" *ngIf="isRegionSelected(region)">Ausgewählt</span>
+          [class.selected]="isRegionSelected(region.value)"
+          (click)="toggleRegionFilter(region.value, $event)">
+          <span class="dropdown-item-main">
+            <span class="filter-option-image canton-option-image" *ngIf="region.image">
+              <img [src]="region.image" [alt]="region.value">
+            </span>
+            <span class="dropdown-item-label">{{ region.value }}</span>
+          </span>
+          <span class="selected-badge" *ngIf="isRegionSelected(region.value)">Ausgewählt</span>
         </button>
       </div>
     </div>
