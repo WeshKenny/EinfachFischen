@@ -2,7 +2,7 @@
   <!-- Back Button -->
   <div class="back-button-container">
     <a routerLink="/" class="back-button">
-      <span class="arrow">←</span> {{ prefs.t('toMap') }}
+      <span class="arrow">←</span> {{ prefs.t('backToMap') }}
     </a>
   </div>
 
@@ -14,20 +14,20 @@
          (touchstart)="onTouchStart($event)" 
          (touchend)="onTouchEnd($event)">
       <img [src]="lake.images[currentImageIndex]" 
-           [alt]="lake.name" 
+           [alt]="prefs.localizeLakeName(lake.name)" 
            class="gallery-image">
       
       <!-- Navigation Arrows -->
       <button class="gallery-nav prev" 
               (click)="previousImage()" 
               [disabled]="currentImageIndex === 0"
-              aria-label="Vorheriges Bild">
+              [attr.aria-label]="prefs.t('back')">
         ‹
       </button>
       <button class="gallery-nav next" 
               (click)="nextImage()" 
               [disabled]="currentImageIndex >= lake.images.length - 1"
-              aria-label="Nächstes Bild">
+              [attr.aria-label]="prefs.t('detailsButton')">
         ›
       </button>
       
@@ -40,8 +40,8 @@
     <!-- Placeholder wenn keine Bilder -->
     <div class="gallery-placeholder" *ngIf="!lake.images || lake.images.length === 0">
       <div class="placeholder-content">
-        <p class="placeholder-text">Noch keine Bilder vorhanden</p>
-        <p class="placeholder-hint">Bilder können in lakes.json hinzugefügt werden</p>
+        <p class="placeholder-text">{{ prefs.t('noImages') }}</p>
+        <p class="placeholder-hint">{{ prefs.t('noImagesHint') }}</p>
       </div>
     </div>
     
@@ -58,12 +58,12 @@
 
   <!-- See-Titel -->
   <div class="lake-header">
-    <h1>{{ lake.name }}</h1>
-    <p class="lake-subtitle">{{ lake.cantons }}</p>
+    <h1>{{ prefs.localizeLakeName(lake.name) }}</h1>
+    <p class="lake-subtitle">{{ prefs.localizeCantons(lake.cantons) }}</p>
     
     <!-- Fehler melden Button -->
-    <button class="report-issue-btn" (click)="reportIssue.open()" title="Fehler melden">
-      Fehler melden
+    <button class="report-issue-btn" (click)="reportIssue.open()" [title]="prefs.t('reportIssue')">
+      {{ prefs.t('reportIssue') }}
     </button>
   </div>
 
@@ -72,12 +72,12 @@
     
     <!-- Wetter-Karte (UNABHÄNGIG!) -->
     <div class="weather-card" *ngIf="weather || isLoadingWeather">
-      <h2>Aktuelles Wetter</h2>
+      <h2>{{ prefs.t('currentWeather') }}</h2>
       
       <!-- Loading Spinner -->
       <div class="weather-loading" *ngIf="isLoadingWeather">
         <div class="spinner"></div>
-        <p>Lade Wetterdaten...</p>
+        <p>{{ prefs.t('weatherLoading') }}</p>
       </div>
       
       <!-- Wetter-Daten -->
@@ -86,7 +86,7 @@
           <div class="weather-icon-large">{{ weather.icon }}</div>
           <div class="weather-primary">
             <div class="temp-display">{{ weather.temp }}°C</div>
-            <div class="temp-secondary">Gefühlt {{ weather.feelsLike }}°C</div>
+            <div class="temp-secondary">{{ prefs.t('feelsLike') }} {{ weather.feelsLike }}°C</div>
             <div class="weather-status">{{ weather.description }}</div>
           </div>
         </div>
@@ -96,7 +96,7 @@
           <div class="weather-item">
             <div class="weather-item-icon">💨</div>
             <div class="weather-item-content">
-              <div class="weather-item-label">Wind</div>
+              <div class="weather-item-label">{{ prefs.t('wind') }}</div>
               <div class="weather-item-value">{{ weather.windSpeed }} km/h</div>
               <div class="weather-item-extra">{{ getWindDirection(weather.windDeg) }}</div>
             </div>
@@ -105,7 +105,7 @@
           <div class="weather-item">
             <div class="weather-item-icon">💧</div>
             <div class="weather-item-content">
-              <div class="weather-item-label">Luftfeuchtigkeit</div>
+              <div class="weather-item-label">{{ prefs.t('humidity') }}</div>
               <div class="weather-item-value">{{ weather.humidity }}%</div>
             </div>
           </div>
@@ -113,7 +113,7 @@
           <div class="weather-item">
             <div class="weather-item-icon">☁️</div>
             <div class="weather-item-content">
-              <div class="weather-item-label">Bewölkung</div>
+              <div class="weather-item-label">{{ prefs.t('cloudCover') }}</div>
               <div class="weather-item-value">{{ weather.clouds }}%</div>
             </div>
           </div>
@@ -121,7 +121,7 @@
           <div class="weather-item">
             <div class="weather-item-icon">{{ weather.moonPhaseEmoji }}</div>
             <div class="weather-item-content">
-              <div class="weather-item-label">Mondphase</div>
+              <div class="weather-item-label">{{ prefs.t('moonPhase') }}</div>
               <div class="weather-item-value">{{ weather.moonPhase }}</div>
             </div>
           </div>
@@ -129,7 +129,7 @@
         
         <!-- Footer -->
         <div class="weather-info">
-          <span class="weather-update-text">Daten werden alle 30 Min. aktualisiert</span>
+          <span class="weather-update-text">{{ prefs.t('weatherUpdated') }}</span>
         </div>
       </div>
     </div>
@@ -152,7 +152,7 @@
         </div>
         <div class="info-item">
           <span class="label">{{ prefs.t('bestSeason') }}:</span>
-          <span class="value">{{ lake.bestSeason }}</span>
+          <span class="value">{{ prefs.localizeContent(lake.bestSeason) }}</span>
         </div>
       </div>
     </div>
@@ -161,32 +161,32 @@
     <div class="info-card">
       <h2>{{ prefs.t('fishSpecies') }}</h2>
       <div class="fish-tags">
-        <span class="fish-tag" *ngFor="let fish of lake.fishSpecies">{{ fish }}</span>
+        <span class="fish-tag" *ngFor="let fish of lake.fishSpecies">{{ prefs.localizeFishName(fish) }}</span>
       </div>
     </div>
 
     <!-- Patent-Preise -->
     <div class="info-card price-card" *ngIf="hasPrices">
-      <h2>Patent-Preise</h2>
+      <h2>{{ prefs.t('patentPrices') }}</h2>
       <div class="price-list">
         <div class="price-item" *ngIf="lake.permitPrices?.daily">
-          <span class="price-label">Tagespatent</span>
+          <span class="price-label">{{ prefs.t('dailyPermit') }}</span>
           <span class="price-value">{{ lake.permitPrices?.daily }}</span>
         </div>
         <div class="price-item" *ngIf="lake.permitPrices?.weekly">
-          <span class="price-label">Wochenpatent</span>
+          <span class="price-label">{{ prefs.t('weeklyPermit') }}</span>
           <span class="price-value">{{ lake.permitPrices?.weekly }}</span>
         </div>
         <div class="price-item" *ngIf="lake.permitPrices?.monthly">
-          <span class="price-label">Monatspatent</span>
+          <span class="price-label">{{ prefs.t('monthlyPermit') }}</span>
           <span class="price-value">{{ lake.permitPrices?.monthly }}</span>
         </div>
         <div class="price-item" *ngIf="lake.permitPrices?.annual">
-          <span class="price-label">Jahrespatent</span>
+          <span class="price-label">{{ prefs.t('annualPermit') }}</span>
           <span class="price-value">{{ lake.permitPrices?.annual }}</span>
         </div>
         <div class="price-item" *ngIf="lake.permitPrices?.youth">
-          <span class="price-label">Jugendpatent</span>
+          <span class="price-label">{{ prefs.t('youthPermit') }}</span>
           <span class="price-value">{{ lake.permitPrices?.youth }}</span>
         </div>
       </div>
@@ -198,48 +198,48 @@
       
       <!-- Gratis Fischen Badge -->
       <div class="free-fishing-badge" *ngIf="lake.freeFishing">
-        ✓ Gratis Fischen möglich - Kein Patent erforderlich
+        ✓ {{ prefs.t('freeFishingPossible') }}
       </div>
       
       <!-- Permit Text -->
-      <p class="permit-text" *ngIf="!lake.freeFishing">{{ lake.permitRequired }}</p>
+      <p class="permit-text" *ngIf="!lake.freeFishing">{{ prefs.localizeContent(lake.permitRequired) }}</p>
       
       <!-- Offizielle Webseite Button - IMMER anzeigen -->
       <a [href]="lake.permitPrices?.link || 'https://www.sana.ch/'" 
          target="_blank" 
          rel="noopener noreferrer"
          class="official-website-btn">
-        Offizielle Webseite besuchen
+        {{ prefs.t('officialWebsite') }}
       </a>
     </div>
 
     <!-- Regeln & Vorschriften -->
     <div class="info-card regulations-card" *ngIf="hasRegulations">
-      <h2>Wichtige Regeln</h2>
+      <h2>{{ prefs.t('importantRules') }}</h2>
       
       <div class="regulation-section" *ngIf="lake.regulations?.closedSeasons">
-        <h3>Schonzeiten</h3>
-        <p>{{ lake.regulations?.closedSeasons }}</p>
+        <h3>{{ prefs.t('closedSeasons') }}</h3>
+        <p>{{ prefs.localizeContent(lake.regulations?.closedSeasons) }}</p>
       </div>
       
       <div class="regulation-section" *ngIf="lake.regulations?.minSizes">
-        <h3>Mindestmaße</h3>
+        <h3>{{ prefs.t('minSizes') }}</h3>
         <ul class="min-sizes-list">
           <li *ngFor="let fish of lake.regulations?.minSizes | keyvalue">
-            <strong>{{ fish.key }}:</strong> {{ fish.value }}
+            <strong>{{ prefs.localizeFishName(fish.key) }}:</strong> {{ fish.value }}
           </li>
         </ul>
       </div>
       
       <div class="regulation-section" *ngIf="lake.regulations?.bagLimit">
-        <h3>Fangbegrenzung</h3>
-        <p>{{ lake.regulations?.bagLimit }}</p>
+        <h3>{{ prefs.t('bagLimit') }}</h3>
+        <p>{{ prefs.localizeContent(lake.regulations?.bagLimit) }}</p>
       </div>
       
       <div class="regulation-section" *ngIf="lake.regulations?.additionalRules">
-        <h3>Zusätzliche Regeln</h3>
+        <h3>{{ prefs.t('additionalRules') }}</h3>
         <ul class="additional-rules">
-          <li *ngFor="let rule of lake.regulations?.additionalRules">{{ rule }}</li>
+          <li *ngFor="let rule of lake.regulations?.additionalRules">{{ prefs.localizeContent(rule) }}</li>
         </ul>
       </div>
     </div>
@@ -256,6 +256,6 @@
 
 <!-- Fallback wenn kein See gefunden -->
 <div class="not-found" *ngIf="!lake">
-  <h1>See nicht gefunden</h1>
-  <a routerLink="/" class="back-button">Zurück zur Karte</a>
+  <h1>{{ prefs.t('lakeNotFound') }}</h1>
+  <a routerLink="/" class="back-button">{{ prefs.t('backToMap') }}</a>
 </div>

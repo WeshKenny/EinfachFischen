@@ -3,12 +3,26 @@ import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LakeService, Lake } from '../services/lake.service';
+import { UiPreferencesService } from '../services/ui-preferences.service';
+import { getFishImageAsset } from '../fish-image-map';
+import { getCantonImageAsset } from '../canton-image-map';
 
 import type * as L from 'leaflet';
 
 interface FishFilterOption {
   value: string;
   image: string;
+}
+
+interface RegionFilterOption {
+  value: string;
+  image: string;
+}
+
+interface ActiveFilterChip {
+  type: 'search' | 'free' | 'fish' | 'region';
+  value?: string;
+  label: string;
 }
 
 @Component({
@@ -41,15 +55,17 @@ export class Map implements AfterViewInit, OnDestroy {
   public selectedFishFilters: string[] = [];
   public selectedRegionFilters: string[] = [];
   public freeFishingOnly = false;
+  public searchTerm = '';
 
   public fishFilterOptions: FishFilterOption[] = [];
-  public regionFilterOptions: string[] = [];
+  public regionFilterOptions: RegionFilterOption[] = [];
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private ngZone: NgZone,
     private cdr: ChangeDetectorRef,
-    private lakeService: LakeService
+    private lakeService: LakeService,
+    public prefs: UiPreferencesService
   ) {
     this.loadStatistics();
   }
@@ -98,31 +114,65 @@ export class Map implements AfterViewInit, OnDestroy {
 
   get fishButtonLabel(): string {
     return this.selectedFishFilters.length > 0
-      ? `Nach Fischart (${this.selectedFishFilters.length})`
-      : 'Nach Fischart';
+      ? `${this.prefs.t('byFish')} (${this.selectedFishFilters.length})`
+      : this.prefs.t('byFish');
   }
 
   get regionButtonLabel(): string {
     return this.selectedRegionFilters.length > 0
-      ? `Nach Kanton (${this.selectedRegionFilters.length})`
-      : 'Nach Kanton';
+      ? `${this.prefs.t('byCanton')} (${this.selectedRegionFilters.length})`
+      : this.prefs.t('byCanton');
   }
 
   get hasActiveFilters(): boolean {
-    return this.freeFishingOnly || this.selectedFishFilters.length > 0 || this.selectedRegionFilters.length > 0;
+    return this.freeFishingOnly
+      || this.selectedFishFilters.length > 0
+      || this.selectedRegionFilters.length > 0
+      || this.searchTerm.trim().length > 0;
   }
 
-  get activeFilterChips(): string[] {
-    const chips = [
-      ...this.selectedFishFilters.map(fish => `Fisch: ${fish}`),
-      ...this.selectedRegionFilters.map(region => `Kanton: ${region}`)
+  get activeFilterChips(): ActiveFilterChip[] {
+    const chips: ActiveFilterChip[] = [
+      ...this.selectedFishFilters.map(fish => ({
+        type: 'fish' as const,
+        value: fish,
+        label: `${this.prefs.t('fishSpecies')}: ${this.prefs.localizeFishName(fish)}`
+      })),
+      ...this.selectedRegionFilters.map(region => ({
+        type: 'region' as const,
+        value: region,
+        label: `${this.prefs.t('cantons')}: ${this.prefs.localizeCantonName(region)}`
+      }))
     ];
 
+    if (this.searchTerm.trim()) {
+      chips.unshift({
+        type: 'search',
+        value: this.searchTerm.trim(),
+        label: `${this.prefs.t('search')}: ${this.searchTerm.trim()}`
+      });
+    }
+
     if (this.freeFishingOnly) {
-      chips.unshift('Gratis Fischen');
+      chips.unshift({
+        type: 'free',
+        label: this.prefs.t('freeFishing')
+      });
     }
 
     return chips;
+  }
+
+  get displayedFishFilterOptions(): FishFilterOption[] {
+    return [...this.fishFilterOptions].sort((a, b) =>
+      this.prefs.localizeFishName(a.value).localeCompare(this.prefs.localizeFishName(b.value), this.prefs.language())
+    );
+  }
+
+  get displayedRegionFilterOptions(): RegionFilterOption[] {
+    return [...this.regionFilterOptions].sort((a, b) =>
+      this.prefs.localizeCantonName(a.value).localeCompare(this.prefs.localizeCantonName(b.value), this.prefs.language())
+    );
   }
 
   async filterLakes(filterType: string): Promise<void> {
@@ -175,17 +225,23 @@ export class Map implements AfterViewInit, OnDestroy {
     await this.applyCombinedFilters();
   }
 
-  async removeFilterChip(chip: string): Promise<void> {
-    if (chip === 'Gratis Fischen') {
+  async removeFilterChip(chip: ActiveFilterChip): Promise<void> {
+    if (chip.type === 'free') {
       this.freeFishingOnly = false;
-    } else if (chip.startsWith('Fisch: ')) {
-      const fish = chip.replace('Fisch: ', '');
-      this.selectedFishFilters = this.selectedFishFilters.filter(item => item !== fish);
-    } else if (chip.startsWith('Kanton: ')) {
-      const region = chip.replace('Kanton: ', '');
-      this.selectedRegionFilters = this.selectedRegionFilters.filter(item => item !== region);
+    } else if (chip.type === 'search') {
+      this.searchTerm = '';
+    } else if (chip.type === 'fish' && chip.value) {
+      this.selectedFishFilters = this.selectedFishFilters.filter(item => item !== chip.value);
+    } else if (chip.type === 'region' && chip.value) {
+      this.selectedRegionFilters = this.selectedRegionFilters.filter(item => item !== chip.value);
     }
 
+    await this.applyCombinedFilters();
+  }
+
+  async onSearchInput(event: Event): Promise<void> {
+    const target = event.target as HTMLInputElement;
+    this.searchTerm = target.value;
     await this.applyCombinedFilters();
   }
 
@@ -229,9 +285,12 @@ export class Map implements AfterViewInit, OnDestroy {
 
     this.fishFilterOptions = uniqueSpecies.map(value => ({
       value,
-      image: this.getFishImage(value)
+      image: getFishImageAsset(value)
     }));
-    this.regionFilterOptions = uniqueCantons;
+    this.regionFilterOptions = uniqueCantons.map(value => ({
+      value,
+      image: getCantonImageAsset(value)
+    }));
   }
 
   private extractCantons(rawCantons: string): string[] {
@@ -241,36 +300,18 @@ export class Map implements AfterViewInit, OnDestroy {
       .filter(Boolean);
   }
 
-  private getFishImage(species: string): string {
-    const lower = species.toLowerCase();
-
-    if (lower.includes('hecht')) return '/assets/fish-pike.svg';
-    if (lower.includes('zander')) return '/assets/fish-zander.svg';
-    if (lower.includes('barsch') || lower.includes('egli')) return '/assets/fish-perch.svg';
-    if (lower.includes('forelle')) return '/assets/fish-trout.svg';
-    if (
-      lower.includes('saibling') ||
-      lower.includes('rötel') ||
-      lower.includes('roetel') ||
-      lower.includes('namaycush')
-    ) {
-      return '/assets/fish-char.svg';
-    }
-    if (
-      lower.includes('felchen') ||
-      lower.includes('balchen') ||
-      lower.includes('äsche') ||
-      lower.includes('aesche')
-    ) {
-      return '/assets/fish-whitefish.svg';
-    }
-
-    return '/assets/fish-whitefish.svg';
-  }
-
   private async applyCombinedFilters(): Promise<void> {
     const lakes = await this.lakeService.getLakes();
     const filteredLakes = lakes.filter(lake => {
+      const normalizedSearch = this.searchTerm.trim().toLowerCase();
+      const matchesSearch = normalizedSearch.length === 0
+        || lake.name.toLowerCase().includes(normalizedSearch)
+        || this.prefs.localizeLakeName(lake.name).toLowerCase().includes(normalizedSearch)
+        || this.extractCantons(lake.cantons).some(canton => canton.toLowerCase().includes(normalizedSearch));
+      const matchesLocalizedCantonSearch = normalizedSearch.length === 0
+        || this.extractCantons(lake.cantons).some(canton =>
+          this.prefs.localizeCantonName(canton).toLowerCase().includes(normalizedSearch)
+        );
       const matchesFree = !this.freeFishingOnly || lake.freeFishing;
       const matchesFish = this.selectedFishFilters.length === 0 || this.selectedFishFilters.every(selectedFish =>
         (lake.fishSpecies || []).some(lakeFish => this.matchesSpecies(lakeFish, selectedFish))
@@ -280,7 +321,7 @@ export class Map implements AfterViewInit, OnDestroy {
         lakeCantons.some(lakeCanton => lakeCanton.toLowerCase() === selectedRegion.toLowerCase())
       );
 
-      return matchesFree && matchesFish && matchesRegion;
+      return (matchesSearch || matchesLocalizedCantonSearch) && matchesFree && matchesFish && matchesRegion;
     });
 
     this.activeFilter.set(this.hasActiveFilters ? 'combined' : 'all');
@@ -309,6 +350,7 @@ export class Map implements AfterViewInit, OnDestroy {
     this.selectedFishFilters = [];
     this.selectedRegionFilters = [];
     this.freeFishingOnly = false;
+    this.searchTerm = '';
     this.activeFilter.set('all');
     this.isFishDropdownOpen = false;
     this.isRegionDropdownOpen = false;

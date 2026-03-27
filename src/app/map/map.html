@@ -1,19 +1,34 @@
 <div class="filter-section">
   <div class="filter-container">
+    <label class="search-filter" for="lake-search">
+      <span class="search-filter-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path d="M10.5 4a6.5 6.5 0 1 0 4.06 11.58l4.43 4.43 1.41-1.41-4.43-4.43A6.5 6.5 0 0 0 10.5 4Zm0 2a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"/>
+        </svg>
+      </span>
+      <input
+        id="lake-search"
+        type="search"
+        class="search-filter-input"
+        [value]="searchTerm"
+        (input)="onSearchInput($event)"
+        [placeholder]="prefs.t('searchPlaceholder')" />
+    </label>
+
     <button
       class="filter-btn"
       [class.active]="!hasActiveFilters"
       (click)="filterLakes('all')"
-      title="Alle Seen anzeigen">
-      Alle Seen ({{ totalLakes }})
+      [title]="prefs.t('showAll')">
+      {{ prefs.t('allLakes') }}
     </button>
 
     <button
       class="filter-btn free-fishing"
       [class.active]="freeFishingOnly"
       (click)="filterLakes('free')"
-      title="Nur patentfreie Seen">
-      Gratis Fischen ({{ freeFishingCount }})
+      [title]="prefs.t('freeFishing')">
+      {{ prefs.t('freeFishing') }}
     </button>
 
     <div class="filter-dropdown" [class.open]="isFishDropdownOpen">
@@ -25,17 +40,17 @@
       </button>
       <div class="dropdown-content dropdown-content-fish" (click)="$event.stopPropagation()">
         <button
-          *ngFor="let fish of fishFilterOptions"
+          *ngFor="let fish of displayedFishFilterOptions"
           class="dropdown-item fish-dropdown-item"
           [class.selected]="isFishSelected(fish.value)"
           (click)="toggleFishFilter(fish.value, $event)">
           <span class="dropdown-item-main">
-            <span class="fish-option-image">
+            <span class="filter-option-image fish-option-image">
               <img [src]="fish.image" [alt]="fish.value">
             </span>
-            <span class="dropdown-item-label">{{ fish.value }}</span>
+            <span class="dropdown-item-label">{{ prefs.localizeFishName(fish.value) }}</span>
           </span>
-          <span class="selected-badge" *ngIf="isFishSelected(fish.value)">Ausgewählt</span>
+          <span class="selected-badge" *ngIf="isFishSelected(fish.value)">{{ prefs.t('selected') }}</span>
         </button>
       </div>
     </div>
@@ -49,12 +64,17 @@
       </button>
       <div class="dropdown-content" (click)="$event.stopPropagation()">
         <button
-          *ngFor="let region of regionFilterOptions"
+          *ngFor="let region of displayedRegionFilterOptions"
           class="dropdown-item region-dropdown-item"
-          [class.selected]="isRegionSelected(region)"
-          (click)="toggleRegionFilter(region, $event)">
-          <span class="dropdown-item-label">{{ region }}</span>
-          <span class="selected-badge" *ngIf="isRegionSelected(region)">Ausgewählt</span>
+          [class.selected]="isRegionSelected(region.value)"
+          (click)="toggleRegionFilter(region.value, $event)">
+          <span class="dropdown-item-main">
+            <span class="filter-option-image canton-option-image" *ngIf="region.image">
+              <img [src]="region.image" [alt]="region.value">
+            </span>
+            <span class="dropdown-item-label">{{ prefs.localizeCantonName(region.value) }}</span>
+          </span>
+          <span class="selected-badge" *ngIf="isRegionSelected(region.value)">{{ prefs.t('selected') }}</span>
         </button>
       </div>
     </div>
@@ -63,8 +83,8 @@
       class="filter-btn reset-btn"
       *ngIf="hasActiveFilters"
       (click)="filterLakes('all')"
-      title="Filter zurücksetzen">
-      Filter zurücksetzen
+      [title]="prefs.t('resetFilters')">
+      {{ prefs.t('resetFilters') }}
     </button>
   </div>
 
@@ -74,7 +94,7 @@
       type="button"
       class="filter-chip"
       (click)="removeFilterChip(chip)">
-      {{ chip }}
+      {{ chip.label }}
       <span class="filter-chip-close">×</span>
     </button>
   </div>
@@ -91,64 +111,64 @@
   class="sidebar-backdrop"
   [class.open]="isSidebarOpen()"
   (click)="closeSidebar()"
-  aria-label="Vorschau schliessen">
+  [attr.aria-label]="prefs.t('close')">
 </button>
 
 <div class="sidebar" [class.open]="isSidebarOpen()">
-  <button class="close-button" (click)="closeSidebar()">&times;</button>
+  <button class="close-button" (click)="closeSidebar()" [attr.aria-label]="prefs.t('close')">&times;</button>
   <div class="sidebar-content" *ngIf="selectedLakeData">
-    <h2>{{ selectedLakeData.name }}</h2>
+    <h2>{{ prefs.localizeLakeName(selectedLakeData.name) }}</h2>
 
     <a [routerLink]="['/lake', selectedLakeData.id || getLakeId(selectedLakeData.name)]" class="detail-link">
-      Alle Details ansehen
+      {{ prefs.t('allDetails') }}
     </a>
 
     <div class="lake-section">
-      <h3>Allgemeine Informationen</h3>
+      <h3>{{ prefs.t('generalInfo') }}</h3>
       <div class="lake-info">
         <div class="info-row">
-          <span class="info-label">Fläche:</span>
+          <span class="info-label">{{ prefs.t('area') }}:</span>
           <span class="info-value">{{ selectedLakeData.area }}</span>
         </div>
         <div class="info-row">
-          <span class="info-label">Maximale Tiefe:</span>
+          <span class="info-label">{{ prefs.t('maxDepth') }}:</span>
           <span class="info-value">{{ selectedLakeData.maxDepth }}</span>
         </div>
         <div class="info-row">
-          <span class="info-label">Höhe über Meer:</span>
+          <span class="info-label">{{ prefs.t('elevation') }}:</span>
           <span class="info-value">{{ selectedLakeData.elevation }}</span>
         </div>
         <div class="info-row">
-          <span class="info-label">Kantone:</span>
-          <span class="info-value">{{ selectedLakeData.cantons }}</span>
+          <span class="info-label">{{ prefs.t('cantons') }}:</span>
+          <span class="info-value">{{ prefs.localizeCantons(selectedLakeData.cantons) }}</span>
         </div>
       </div>
     </div>
 
     <div class="lake-section">
-      <h3>Fischereiinformationen</h3>
+      <h3>{{ prefs.t('fishingInfo') }}</h3>
       <div class="lake-info">
         <div class="info-row">
-          <span class="info-label">Beste Saison:</span>
-          <span class="info-value">{{ selectedLakeData.bestSeason }}</span>
+          <span class="info-label">{{ prefs.t('bestSeason') }}:</span>
+          <span class="info-value">{{ prefs.localizeContent(selectedLakeData.bestSeason) }}</span>
         </div>
         <div class="info-row">
-          <span class="info-label">Gratis Fischen:</span>
+          <span class="info-label">{{ prefs.t('freeFishing') }}:</span>
           <span class="info-value" [class.free-fishing]="selectedLakeData.freeFishing">
-            {{ selectedLakeData.freeFishing ? 'Ja' : 'Nein' }}
+            {{ selectedLakeData.freeFishing ? prefs.t('yes') : prefs.t('no') }}
           </span>
         </div>
         <div class="info-row">
-          <span class="info-label">Bewilligung:</span>
-          <span class="info-value permit">{{ selectedLakeData.permitRequired }}</span>
+          <span class="info-label">{{ prefs.t('permit') }}:</span>
+          <span class="info-value permit">{{ prefs.localizeContent(selectedLakeData.permitRequired) }}</span>
         </div>
       </div>
     </div>
 
     <div class="lake-section">
-      <h3>Fischarten</h3>
+      <h3>{{ prefs.t('fishSpecies') }}</h3>
       <div class="fish-species">
-        <span class="fish-tag" *ngFor="let fish of selectedLakeData.fishSpecies">{{ fish }}</span>
+        <span class="fish-tag" *ngFor="let fish of selectedLakeData.fishSpecies">{{ prefs.localizeFishName(fish) }}</span>
       </div>
     </div>
   </div>
