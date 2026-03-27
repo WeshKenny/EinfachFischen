@@ -20,11 +20,11 @@
   align-items: center;
   justify-content: flex-start;
   padding: 0.75rem 0.9rem;
-  background: rgba(15, 23, 42, 0.5);
+  background: var(--surface);
   border-radius: 18px;
-  box-shadow: 0 12px 30px rgba(2, 8, 23, 0.18);
+  box-shadow: 0 12px 30px var(--shadow);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(96, 165, 250, 0.18);
+  border: 1px solid var(--border);
   box-sizing: border-box;
   position: relative;
 }
@@ -37,22 +37,22 @@
   gap: 0.7rem;
   padding: 0 1rem;
   height: 48px;
-  background: rgba(30, 41, 59, 0.82);
-  border: 1.5px solid rgba(96, 165, 250, 0.22);
+  background: var(--surface-strong);
+  border: 1.5px solid var(--border);
   border-radius: 16px;
   box-sizing: border-box;
 }
 
 .search-filter:focus-within {
-  border-color: rgba(147, 197, 253, 0.8);
-  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.12);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .search-filter-icon {
   width: 18px;
   height: 18px;
   flex-shrink: 0;
-  color: rgba(191, 219, 254, 0.72);
+  color: var(--text-muted);
 }
 
 .search-filter-icon svg {
@@ -66,21 +66,21 @@
   width: 100%;
   border: none;
   background: transparent;
-  color: #e2e8f0;
+  color: var(--text-main);
   font: inherit;
   font-size: 1rem;
   outline: none;
 }
 
 .search-filter-input::placeholder {
-  color: rgba(191, 219, 254, 0.56);
+  color: var(--text-muted);
 }
 
 .filter-btn {
   padding: 0.62rem 1rem;
-  background: rgba(15, 23, 42, 0.64);
-  color: #e2e8f0;
-  border: 1.5px solid rgba(96, 165, 250, 0.25);
+  background: var(--surface-strong);
+  color: var(--text-main);
+  border: 1.5px solid var(--border);
   border-radius: 999px;
   cursor: pointer;
   font-size: 0.95rem;
@@ -93,20 +93,20 @@
 }
 
 .filter-btn:hover {
-  background: rgba(59, 130, 246, 0.15);
-  border-color: rgba(96, 165, 250, 0.48);
+  background: var(--accent-soft);
+  border-color: var(--accent);
   transform: translateY(-1px);
 }
 
 .filter-btn.active {
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.95) 0%, rgba(37, 99, 235, 0.95) 100%);
-  border-color: rgba(147, 197, 253, 0.9);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  border-color: var(--accent);
   color: white;
-  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
+  box-shadow: 0 10px 24px var(--shadow);
 }
 
 .filter-btn.reset-btn {
-  background: rgba(30, 41, 59, 0.9);
+  background: var(--surface-strong);
 }
 
 .filter-dropdown {
@@ -130,10 +130,10 @@
   min-width: 260px;
   max-height: min(460px, 65vh);
   overflow-y: auto;
-  background: rgba(15, 23, 42, 0.98);
-  border: 1px solid rgba(96, 165, 250, 0.26);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 22px;
-  box-shadow: 0 20px 40px rgba(2, 8, 23, 0.35);
+  box-shadow: 0 20px 40px var(--shadow);
   backdrop-filter: blur(12px);
   overflow-x: hidden;
 }
@@ -150,9 +150,9 @@
   width: 100%;
   padding: 0.75rem 1rem;
   background: transparent;
-  color: #e2e8f0;
+  color: var(--text-main);
   border: none;
-  border-bottom: 1px solid rgba(96, 165, 250, 0.12);
+  border-bottom: 1px solid var(--border);
   text-align: left;
   cursor: pointer;
   font-size: 0.95rem;
@@ -169,7 +169,7 @@
 
 .dropdown-item:hover,
 .dropdown-item.selected {
-  background: rgba(96, 165, 250, 0.14);
+  background: var(--accent-soft);
 }
 
 .dropdown-item-main,
@@ -218,16 +218,16 @@
 .dropdown-item-label {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #e2e8f0;
+  color: var(--text-main);
 }
 
 .selected-badge {
   margin-left: auto;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  border: 1px solid rgba(96, 165, 250, 0.28);
-  background: rgba(59, 130, 246, 0.16);
-  color: #60a5fa;
+  border: 1px solid var(--border);
+  background: var(--accent-soft);
+  color: var(--accent);
   font-size: 0.84rem;
   font-weight: 700;
   flex-shrink: 0;
@@ -247,9 +247,9 @@
   gap: 0.45rem;
   padding: 0.45rem 0.75rem;
   border-radius: 999px;
-  border: 1px solid rgba(96, 165, 250, 0.22);
-  background: rgba(96, 165, 250, 0.12);
-  color: #dbeafe;
+  border: 1px solid var(--border);
+  background: var(--accent-soft);
+  color: var(--text-main);
   font: inherit;
   font-size: 0.86rem;
   cursor: pointer;
