@@ -48,6 +48,7 @@ export class Map implements AfterViewInit, OnDestroy {
   public selectedFishFilters: string[] = [];
   public selectedRegionFilters: string[] = [];
   public freeFishingOnly = false;
+  public searchTerm = '';
 
   public fishFilterOptions: FishFilterOption[] = [];
   public regionFilterOptions: RegionFilterOption[] = [];
@@ -116,7 +117,10 @@ export class Map implements AfterViewInit, OnDestroy {
   }
 
   get hasActiveFilters(): boolean {
-    return this.freeFishingOnly || this.selectedFishFilters.length > 0 || this.selectedRegionFilters.length > 0;
+    return this.freeFishingOnly
+      || this.selectedFishFilters.length > 0
+      || this.selectedRegionFilters.length > 0
+      || this.searchTerm.trim().length > 0;
   }
 
   get activeFilterChips(): string[] {
@@ -124,6 +128,10 @@ export class Map implements AfterViewInit, OnDestroy {
       ...this.selectedFishFilters.map(fish => `Fisch: ${fish}`),
       ...this.selectedRegionFilters.map(region => `Kanton: ${region}`)
     ];
+
+    if (this.searchTerm.trim()) {
+      chips.unshift(`Suche: ${this.searchTerm.trim()}`);
+    }
 
     if (this.freeFishingOnly) {
       chips.unshift('Gratis Fischen');
@@ -185,6 +193,8 @@ export class Map implements AfterViewInit, OnDestroy {
   async removeFilterChip(chip: string): Promise<void> {
     if (chip === 'Gratis Fischen') {
       this.freeFishingOnly = false;
+    } else if (chip.startsWith('Suche: ')) {
+      this.searchTerm = '';
     } else if (chip.startsWith('Fisch: ')) {
       const fish = chip.replace('Fisch: ', '');
       this.selectedFishFilters = this.selectedFishFilters.filter(item => item !== fish);
@@ -193,6 +203,12 @@ export class Map implements AfterViewInit, OnDestroy {
       this.selectedRegionFilters = this.selectedRegionFilters.filter(item => item !== region);
     }
 
+    await this.applyCombinedFilters();
+  }
+
+  async onSearchInput(event: Event): Promise<void> {
+    const target = event.target as HTMLInputElement;
+    this.searchTerm = target.value;
     await this.applyCombinedFilters();
   }
 
@@ -254,6 +270,10 @@ export class Map implements AfterViewInit, OnDestroy {
   private async applyCombinedFilters(): Promise<void> {
     const lakes = await this.lakeService.getLakes();
     const filteredLakes = lakes.filter(lake => {
+      const normalizedSearch = this.searchTerm.trim().toLowerCase();
+      const matchesSearch = normalizedSearch.length === 0
+        || lake.name.toLowerCase().includes(normalizedSearch)
+        || this.extractCantons(lake.cantons).some(canton => canton.toLowerCase().includes(normalizedSearch));
       const matchesFree = !this.freeFishingOnly || lake.freeFishing;
       const matchesFish = this.selectedFishFilters.length === 0 || this.selectedFishFilters.every(selectedFish =>
         (lake.fishSpecies || []).some(lakeFish => this.matchesSpecies(lakeFish, selectedFish))
@@ -263,7 +283,7 @@ export class Map implements AfterViewInit, OnDestroy {
         lakeCantons.some(lakeCanton => lakeCanton.toLowerCase() === selectedRegion.toLowerCase())
       );
 
-      return matchesFree && matchesFish && matchesRegion;
+      return matchesSearch && matchesFree && matchesFish && matchesRegion;
     });
 
     this.activeFilter.set(this.hasActiveFilters ? 'combined' : 'all');
@@ -292,6 +312,7 @@ export class Map implements AfterViewInit, OnDestroy {
     this.selectedFishFilters = [];
     this.selectedRegionFilters = [];
     this.freeFishingOnly = false;
+    this.searchTerm = '';
     this.activeFilter.set('all');
     this.isFishDropdownOpen = false;
     this.isRegionDropdownOpen = false;

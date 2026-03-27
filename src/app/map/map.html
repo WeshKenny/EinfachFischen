@@ -1,11 +1,26 @@
 <div class="filter-section">
   <div class="filter-container">
+    <label class="search-filter" for="lake-search">
+      <span class="search-filter-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path d="M10.5 4a6.5 6.5 0 1 0 4.06 11.58l4.43 4.43 1.41-1.41-4.43-4.43A6.5 6.5 0 0 0 10.5 4Zm0 2a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Z"/>
+        </svg>
+      </span>
+      <input
+        id="lake-search"
+        type="search"
+        class="search-filter-input"
+        [value]="searchTerm"
+        (input)="onSearchInput($event)"
+        placeholder="Gewässer suchen..." />
+    </label>
+
     <button
       class="filter-btn"
       [class.active]="!hasActiveFilters"
       (click)="filterLakes('all')"
       title="Alle Seen anzeigen">
-      Alle Seen ({{ totalLakes }})
+      Alle Seen
     </button>
 
     <button
@@ -13,7 +28,7 @@
       [class.active]="freeFishingOnly"
       (click)="filterLakes('free')"
       title="Nur patentfreie Seen">
-      Gratis Fischen ({{ freeFishingCount }})
+      Gratis Fischen
     </button>
 
     <div class="filter-dropdown" [class.open]="isFishDropdownOpen">
