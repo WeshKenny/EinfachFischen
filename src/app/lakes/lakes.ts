@@ -21,7 +21,13 @@ export class Lakes implements OnInit {
 
   async ngOnInit() {
     const lakes = await this.lakeService.getLakes();
-    this.lakes = [...lakes].sort((a, b) => a.name.localeCompare(b.name));
+    this.lakes = [...lakes];
     this.cdr.detectChanges();
+  }
+
+  get sortedLakes(): Lake[] {
+    return [...this.lakes].sort((a, b) =>
+      this.prefs.localizeLakeName(a.name).localeCompare(this.prefs.localizeLakeName(b.name), this.prefs.language())
+    );
   }
 }
