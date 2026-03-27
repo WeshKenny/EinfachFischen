@@ -1,11 +1,4 @@
-# robots.txt für EinfachFischen.ch
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /api/
 
-# Sitemap
 Sitemap: https://einfachfischen.ch/sitemap.xml
-
-# Crawl-delay (optional)
-Crawl-delay: 1

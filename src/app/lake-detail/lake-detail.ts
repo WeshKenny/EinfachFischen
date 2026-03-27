@@ -1,10 +1,11 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { LakeService, Lake } from '../services/lake.service';
 import { WeatherService, WeatherData } from '../services/weather.service';
 import { ReportIssueComponent } from '../report-issue/report-issue.component';
 import { UiPreferencesService } from '../services/ui-preferences.service';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-lake-detail',
@@ -28,8 +29,16 @@ export class LakeDetail implements OnInit {
     private lakeService: LakeService,
     private weatherService: WeatherService,
     private cdr: ChangeDetectorRef,
-    public prefs: UiPreferencesService
-  ) {}
+    public prefs: UiPreferencesService,
+    private seo: SeoService
+  ) {
+    effect(() => {
+      this.prefs.language();
+      if (this.lake) {
+        this.updateSeo();
+      }
+    });
+  }
 
   async ngOnInit() {
     const lakeId = this.route.snapshot.paramMap.get('id');
@@ -42,6 +51,7 @@ export class LakeDetail implements OnInit {
         this.router.navigate(['/']);
       } else {
         console.log(`✓ See geladen: ${this.lake.name}`);
+        this.updateSeo();
         
         // Lade Wetter-Daten
         this.loadWeather();
@@ -135,5 +145,19 @@ export class LakeDetail implements OnInit {
 
   get hasRegulations(): boolean {
     return !!(this.lake?.regulations && Object.keys(this.lake.regulations).length > 0);
+  }
+
+  private updateSeo() {
+    if (!this.lake) {
+      return;
+    }
+
+    this.seo.setLakeSeo(
+      this.lake,
+      this.prefs.language(),
+      this.prefs.localizeLakeName(this.lake.name),
+      this.prefs.localizeCantons(this.lake.cantons),
+      this.lake.fishSpecies.map(fish => this.prefs.localizeFishName(fish))
+    );
   }
 }
