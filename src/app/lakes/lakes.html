@@ -1,14 +1,18 @@
 <section class="lakes-page">
   <div class="lakes-card">
     <h1>{{ prefs.t('lakes') }}</h1>
-    <div class="lakes-list">
+    <div class="lakes-list" *ngIf="sortedLakes.length > 0; else noLakes">
       <a
-        *ngFor="let lake of lakes"
+        *ngFor="let lake of sortedLakes"
         class="lake-link"
         [routerLink]="['/lake', lake.id]">
-        <strong>{{ lake.name }}</strong>
-        <span>{{ lake.cantons }}</span>
+        <strong>{{ prefs.localizeLakeName(lake.name) }}</strong>
+        <span>{{ prefs.localizeCantons(lake.cantons) }}</span>
       </a>
     </div>
   </div>
 </section>
+
+<ng-template #noLakes>
+  <p>{{ prefs.t('noResults') }}</p>
+</ng-template>
