@@ -15,8 +15,8 @@
 .filter-container {
   display: flex;
   width: 100%;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  gap: 0.45rem;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
   padding: 0.75rem 0.9rem;
@@ -30,8 +30,8 @@
 }
 
 .search-filter {
-  flex: 1 1 320px;
-  min-width: 240px;
+  flex: 1 1 300px;
+  min-width: 0;
   display: flex;
   align-items: center;
   gap: 0.7rem;
@@ -77,11 +77,13 @@
 }
 
 .filter-btn {
+  min-height: 48px;
   padding: 0.62rem 1rem;
   background: var(--surface-strong);
   color: var(--text-main);
   border: 1.5px solid var(--border);
   border-radius: 999px;
+  box-sizing: border-box;
   cursor: pointer;
   font-size: 0.95rem;
   font-weight: 600;
@@ -90,6 +92,8 @@
   align-items: center;
   gap: 0.4rem;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .filter-btn:hover {
@@ -107,12 +111,33 @@
 
 .filter-btn.reset-btn {
   background: var(--surface-strong);
+  min-width: 0;
+  flex: 0 1 185px;
+  justify-content: center;
+}
+
+.filter-btn.is-hidden {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .filter-dropdown {
   position: relative;
   display: inline-block;
   z-index: 200;
+  flex: 0 1 210px;
+  min-width: 0;
+}
+
+.filter-dropdown > .filter-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.filter-container > .filter-btn:not(.reset-btn) {
+  min-width: 0;
+  flex: 0 1 170px;
+  justify-content: center;
 }
 
 .dropdown-toggle::after {
@@ -459,6 +484,22 @@
 }
 
 @media (max-width: 1024px) {
+  .filter-container {
+    flex-wrap: wrap;
+  }
+
+  .filter-container > .filter-btn:not(.reset-btn) {
+    min-width: 180px;
+  }
+
+  .filter-dropdown {
+    flex-basis: 220px;
+  }
+
+  .filter-btn.reset-btn {
+    min-width: 200px;
+  }
+
   .filter-section,
   .map-component-wrapper {
     width: min(100%, calc(100% - 2rem));
@@ -502,6 +543,12 @@
   .filter-dropdown > .filter-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .filter-container > .filter-btn:not(.reset-btn),
+  .filter-btn.reset-btn {
+    min-width: 0;
+    flex: 1 1 calc(50% - 0.25rem);
   }
 
   .dropdown-content,
