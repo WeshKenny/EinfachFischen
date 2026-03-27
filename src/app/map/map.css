@@ -26,6 +26,7 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(96, 165, 250, 0.18);
   box-sizing: border-box;
+  position: relative;
 }
 
 .search-filter {
@@ -493,25 +494,62 @@
     padding: 0.58rem 0.9rem;
   }
 
+  .filter-dropdown {
+    flex: 1 1 calc(50% - 0.25rem);
+  }
+
+  .filter-dropdown > .filter-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
   .dropdown-content,
   .dropdown-content-fish {
-    width: min(100vw - 2rem, 360px);
+    width: 100%;
     min-width: 0;
+    left: 0;
+    right: 0;
+    top: calc(100% + 0.55rem);
+    transform: none;
+    max-height: 52vh;
+    z-index: 260;
+  }
+
+  .dropdown-item {
+    padding: 0.65rem 0.8rem;
+    gap: 0.65rem;
+  }
+
+  .dropdown-item-main,
+  .region-dropdown-item {
+    gap: 0.7rem;
   }
 
   .filter-option-image {
-    width: 74px;
-    height: 48px;
+    width: 58px;
+    height: 40px;
   }
 
   .fish-option-image {
-    width: 82px;
-    height: 52px;
+    width: 64px;
+    height: 40px;
   }
 
   .canton-option-image {
-    width: 42px;
-    height: 42px;
+    width: 30px;
+    height: 36px;
+  }
+
+  .dropdown-item-label {
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .selected-badge {
+    margin-left: 0;
+    font-size: 0.78rem;
+    padding: 0.3rem 0.55rem;
   }
 
   .map-component-wrapper {
