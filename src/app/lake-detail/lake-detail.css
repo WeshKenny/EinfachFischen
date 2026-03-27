@@ -175,13 +175,6 @@
   padding: 2rem;
 }
 
-.placeholder-icon {
-  font-size: 5rem;
-  display: block;
-  margin-bottom: 1rem;
-  opacity: 0.5;
-}
-
 .placeholder-text {
   font-size: 1.5rem;
   color: var(--text-muted);
@@ -394,17 +387,17 @@
   transform: translateY(-2px);
 }
 
+.weather-item-content {
+  flex: 1;
+  overflow: visible;
+}
+
 .weather-item-icon {
   font-size: 3rem;
   min-width: 60px;
   text-align: center;
   flex-shrink: 0;
   line-height: 1;
-}
-
-.weather-item-content {
-  flex: 1;
-  overflow: visible;
 }
 
 .weather-item-label {
@@ -437,17 +430,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
   padding: 1rem;
   background: var(--accent-soft);
   border-radius: 8px;
   border: 1px solid var(--border);
-}
-
-.weather-update-icon {
-  font-size: 1rem;
-  opacity: 0.7;
-  flex-shrink: 0;
 }
 
 .weather-update-text {
@@ -745,8 +731,51 @@
     padding: 0 10px;
   }
 
+  .image-gallery {
+    margin-bottom: 1.5rem;
+  }
+
+  .gallery-placeholder {
+    height: 220px;
+  }
+
+  .placeholder-content {
+    padding: 1.25rem;
+  }
+
+  .placeholder-text {
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .placeholder-hint {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .lake-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+
   .lake-header h1 {
     font-size: 2rem;
+    word-break: break-word;
+    margin-bottom: 0;
+  }
+
+  .lake-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .report-issue-btn {
+    position: static;
+    width: 100%;
+    max-width: 260px;
+    justify-content: center;
   }
 
   .content-grid {
@@ -776,35 +805,95 @@
   .weather-card {
     padding: 1.5rem !important;
     grid-column: 1 / -1; /* Volle Breite auf Mobile */
+    overflow: hidden;
   }
   
   .weather-hero {
     flex-direction: column;
     text-align: center;
-    padding: 1.5rem;
+    padding: 1.2rem;
     min-height: auto;
+    gap: 0.85rem;
+    overflow: hidden;
   }
   
   .weather-primary {
     text-align: center;
+    width: 100%;
   }
   
   .temp-display {
-    font-size: 3.5rem;
+    font-size: 2.9rem;
+    white-space: normal;
+    word-break: break-word;
   }
   
   .weather-icon-large {
-    font-size: 5rem;
+    font-size: 4.4rem;
   }
   
+  .weather-status,
+  .temp-secondary {
+    white-space: normal;
+  }
+
   .weather-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 Spalten auf Mobile */
+    grid-template-columns: 1fr;
     gap: 0.75rem;
   }
   
   .weather-item {
     padding: 0.9rem;
     min-height: 75px;
+    gap: 0.9rem;
+  }
+
+  .weather-item-icon {
+    min-width: 44px;
+    font-size: 2.3rem;
+  }
+
+  .weather-item-value {
+    font-size: 1.2rem;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .weather-item-label {
+    font-size: 0.8rem;
+  }
+
+  .weather-info {
+    padding: 0.9rem;
+  }
+
+  .weather-update-text {
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .info-card,
+  .weather-card {
+    padding: 1.2rem;
+  }
+
+  .info-item,
+  .price-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .info-item .value,
+  .price-value,
+  .price-label {
+    text-align: left;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .fish-tag {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.88rem;
   }
 }
 

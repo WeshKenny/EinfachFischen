@@ -1,12 +1,15 @@
-import { Component, AfterViewInit, PLATFORM_ID, Inject, Output, EventEmitter, NgZone, ChangeDetectorRef, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, PLATFORM_ID, Inject, Output, EventEmitter, NgZone, ChangeDetectorRef, ChangeDetectionStrategy, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LakeService, Lake } from '../services/lake.service';
-import { UiPreferencesService } from '../services/ui-preferences.service';
 
-// Only import the type, not the library itself
 import type * as L from 'leaflet';
+
+interface FishFilterOption {
+  value: string;
+  image: string;
+}
 
 @Component({
   selector: 'app-map',
@@ -16,50 +19,198 @@ import type * as L from 'leaflet';
   styleUrls: ['./map.css'],
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class Map implements AfterViewInit {
+export class Map implements AfterViewInit, OnDestroy {
   @Output() loadFailed = new EventEmitter<void>();
+
   private map!: L.Map;
   private L: any;
-  private markerClusterGroup: any; // MarkerCluster Group
-  private allMarkers: L.Marker[] = []; // Speichert alle Marker
-  
-  // Verwende Signals für bessere Change Detection
+  private markerClusterGroup: any;
+  private allMarkers: L.Marker[] = [];
+  private documentClickHandler?: () => void;
+
   public selectedLake = signal<Lake | null>(null);
   public isSidebarOpen = signal<boolean>(false);
   public activeFilter = signal<string>('all');
-  
-  // Zusätzliche normale Properties als Fallback
   public selectedLakeData: Lake | null = null;
-  
-  // Filter-Statistiken
-  public totalLakes: number = 0;
-  public freeFishingCount: number = 0;
-  
-  // Dropdown-Status
-  public isFishDropdownOpen: boolean = false;
-  public isRegionDropdownOpen: boolean = false;
+
+  public totalLakes = 0;
+  public freeFishingCount = 0;
+
+  public isFishDropdownOpen = false;
+  public isRegionDropdownOpen = false;
   public selectedFishFilters: string[] = [];
   public selectedRegionFilters: string[] = [];
   public freeFishingOnly = false;
-  public regionFilterOptions = ['Bern', 'Zürich', 'Luzern', 'Graubünden', 'Tessin', 'Waadt', 'Wallis'];
-  public fishFilterOptions = [
-    { name: 'Hecht', image: '/assets/fish-pike.svg' },
-    { name: 'Forelle', image: '/assets/fish-trout.svg' },
-    { name: 'Zander', image: '/assets/fish-zander.svg' },
-    { name: 'Barsch', image: '/assets/fish-perch.svg' },
-    { name: 'Felchen', image: '/assets/fish-whitefish.svg' },
-    { name: 'Saibling', image: '/assets/fish-char.svg' }
-  ];
+
+  public fishFilterOptions: FishFilterOption[] = [];
+  public regionFilterOptions: string[] = [];
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private ngZone: NgZone,
     private cdr: ChangeDetectorRef,
-    private lakeService: LakeService,
-    public prefs: UiPreferencesService
+    private lakeService: LakeService
   ) {
-    // Lade Statistiken beim Start
     this.loadStatistics();
+  }
+
+  async ngAfterViewInit(): Promise<void> {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    try {
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      const leafletModule = await import('leaflet');
+      this.L = (leafletModule as any).default || leafletModule;
+      await import('leaflet.markercluster');
+
+      this.fixLeafletIconPath();
+      await this.loadFilterOptions();
+      await new Promise(resolve => setTimeout(resolve, 150));
+
+      this.initMap();
+      await this.addMarkers();
+      this.cdr.detectChanges();
+
+      this.documentClickHandler = () => {
+        if (this.isFishDropdownOpen || this.isRegionDropdownOpen) {
+          this.ngZone.run(() => {
+            this.isFishDropdownOpen = false;
+            this.isRegionDropdownOpen = false;
+            this.cdr.detectChanges();
+          });
+        }
+      };
+      document.addEventListener('click', this.documentClickHandler);
+    } catch (error) {
+      console.error('Error loading map:', error);
+      this.loadFailed.emit();
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.documentClickHandler) {
+      document.removeEventListener('click', this.documentClickHandler);
+    }
+  }
+
+  get fishButtonLabel(): string {
+    return this.selectedFishFilters.length > 0
+      ? `Nach Fischart (${this.selectedFishFilters.length})`
+      : 'Nach Fischart';
+  }
+
+  get regionButtonLabel(): string {
+    return this.selectedRegionFilters.length > 0
+      ? `Nach Kanton (${this.selectedRegionFilters.length})`
+      : 'Nach Kanton';
+  }
+
+  get hasActiveFilters(): boolean {
+    return this.freeFishingOnly || this.selectedFishFilters.length > 0 || this.selectedRegionFilters.length > 0;
+  }
+
+  get activeFilterChips(): string[] {
+    const chips = [
+      ...this.selectedFishFilters.map(fish => `Fisch: ${fish}`),
+      ...this.selectedRegionFilters.map(region => `Kanton: ${region}`)
+    ];
+
+    if (this.freeFishingOnly) {
+      chips.unshift('Gratis Fischen');
+    }
+
+    return chips;
+  }
+
+  async filterLakes(filterType: string): Promise<void> {
+    if (filterType === 'all') {
+      this.resetAllFilters();
+      return;
+    }
+
+    if (filterType === 'free') {
+      this.freeFishingOnly = !this.freeFishingOnly;
+      await this.applyCombinedFilters();
+    }
+  }
+
+  toggleFishDropdown(event: Event): void {
+    event.stopPropagation();
+    this.isFishDropdownOpen = !this.isFishDropdownOpen;
+    this.isRegionDropdownOpen = false;
+    this.cdr.detectChanges();
+  }
+
+  toggleRegionDropdown(event: Event): void {
+    event.stopPropagation();
+    this.isRegionDropdownOpen = !this.isRegionDropdownOpen;
+    this.isFishDropdownOpen = false;
+    this.cdr.detectChanges();
+  }
+
+  async toggleFishFilter(species: string, event?: Event): Promise<void> {
+    event?.stopPropagation();
+
+    if (this.selectedFishFilters.includes(species)) {
+      this.selectedFishFilters = this.selectedFishFilters.filter(item => item !== species);
+    } else {
+      this.selectedFishFilters = [...this.selectedFishFilters, species];
+    }
+
+    await this.applyCombinedFilters();
+  }
+
+  async toggleRegionFilter(region: string, event?: Event): Promise<void> {
+    event?.stopPropagation();
+
+    if (this.selectedRegionFilters.includes(region)) {
+      this.selectedRegionFilters = this.selectedRegionFilters.filter(item => item !== region);
+    } else {
+      this.selectedRegionFilters = [...this.selectedRegionFilters, region];
+    }
+
+    await this.applyCombinedFilters();
+  }
+
+  async removeFilterChip(chip: string): Promise<void> {
+    if (chip === 'Gratis Fischen') {
+      this.freeFishingOnly = false;
+    } else if (chip.startsWith('Fisch: ')) {
+      const fish = chip.replace('Fisch: ', '');
+      this.selectedFishFilters = this.selectedFishFilters.filter(item => item !== fish);
+    } else if (chip.startsWith('Kanton: ')) {
+      const region = chip.replace('Kanton: ', '');
+      this.selectedRegionFilters = this.selectedRegionFilters.filter(item => item !== region);
+    }
+
+    await this.applyCombinedFilters();
+  }
+
+  isFishSelected(species: string): boolean {
+    return this.selectedFishFilters.includes(species);
+  }
+
+  isRegionSelected(region: string): boolean {
+    return this.selectedRegionFilters.includes(region);
+  }
+
+  getLakeId(name: string): string {
+    return name.toLowerCase()
+      .replace(/ä/g, 'ae')
+      .replace(/ö/g, 'oe')
+      .replace(/ü/g, 'ue')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  }
+
+  closeSidebar(): void {
+    this.isSidebarOpen.set(false);
+    this.selectedLake.set(null);
+    this.selectedLakeData = null;
+    this.cdr.detectChanges();
   }
 
   private async loadStatistics(): Promise<void> {
@@ -67,48 +218,119 @@ export class Map implements AfterViewInit {
     this.freeFishingCount = await this.lakeService.getFreeFishingLakeCount();
   }
 
-  async ngAfterViewInit(): Promise<void> {
-    if (isPlatformBrowser(this.platformId)) {
-      try {
-        await new Promise(resolve => setTimeout(resolve, 300));
-        
-        const leafletModule = await import('leaflet');
-        this.L = (leafletModule as any).default || leafletModule;
-        
-        // Import MarkerCluster dynamisch und erweitere Leaflet
-        const markerClusterModule = await import('leaflet.markercluster');
-        
-        this.fixLeafletIconPath();
-        
-        await new Promise(resolve => setTimeout(resolve, 150));
-        
-        this.initMap();
-        await this.addMarkers();
-        
-        this.cdr.detectChanges();
-        setTimeout(() => this.cdr.detectChanges(), 100);
-        setTimeout(() => this.cdr.detectChanges(), 300);
-        
-        // Global Click Handler zum Schließen der Dropdowns
-        document.addEventListener('click', () => {
-          if (this.isFishDropdownOpen || this.isRegionDropdownOpen) {
-            this.ngZone.run(() => {
-              this.isFishDropdownOpen = false;
-              this.isRegionDropdownOpen = false;
-              this.cdr.detectChanges();
-            });
-          }
-        });
-        
-        console.log('Map initialization complete - ready for interaction');
-      } catch (error) {
-        console.error('Error loading map:', error);
-        this.loadFailed.emit();
-      }
-    }   
+  private async loadFilterOptions(): Promise<void> {
+    const lakes = await this.lakeService.getLakes();
+    const uniqueSpecies = [...new Set(lakes.flatMap(lake => lake.fishSpecies || []))]
+      .sort((a, b) => a.localeCompare(b, 'de'));
+
+    const uniqueCantons = [...new Set(
+      lakes.flatMap(lake => this.extractCantons(lake.cantons))
+    )].sort((a, b) => a.localeCompare(b, 'de'));
+
+    this.fishFilterOptions = uniqueSpecies.map(value => ({
+      value,
+      image: this.getFishImage(value)
+    }));
+    this.regionFilterOptions = uniqueCantons;
   }
 
-  // ADD THIS NEW METHOD!
+  private extractCantons(rawCantons: string): string[] {
+    return rawCantons
+      .split(',')
+      .map(canton => canton.trim())
+      .filter(Boolean);
+  }
+
+  private getFishImage(species: string): string {
+    const lower = species.toLowerCase();
+
+    if (lower.includes('hecht')) return '/assets/fish-pike.svg';
+    if (lower.includes('zander')) return '/assets/fish-zander.svg';
+    if (lower.includes('barsch') || lower.includes('egli')) return '/assets/fish-perch.svg';
+    if (lower.includes('forelle')) return '/assets/fish-trout.svg';
+    if (
+      lower.includes('saibling') ||
+      lower.includes('rötel') ||
+      lower.includes('roetel') ||
+      lower.includes('namaycush')
+    ) {
+      return '/assets/fish-char.svg';
+    }
+    if (
+      lower.includes('felchen') ||
+      lower.includes('balchen') ||
+      lower.includes('äsche') ||
+      lower.includes('aesche')
+    ) {
+      return '/assets/fish-whitefish.svg';
+    }
+
+    return '/assets/fish-whitefish.svg';
+  }
+
+  private async applyCombinedFilters(): Promise<void> {
+    const lakes = await this.lakeService.getLakes();
+    const filteredLakes = lakes.filter(lake => {
+      const matchesFree = !this.freeFishingOnly || lake.freeFishing;
+      const matchesFish = this.selectedFishFilters.length === 0 || this.selectedFishFilters.every(selectedFish =>
+        (lake.fishSpecies || []).some(lakeFish => this.matchesSpecies(lakeFish, selectedFish))
+      );
+      const lakeCantons = this.extractCantons(lake.cantons);
+      const matchesRegion = this.selectedRegionFilters.length === 0 || this.selectedRegionFilters.some(selectedRegion =>
+        lakeCantons.some(lakeCanton => lakeCanton.toLowerCase() === selectedRegion.toLowerCase())
+      );
+
+      return matchesFree && matchesFish && matchesRegion;
+    });
+
+    this.activeFilter.set(this.hasActiveFilters ? 'combined' : 'all');
+    this.filterMarkersByLakes(filteredLakes);
+
+    if (this.selectedLakeData) {
+      const isStillVisible = filteredLakes.some(lake => lake.name === this.selectedLakeData?.name);
+      if (!isStillVisible) {
+        this.closeSidebar();
+      }
+    }
+
+    this.cdr.detectChanges();
+  }
+
+  private matchesSpecies(lakeFish: string, selectedFish: string): boolean {
+    const normalizedLakeFish = lakeFish.toLowerCase();
+    const normalizedSelectedFish = selectedFish.toLowerCase();
+
+    return normalizedLakeFish === normalizedSelectedFish
+      || normalizedLakeFish.includes(normalizedSelectedFish)
+      || normalizedSelectedFish.includes(normalizedLakeFish);
+  }
+
+  private resetAllFilters(): void {
+    this.selectedFishFilters = [];
+    this.selectedRegionFilters = [];
+    this.freeFishingOnly = false;
+    this.activeFilter.set('all');
+    this.isFishDropdownOpen = false;
+    this.isRegionDropdownOpen = false;
+
+    this.markerClusterGroup.clearLayers();
+    this.allMarkers.forEach(marker => this.markerClusterGroup.addLayer(marker));
+    this.cdr.detectChanges();
+  }
+
+  private filterMarkersByLakes(lakes: Lake[]): void {
+    this.markerClusterGroup.clearLayers();
+
+    this.allMarkers.forEach(marker => {
+      const lakeData = (marker as any).lakeData as Lake;
+      const shouldShow = lakes.some(lake => lake.name === lakeData.name);
+
+      if (shouldShow) {
+        this.markerClusterGroup.addLayer(marker);
+      }
+    });
+  }
+
   private fixLeafletIconPath(): void {
     if (this.L?.Icon?.Default) {
       delete (this.L.Icon.Default.prototype as any)._getIconUrl;
@@ -121,15 +343,11 @@ export class Map implements AfterViewInit {
   }
 
   private initMap(): void {
-    console.log('Initializing map...');
     const mapElement = document.getElementById('map');
     if (!mapElement) {
-      console.error('Map element not found!');
       return;
     }
-    
-    console.log('Map element found:', mapElement.offsetWidth, 'x', mapElement.offsetHeight);
-    
+
     this.map = this.L.map('map', {
       center: [46.8182, 8.2275],
       zoom: 9,
@@ -143,27 +361,12 @@ export class Map implements AfterViewInit {
       attribution: '© OpenStreetMap contributors',
       maxZoom: 19
     }).addTo(this.map);
-    
-    // Force map to recalculate its size multiple times to ensure proper rendering
-    setTimeout(() => {
-      if (this.map) {
-        this.map.invalidateSize();
-        console.log('Map size invalidated (100ms)');
-      }
-    }, 100);
-    
-    setTimeout(() => {
-      if (this.map) {
-        this.map.invalidateSize();
-        console.log('Map initialized successfully (300ms)');
-      }
-    }, 300);
+
+    setTimeout(() => this.map?.invalidateSize(), 100);
+    setTimeout(() => this.map?.invalidateSize(), 300);
   }
 
   private async addMarkers(): Promise<void> {
-    console.log('Adding markers...');
-    
-    // Erstelle MarkerClusterGroup mit Optionen
     this.markerClusterGroup = this.L.markerClusterGroup({
       showCoverageOnHover: false,
       zoomToBoundsOnClick: true,
@@ -174,7 +377,7 @@ export class Map implements AfterViewInit {
         const count = cluster.getChildCount();
         let size = 'small';
         let iconSize = 45;
-        
+
         if (count > 20) {
           size = 'large';
           iconSize = 55;
@@ -182,7 +385,7 @@ export class Map implements AfterViewInit {
           size = 'medium';
           iconSize = 50;
         }
-        
+
         return this.L.divIcon({
           html: `<div><span>${count}</span></div>`,
           className: `marker-cluster marker-cluster-${size}`,
@@ -190,7 +393,7 @@ export class Map implements AfterViewInit {
         });
       }
     });
-    
+
     const customIcon = this.L.divIcon({
       className: 'custom-marker',
       iconSize: [20, 20],
@@ -200,195 +403,39 @@ export class Map implements AfterViewInit {
     const lakes = await this.lakeService.getLakes();
     lakes.forEach(lake => {
       const marker = this.L.marker(lake.coords, { icon: customIcon });
-      
-      // Speichere Marker mit See-Daten für späteres Filtern
       (marker as any).lakeData = lake;
       this.allMarkers.push(marker);
 
-      // Event-Handler für Marker-Klicks mit NgZone für Change Detection
       marker.on('click', (e: any) => {
-        // Verhindere Event-Bubbling zur Karte
         if (e.originalEvent) {
           e.originalEvent.stopPropagation();
         }
-        
-        console.log('=== Marker clicked:', lake.name, '===');
+
         this.ngZone.run(() => {
-          // Zentriere die Karte auf den ausgewählten See
           this.map.panTo(lake.coords);
-          
-          const lakeCopy = { ...lake };
-          this.selectedLakeData = lakeCopy;
-          this.isSidebarOpen.set(true);
+          this.selectedLakeData = null;
+          this.isSidebarOpen.set(false);
           this.cdr.detectChanges();
+
+          setTimeout(() => {
+            this.selectedLakeData = { ...lake };
+            this.isSidebarOpen.set(true);
+            this.cdr.detectChanges();
+          }, 50);
         });
       });
-      
-      // Füge Marker zur Cluster-Gruppe hinzu
+
       this.markerClusterGroup.addLayer(marker);
     });
-    
-    // Füge die Cluster-Gruppe zur Karte hinzu
+
     this.map.addLayer(this.markerClusterGroup);
-    
-    // Event-Handler für Karten-Klicks (schließt Sidebar)
+
     this.map.on('click', () => {
-      console.log('Map clicked (not marker)');
       this.ngZone.run(() => {
         if (this.isSidebarOpen()) {
           this.closeSidebar();
         }
       });
     });
-    
-    console.log('Added', lakes.length, 'markers to map with clustering');
-    console.log('Map setup complete, ready for interaction');
-  }
-
-  // Filter-Methoden
-  async filterLakes(filterType: string): Promise<void> {
-    if (filterType === 'all') {
-      this.activeFilter.set('all');
-      this.selectedFishFilters = [];
-      this.selectedRegionFilters = [];
-      this.freeFishingOnly = false;
-      this.markerClusterGroup.clearLayers();
-      this.allMarkers.forEach(marker => {
-        this.markerClusterGroup.addLayer(marker);
-      });
-      this.cdr.detectChanges();
-      return;
-    }
-
-    if (filterType === 'free') {
-      this.freeFishingOnly = !this.freeFishingOnly;
-      this.activeFilter.set(this.freeFishingOnly ? 'free' : (this.selectedFishFilters.length > 0 ? 'fish' : (this.selectedRegionFilters.length > 0 ? 'region' : 'all')));
-      await this.applyCombinedFilters();
-    }
-
-    this.cdr.detectChanges();
-  }
-
-  async filterByFishSpecies(species: string, event?: Event): Promise<void> {
-    event?.stopPropagation();
-
-    const isSelected = this.selectedFishFilters.includes(species);
-    this.selectedFishFilters = isSelected
-      ? this.selectedFishFilters.filter((entry) => entry !== species)
-      : [...this.selectedFishFilters, species];
-
-    if (this.selectedFishFilters.length === 0) {
-      await this.applyCombinedFilters();
-      return;
-    }
-
-    this.activeFilter.set(this.freeFishingOnly ? 'free' : 'fish');
-    await this.applyCombinedFilters();
-    this.cdr.detectChanges();
-  }
-
-  async filterByRegion(region: string, event?: Event): Promise<void> {
-    event?.stopPropagation();
-
-    const isSelected = this.selectedRegionFilters.includes(region);
-    this.selectedRegionFilters = isSelected
-      ? this.selectedRegionFilters.filter((entry) => entry !== region)
-      : [...this.selectedRegionFilters, region];
-
-    this.activeFilter.set(
-      this.freeFishingOnly
-        ? 'free'
-        : this.selectedRegionFilters.length > 0
-          ? 'region'
-          : this.selectedFishFilters.length > 0
-            ? 'fish'
-            : 'all'
-    );
-    await this.applyCombinedFilters();
-    this.cdr.detectChanges();
-  }
-
-  private async applyCombinedFilters(): Promise<void> {
-    const lakes = await this.lakeService.getLakes();
-
-    const filteredLakes = lakes.filter((lake) => {
-      const matchesFish =
-        this.selectedFishFilters.length === 0 ||
-        this.selectedFishFilters.every((speciesFilter) => lake.fishSpecies.includes(speciesFilter));
-
-      const matchesRegion =
-        this.selectedRegionFilters.length === 0 ||
-        this.selectedRegionFilters.some((regionFilter) =>
-          lake.cantons.toLowerCase().includes(regionFilter.toLowerCase())
-        );
-
-      const matchesFreeFishing = !this.freeFishingOnly || lake.freeFishing;
-
-      return matchesFish && matchesRegion && matchesFreeFishing;
-    });
-
-    if (this.selectedFishFilters.length === 0 && this.selectedRegionFilters.length === 0 && !this.freeFishingOnly) {
-      this.activeFilter.set('all');
-    }
-
-    this.filterMarkersByLakes(filteredLakes);
-  }
-
-  private filterMarkersByLakes(lakes: Lake[]): void {
-    // Entferne alle Marker aus der Cluster-Gruppe
-    this.markerClusterGroup.clearLayers();
-    
-    // Füge nur die gefilterten Marker zur Cluster-Gruppe hinzu
-    this.allMarkers.forEach(marker => {
-      const lakeData = (marker as any).lakeData as Lake;
-      const shouldShow = lakes.some(lake => lake.name === lakeData.name);
-      
-      if (shouldShow) {
-        this.markerClusterGroup.addLayer(marker);
-      }
-    });
-  }
-
-  // Neue Methode zum Schließen der Sidebar
-  closeSidebar(): void {
-    this.isSidebarOpen.set(false);
-    this.selectedLake.set(null);
-    this.selectedLakeData = null;
-    this.cdr.detectChanges();
-    console.log('Sidebar closed');
-  }
-
-  // Dropdown Toggle-Methoden
-  toggleFishDropdown(event: Event): void {
-    event.stopPropagation(); // Verhindere, dass das Event weitergeleitet wird
-    this.isFishDropdownOpen = !this.isFishDropdownOpen;
-    this.isRegionDropdownOpen = false; // Schließe das andere Dropdown
-    this.cdr.detectChanges();
-  }
-
-  toggleRegionDropdown(event: Event): void {
-    event.stopPropagation();
-    this.isRegionDropdownOpen = !this.isRegionDropdownOpen;
-    this.isFishDropdownOpen = false; // Schließe das andere Dropdown
-    this.cdr.detectChanges();
-  }
-
-  // Gibt die ID des Sees zurück (aus Lake-Objekt)
-  getLakeId(name: string): string {
-    // Fallback falls keine ID vorhanden ist
-    return name.toLowerCase()
-      .replace(/ä/g, 'ae')
-      .replace(/ö/g, 'oe')
-      .replace(/ü/g, 'ue')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '');
-  }
-
-  isFishSelected(species: string): boolean {
-    return this.selectedFishFilters.includes(species);
-  }
-
-  isRegionSelected(region: string): boolean {
-    return this.selectedRegionFilters.includes(region);
   }
 }

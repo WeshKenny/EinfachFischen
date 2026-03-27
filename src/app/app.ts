@@ -13,6 +13,7 @@ export class App {
   protected readonly title = signal('my-app');
   languages: AppLanguage[] = ['de', 'fr', 'it', 'en'];
   isLanguageMenuOpen = false;
+  isMobileMenuOpen = false;
 
   private lastScrollPosition = 0;
   isTopbarHidden = false;
@@ -36,6 +37,7 @@ export class App {
   @HostListener('document:click')
   onDocumentClick() {
     this.isLanguageMenuOpen = false;
+    this.isMobileMenuOpen = false;
   }
 
   setLanguage(language: AppLanguage) {
@@ -49,5 +51,14 @@ export class App {
 
   closeLanguageMenu() {
     this.isLanguageMenuOpen = false;
+  }
+
+  toggleMobileMenu(event: Event) {
+    event.stopPropagation();
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu() {
+    this.isMobileMenuOpen = false;
   }
 }

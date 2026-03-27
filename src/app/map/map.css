@@ -1,65 +1,41 @@
-/* Host-Element auf volle Größe setzen */
 :host {
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: transparent; /* Kein weißer Hintergrund */
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent;
 }
 
 .filter-section {
-  width: 100%; /* Volle Breite für Zentrierung */
-  margin: 0 auto 0.75rem auto;
+  width: 100%;
+  margin: 0 auto 0.9rem;
   position: relative;
   z-index: 100;
-  text-align: center; /* Zentriert den Inhalt */
+  text-align: center;
 }
 
-.active-filter-chips {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 0.75rem;
-}
-
-.active-filter-chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  border: 1px solid var(--border);
-  color: var(--accent-strong);
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-
-/* Der eigentliche Filter-Container - NUR so groß wie nötig */
 .filter-container {
-  display: inline-flex; /* WICHTIG: inline-flex statt flex */
+  display: inline-flex;
   gap: 0.5rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  
-  /* Hier kommt das Styling, das vorher bei .filter-section war */
   padding: 0.6rem 1.25rem;
-  background: var(--surface-soft);
+  background: rgba(15, 23, 42, 0.5);
   border-radius: 18px;
-  box-shadow: 0 18px 40px var(--shadow);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(2, 8, 23, 0.18);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(96, 165, 250, 0.18);
 }
 
 .filter-btn {
-  padding: 0.5rem 1rem; /* Kompakter */
-  background: var(--surface-strong);
-  color: var(--text-main);
-  border: 1px solid var(--border);
+  padding: 0.62rem 1rem;
+  background: rgba(15, 23, 42, 0.64);
+  color: #e2e8f0;
+  border: 1.5px solid rgba(96, 165, 250, 0.25);
   border-radius: 999px;
   cursor: pointer;
-  font-size: 0.875rem; /* Etwas kleiner */
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   transition: all 0.25s ease;
   display: flex;
   align-items: center;
@@ -68,165 +44,176 @@
 }
 
 .filter-btn:hover {
-  background: var(--accent-soft);
-  border-color: var(--border);
-  transform: translateY(-1px); /* Weniger Movement */
-  box-shadow: 0 10px 24px var(--shadow);
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(96, 165, 250, 0.48);
+  transform: translateY(-1px);
 }
 
 .filter-btn.active {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
-  border-color: var(--accent-strong);
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.95) 0%, rgba(37, 99, 235, 0.95) 100%);
+  border-color: rgba(147, 197, 253, 0.9);
   color: white;
-  box-shadow: 0 12px 28px var(--shadow);
-}
-
-.filter-btn.free-fishing.active {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
-  border-color: var(--accent-strong);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
 }
 
 .filter-btn.reset-btn {
-  background: var(--accent-soft);
-  border-color: var(--border);
+  background: rgba(30, 41, 59, 0.9);
 }
 
-.filter-btn.reset-btn:hover {
-  background: var(--accent-soft);
-  border-color: var(--accent);
-}
-
-/* Dropdown Styling */
 .filter-dropdown {
   position: relative;
   display: inline-block;
   z-index: 200;
 }
 
-.dropdown-toggle {
-  position: relative;
-}
-
 .dropdown-toggle::after {
-  content: ' ▼';
-  font-size: 0.65rem; /* Kleiner */
-  margin-left: 0.25rem;
+  content: '▼';
+  font-size: 0.65rem;
+  margin-left: 0.35rem;
   opacity: 0.7;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;
+  top: calc(100% + 0.45rem);
   left: 0;
-  margin-top: 0.4rem; /* Näher am Button */
-  background: var(--surface-strong);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  box-shadow: 0 18px 35px var(--shadow);
-  min-width: 250px;
-  z-index: 300;
-  backdrop-filter: blur(10px);
-  overflow: hidden;
+  min-width: 260px;
+  max-height: min(460px, 65vh);
+  overflow-y: auto;
+  background: rgba(15, 23, 42, 0.98);
+  border: 1px solid rgba(96, 165, 250, 0.26);
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(2, 8, 23, 0.35);
+  backdrop-filter: blur(12px);
+  overflow-x: hidden;
 }
 
-/* Dropdown öffnen wenn die Dropdown-Komponente die Klasse 'open' hat */
+.dropdown-content-fish {
+  min-width: 360px;
+}
+
 .filter-dropdown.open .dropdown-content {
   display: block;
-  animation: slideDown 0.25s ease; /* Schneller */
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px); /* Weniger Movement */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .dropdown-item {
   width: 100%;
-  padding: 0.6rem 1rem; /* Kompakter */
+  padding: 0.75rem 1rem;
   background: transparent;
-  color: var(--text-main);
+  color: #e2e8f0;
   border: none;
+  border-bottom: 1px solid rgba(96, 165, 250, 0.12);
   text-align: left;
   cursor: pointer;
-  font-size: 0.85rem; /* Kleiner */
-  transition: all 0.2s ease;
-  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+  transition: background 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
 }
 
 .dropdown-item:last-child {
   border-bottom: none;
 }
 
-.dropdown-item:hover {
-  background: var(--accent-soft);
-  color: var(--text-main);
-  padding-left: 1.15rem; /* Weniger Shift */
+.dropdown-item:hover,
+.dropdown-item.selected {
+  background: rgba(96, 165, 250, 0.14);
 }
 
-.fish-option {
+.dropdown-item-main,
+.region-dropdown-item {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  width: 100%;
+  gap: 0.9rem;
 }
 
-.fish-option.selected {
-  background: var(--accent-soft);
-  color: var(--text-main);
-  box-shadow: inset 0 0 0 1px var(--accent);
-}
-
-.region-option.selected {
-  background: var(--accent-soft);
-  color: var(--text-main);
-  box-shadow: inset 0 0 0 1px var(--accent);
-}
-
-.fish-option-state {
-  margin-left: auto;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--accent-strong);
-  background: var(--accent-soft);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 0.25rem 0.5rem;
+.region-dropdown-item .dropdown-item-label {
+  flex: 1;
 }
 
 .fish-option-image {
-  width: 76px;
-  height: 46px;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: var(--surface);
+  width: 88px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   flex-shrink: 0;
+}
+
+.fish-option-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dropdown-item-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.selected-badge {
+  margin-left: auto;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(96, 165, 250, 0.28);
+  background: rgba(59, 130, 246, 0.16);
+  color: #60a5fa;
+  font-size: 0.84rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.active-filter-chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.7rem;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(96, 165, 250, 0.22);
+  background: rgba(96, 165, 250, 0.12);
+  color: #dbeafe;
+  font: inherit;
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+
+.filter-chip-close {
+  font-size: 1rem;
+  line-height: 1;
 }
 
 #map {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   border-radius: 24px;
   z-index: 1;
 }
+
 .map-component-wrapper {
-  width: 85% !important;
-  max-width: 1400px !important;
-  height: 75vh !important; /* Viewport-basiert statt fester Höhe */
-  max-height: 850px !important;
-  min-height: 500px !important;
-  margin: 1rem auto !important;
+  width: min(1180px, calc(100% - 3rem));
+  height: 72vh;
+  min-height: 460px;
+  max-height: 820px;
+  margin: 0 auto;
   position: relative;
-  padding: 0;
   z-index: 1;
 }
 
@@ -236,43 +223,56 @@
   height: 100%;
   border-radius: 24px;
   overflow: hidden;
-  z-index: 1; /* Bleibt niedrig */
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  border: none;
+  background: rgba(2, 8, 23, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 1000;
+}
+
+.sidebar-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .sidebar {
   position: fixed;
-  top: 0; /* Von ganz oben - keine Lücke mehr! */
+  top: 0;
   right: -420px;
   width: 420px;
-  height: 100vh; /* Volle Höhe des Viewports */
-  background: var(--sidebar-bg) !important;
+  height: 100vh;
+  background: var(--sidebar-bg);
   backdrop-filter: blur(12px);
-  border-left: 2px solid var(--border);
+  border-left: 1px solid var(--border);
   transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
-  border-radius: 0;
   overflow-y: auto;
-  overflow-x: hidden;
   opacity: 0;
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
-  z-index: 1001; /* ÜBER der Topbar (Topbar hat z-index: 1000) */
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.25);
+  z-index: 1002;
   pointer-events: none;
 }
 
 .sidebar.open {
-  right: 0; /* Slide in von rechts */
+  right: 0;
   opacity: 1;
-  pointer-events: auto; /* Aktiviert Klicks wenn geöffnet */
+  pointer-events: auto;
 }
 
 .sidebar-content {
-  padding: 80px 20px 24px 20px; /* Mehr Padding oben wegen Topbar */
+  padding: 64px 20px 24px;
   color: var(--text-main);
 }
 
 .sidebar-content h2 {
   color: var(--accent);
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.9rem;
+  margin-bottom: 1.1rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--border);
 }
@@ -280,37 +280,28 @@
 .detail-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.9rem 1.5rem;
+  padding: 0.95rem 1.5rem;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
   color: white;
   text-decoration: none;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px var(--shadow);
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 10px 24px var(--shadow);
   margin-bottom: 1.5rem;
-  font-size: 1rem;
-}
-
-.detail-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--shadow);
-  background: linear-gradient(135deg, var(--accent-strong) 0%, #1e40af 100%);
 }
 
 .lake-section {
   margin-bottom: 1.5rem;
   background: var(--sidebar-surface);
   padding: 1rem;
-  border-radius: 12px;
+  border-radius: 16px;
 }
 
 .lake-section h3 {
   color: var(--accent);
   font-size: 1.1rem;
   margin-bottom: 1rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .lake-info {
@@ -323,19 +314,17 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0.5rem 0;
+  gap: 1rem;
 }
 
 .info-label {
   color: var(--text-muted);
   font-weight: 500;
-  flex-shrink: 0;
-  margin-right: 1rem;
 }
 
 .info-value {
   color: var(--text-main);
-  font-weight: 600;
+  font-weight: 700;
   text-align: right;
 }
 
@@ -344,7 +333,7 @@
 }
 
 .info-value.permit {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   line-height: 1.4;
 }
 
@@ -358,34 +347,24 @@
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
   color: white;
   padding: 0.5rem 1rem;
-  border-radius: 20px;
+  border-radius: 999px;
   font-size: 0.9rem;
-  font-weight: 500;
-  box-shadow: 0 2px 8px var(--shadow);
-  transition: all 0.3s ease;
-}
-
-.fish-tag:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--shadow);
+  font-weight: 600;
 }
 
 .close-button {
   position: absolute;
   top: 16px;
   right: 16px;
-  background: transparent;
+  width: 36px;
+  height: 36px;
   border: none;
+  border-radius: 50%;
+  background: transparent;
   color: var(--text-muted);
   font-size: 24px;
   cursor: pointer;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: all 0.3s ease;
+  z-index: 3;
 }
 
 .close-button:hover {
@@ -393,120 +372,6 @@
   color: var(--accent);
 }
 
-/* Responsive Anpassungen */
-@media (min-width: 1600px) {
-    .map-component-wrapper {
-        width: 88%;
-        max-width: 1600px;
-        height: 80vh;
-        max-height: 900px;
-    }
-    
-    .filter-section {
-        width: 88%;
-        max-width: 1600px;
-    }
-}
-
-@media (max-width: 1440px) {
-    .map-component-wrapper {
-        width: 90%;
-        height: 70vh;
-        max-height: 750px;
-    }
-    
-    .filter-section {
-        width: 90%;
-    }
-    
-    .filter-btn {
-        padding: 0.45rem 0.9rem;
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 1024px) {
-    .map-component-wrapper {
-        width: 92%;
-        height: 65vh;
-        max-height: 650px;
-        min-height: 450px;
-    }
-    
-    .filter-section {
-        width: 92%;
-    }
-    
-    .filter-container {
-        gap: 0.4rem;
-        padding: 0.5rem 1rem;
-    }
-    
-    .filter-btn {
-        padding: 0.4rem 0.85rem;
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .map-component-wrapper {
-        width: 96%;
-        height: 60vh;
-        max-height: 500px;
-        min-height: 400px;
-        margin: 0.75rem auto;
-    }
-    
-    .filter-section {
-        width: 96%;
-        margin-bottom: 0.5rem;
-    }
-    
-    .filter-container {
-        gap: 0.3rem;
-        padding: 0.45rem 0.85rem;
-    }
-    
-    .filter-btn {
-        padding: 0.35rem 0.75rem;
-        font-size: 0.75rem;
-        white-space: nowrap;
-        border-width: 1px;
-    }
-    
-    .dropdown-content {
-        min-width: 220px;
-    }
-    
-    .dropdown-item {
-        padding: 0.5rem 0.85rem;
-        font-size: 0.8rem;
-    }
-    
-    .sidebar {
-        width: 90%;
-        max-width: 400px;
-        right: -90%;
-    }
-    
-    .sidebar.open {
-        right: 0;
-    }
-}
-
-.header h1 {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 5px;
-}
-
-.header p {
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-/* Rest of your marker and popup styles stay the same... */
 ::ng-deep .custom-marker {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%) !important;
   width: 30px !important;
@@ -517,129 +382,103 @@
   cursor: pointer !important;
 }
 
-::ng-deep .custom-marker div {
-  width: 100% !important;
-  height: 100% !important;
-  border-radius: 50% !important;
-}
-
-::ng-deep .custom-marker:hover {
-  transform: scale(1.2);
-  box-shadow: 0 6px 20px var(--shadow) !important;
-}
-
-::ng-deep .leaflet-popup-content-wrapper {
-  background: var(--surface-strong);
-  backdrop-filter: blur(10px);
-  color: var(--text-main);
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  box-shadow: 0 8px 32px var(--shadow);
-}
-
-::ng-deep .leaflet-popup-content {
-  margin: 16px;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-::ng-deep .leaflet-popup-content h3 {
-  color: var(--accent);
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
-}
-
-::ng-deep .lake-info {
-  display: grid;
-  gap: 8px;
-}
-
-::ng-deep .info-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 4px 0;
-}
-
-::ng-deep .info-label {
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-::ng-deep .info-value {
-  color: #e2e8f0;
-  font-weight: 600;
-}
-
-::ng-deep .leaflet-popup-tip {
-  background: var(--surface-strong);
-  border: 1px solid var(--border);
-}
-
-::ng-deep .leaflet-container a.leaflet-popup-close-button {
-  color: var(--text-muted);
-  font-size: 20px;
-}
-
-::ng-deep .leaflet-container a.leaflet-popup-close-button:hover {
-  color: var(--accent);
-}
-
-/* Marker Cluster Styling */
-::ng-deep .marker-cluster-small {
-  background-color: rgba(59, 130, 246, 0.7);
-}
-
-::ng-deep .marker-cluster-small div {
-  background-color: rgba(59, 130, 246, 0.9);
-}
-
-::ng-deep .marker-cluster-medium {
-  background-color: rgba(37, 99, 235, 0.7);
-}
-
-::ng-deep .marker-cluster-medium div {
-  background-color: rgba(37, 99, 235, 0.9);
-}
-
-::ng-deep .marker-cluster-large {
-  background-color: rgba(29, 78, 216, 0.7);
-}
-
-::ng-deep .marker-cluster-large div {
-  background-color: rgba(29, 78, 216, 0.95);
-}
-
-::ng-deep .marker-cluster {
-  background-clip: padding-box;
-  border-radius: 50%;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.2s ease;
-}
-
-::ng-deep .marker-cluster:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-}
-
 ::ng-deep .marker-cluster div {
-  width: calc(100% - 13px);
-  height: calc(100% - 13px);
-  margin: 6.5px;
-  text-align: center;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  font-weight: 700;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  color: white;
+  font-weight: 800;
+  background: rgba(59, 130, 246, 0.88);
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.24);
 }
 
-::ng-deep .marker-cluster span {
-  line-height: 1;
+@media (max-width: 1024px) {
+  .map-component-wrapper {
+    width: min(100%, calc(100% - 2rem));
+    height: 64vh;
+  }
+
+  .dropdown-content-fish {
+    min-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-section {
+    margin-bottom: 0.75rem;
+  }
+
+  .filter-container {
+    width: calc(100% - 1.5rem);
+    padding: 0.75rem;
+  }
+
+  .filter-btn {
+    font-size: 0.88rem;
+    padding: 0.58rem 0.9rem;
+  }
+
+  .dropdown-content,
+  .dropdown-content-fish {
+    width: min(100vw - 2rem, 360px);
+    min-width: 0;
+  }
+
+  .fish-option-image {
+    width: 74px;
+    height: 48px;
+  }
+
+  .map-component-wrapper {
+    width: calc(100% - 1rem);
+    height: 58vh;
+    min-height: 380px;
+  }
+
+  .sidebar {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: min(78vh, 680px);
+    border-left: none;
+    border-top: 1px solid var(--border);
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -16px 36px rgba(0, 0, 0, 0.3);
+    transform: translateY(100%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .sidebar.open {
+    right: 0;
+    transform: translateY(0);
+  }
+
+  .sidebar-content {
+    padding: 0.7rem 1rem calc(84px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .sidebar-content h2 {
+    margin-top: 1.35rem;
+    font-size: 1.65rem;
+  }
+
+  .detail-link {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .close-button {
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    font-size: 28px;
+  }
 }
