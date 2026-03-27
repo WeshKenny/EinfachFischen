@@ -130,7 +130,7 @@ interface Lake {
 
 ```bash
 # Repository klonen
-git clone https://github.com/WeshKenny/Html_ToDoListe.git
+git clone https://github.com/WeshKenny/EinfachFischen.git
 cd EinfachFischen
 
 # Dependencies installieren
