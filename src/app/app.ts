@@ -1,7 +1,8 @@
-import { Component, signal, HostListener } from '@angular/core';
+import { Component, signal, HostListener, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { UiPreferencesService, AppLanguage } from './services/ui-preferences.service';
+import { SeoService } from './services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,22 @@ export class App {
   private lastScrollPosition = 0;
   isTopbarHidden = false;
 
-  constructor(public prefs: UiPreferencesService) {}
+  constructor(
+    public prefs: UiPreferencesService,
+    private router: Router,
+    private seo: SeoService
+  ) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.updateRouteSeo(event.urlAfterRedirects);
+      }
+    });
+
+    effect(() => {
+      this.prefs.language();
+      this.updateRouteSeo(this.router.url);
+    });
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -60,5 +76,28 @@ export class App {
 
   closeMobileMenu() {
     this.isMobileMenuOpen = false;
+  }
+
+  private updateRouteSeo(url: string) {
+    if (url.startsWith('/lake/')) {
+      return;
+    }
+
+    if (url.startsWith('/seen') || url.startsWith('/lakes')) {
+      this.seo.setRouteSeo('lakes', this.prefs.language());
+      return;
+    }
+
+    if (url.startsWith('/about')) {
+      this.seo.setRouteSeo('about', this.prefs.language());
+      return;
+    }
+
+    if (url.startsWith('/contact')) {
+      this.seo.setRouteSeo('contact', this.prefs.language());
+      return;
+    }
+
+    this.seo.setRouteSeo('home', this.prefs.language());
   }
 }

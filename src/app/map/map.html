@@ -81,7 +81,8 @@
 
     <button
       class="filter-btn reset-btn"
-      *ngIf="hasActiveFilters"
+      [class.is-hidden]="!hasActiveFilters"
+      [disabled]="!hasActiveFilters"
       (click)="filterLakes('all')"
       [title]="prefs.t('resetFilters')">
       {{ prefs.t('resetFilters') }}
