@@ -2085,8 +2085,10 @@
   {
     "name": "Lac de Mauvoisin",
     "area": "2.08 km²",
+    "maxDepth": "Unbekannt",
     "elevation": "1961 m",
     "cantons": "Wallis",
+    "bestSeason": "Unbekannt",
     "permitRequired": "SaNa + Walliser Fischereipatent (Kategorie Bergseen und Teiche) erforderlich",
     "coords": [
       45.998056,
