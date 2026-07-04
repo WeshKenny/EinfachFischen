@@ -24,7 +24,8 @@
       "weekly": "CHF 50.00",
       "monthly": "CHF 120.00",
       "annual": "CHF 300.00",
-      "youth": "CHF 80.00"
+      "youth": "CHF 80.00",
+      "link": "https://www.ge.ch/permis-peche"
     },
     "id": "genfersee"
   },
@@ -51,7 +52,8 @@
     "permitPrices": {
       "daily": "Tagespatent CHF 15 für Boot",
       "annual": "Verschiedene Patentarten - Internationale Regelung CH/D/AT",
-      "info": "1 Rute mit Zapfen, einfache Angel, natürlicher Köder (KEIN Köderfisch)"
+      "info": "1 Rute mit Zapfen, einfache Angel, natürlicher Köder (KEIN Köderfisch)",
+      "link": "https://jfv.tg.ch/fischerei.html/8653"
     },
     "id": "bodensee"
   },
@@ -75,7 +77,8 @@
     ],
     "freeFishing": true,
     "permitPrices": {
-      "info": "Besonderheit: 3 schwimmende Angeln mit festem Schwimmer & einfachem Haken! Patentfrei!"
+      "info": "Besonderheit: 3 schwimmende Angeln mit festem Schwimmer & einfachem Haken! Patentfrei!",
+      "link": "https://www.ne.ch/autorites/DDTE/SFFN/faune/Pages/Peche-de-loisir.aspx"
     },
     "id": "neuenburgersee"
   },
@@ -103,7 +106,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www4.ti.ch/dt/da/ucp/temi/pesca/"
     },
     "id": "lago-maggiore"
   },
@@ -135,7 +139,7 @@
     "permitPrices": {
       "annual": "Nur Jahrespatent für LU-Zonen 12 & 14 mit SaNa",
       "info": "Aal & Edelfisch: Fangverbot! Verschiedene Kantone - Regelungen beachten",
-      "link": "https://www.sana.ch/"
+      "link": "https://lawa.lu.ch/fischerei/angelfischerei"
     },
     "regulations": {
       "closedSeasons": "Forellen: 1.10.-25.12., Rötel/Albeli: 1.10.-25.12., Balchen: 15.10.-25.12., Hecht: 15.3.-30.4., Zander: 15.4.-31.5., Äsche: 1.1.-30.9.",
@@ -186,7 +190,8 @@
     "permitPrices": {
       "daily": "Tagespatent verfügbar",
       "annual": "Jahrespatent mit SaNa",
-      "info": "Dreiseen-Patent für Zürich-, Greifen- und Pfäffikersee"
+      "info": "Dreiseen-Patent für Zürich-, Greifen- und Pfäffikersee",
+      "link": "https://www.zh.ch/de/umwelt-tiere/tiere/fischerei.html"
     },
     "regulations": {
       "additionalRules": [
@@ -225,7 +230,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www4.ti.ch/dt/da/ucp/temi/pesca/"
     },
     "id": "luganersee"
   },
@@ -256,7 +262,8 @@
       "weekly": "Wochenpatent ohne SaNa",
       "monthly": "Monatspatent mit SaNa",
       "annual": "Jahrespatent mit SaNa",
-      "info": "217m tief, beliebtes Hegenen- und Schleppfischen"
+      "info": "217m tief, beliebtes Hegenen- und Schleppfischen",
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatent-beziehen.html"
     },
     "regulations": {
       "additionalRules": [
@@ -297,7 +304,7 @@
       "daily": "Tagespatent ohne SaNa",
       "weekly": "Wochenpatent ohne SaNa",
       "annual": "Jahres-/Monatspatent mit SaNa",
-      "link": "https://www.be.ch/fischerei"
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatent-beziehen.html"
     },
     "id": "brienzersee"
   },
@@ -325,7 +332,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatent-beziehen.html"
     },
     "id": "bielersee"
   },
@@ -349,7 +357,8 @@
     ],
     "freeFishing": true,
     "permitPrices": {
-      "info": "Freiangelrecht: 1 Rute mit einfachem Angel, Schwimmer & natürlichem Köder. Verboten: Köderfisch, Löffel, Spinner"
+      "info": "Freiangelrecht: 1 Rute mit einfachem Angel, Schwimmer & natürlichem Köder. Verboten: Köderfisch, Löffel, Spinner",
+      "link": "https://zg.ch/de/natur-umwelt-tiere/wasser-und-gewaesser/fischen"
     },
     "id": "zugersee"
   },
@@ -375,7 +384,8 @@
     "freeFishing": true,
     "permitPrices": {
       "annual": "Nur Wochen- oder Jahrespatente (GL/SG) - Keine Tagespatente!",
-      "info": "Interkantonales Gewässer GL/SG. Gute Trüschenfischerei im Freiangelrecht"
+      "info": "Interkantonales Gewässer GL/SG. Gute Trüschenfischerei im Freiangelrecht",
+      "link": "https://www.sg.ch/umwelt-natur/jagd-fischerei/fischerei/fischereipatente.html"
     },
     "id": "walensee"
   },
@@ -402,7 +412,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.fr.ch/de/energie-landwirtschaft-und-umwelt/fauna-und-biodiversitaet/sektion-fauna-jagd-und-fischerei/fischerei"
     },
     "id": "murtensee"
   },
@@ -426,7 +437,8 @@
     "freeFishing": true,
     "permitPrices": {
       "annual": "Freianglerkarte CHF 50 (Ufer, 1 Rute, natürliche Köder)",
-      "info": "Hallwilerseekarte CHF 150 für Boot & lebende Köderfische. Interkantonales Gewässer AG/LU"
+      "info": "Hallwilerseekarte CHF 150 für Boot & lebende Köderfische. Interkantonales Gewässer AG/LU",
+      "link": "https://www.ag.ch/de/verwaltung/bvu/jagd-fischerei/fischerei/angeln-im-kanton-aargau"
     },
     "id": "hallwilersee"
   },
@@ -457,7 +469,8 @@
       "weekly": "Wochenpatent",
       "monthly": "Monatspatent",
       "annual": "Jahrespatent mit SaNa",
-      "info": "Aal: Fangverbot! Widerhaken nur mit Patent+SaNa"
+      "info": "Aal: Fangverbot! Widerhaken nur mit Patent+SaNa",
+      "link": "https://lawa.lu.ch/fischerei/angelfischerei"
     },
     "regulations": {
       "closedSeasons": "Forellen: 1.10.-25.12., Seesaibling: 1.10.-25.12., Balchen: 15.11.-25.12., Hecht: 15.3.-30.4., Zander: 1.4.-31.5.",
@@ -505,7 +518,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://lawa.lu.ch/fischerei/angelfischerei"
     },
     "id": "baldeggersee"
   },
@@ -533,7 +547,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://zg.ch/de/natur-umwelt-tiere/wasser-und-gewaesser/fischen"
     },
     "id": "aegerisee"
   },
@@ -564,7 +579,8 @@
       "daily": "CHF 21 (Jugend CHF 10) + Kaution CHF 10/5",
       "weekly": "CHF 52 + Kaution CHF 10",
       "annual": "Innerkantonal CHF 170, Ausserkantonal CHF 240 + Kaution CHF 30",
-      "info": "Hecht: 55-80cm & ab 120cm! Wels: Entnahmepflicht! Catch & Release verboten!"
+      "info": "Hecht: 55-80cm & ab 120cm! Wels: Entnahmepflicht! Catch & Release verboten!",
+      "link": "https://www.sz.ch/verwaltung/umweltdepartement/amt-fuer-gewaesser/fischerei/fischerpatente.html/8756-8758-8802-9447-9450-10713-10826"
     },
     "regulations": {
       "closedSeasons": "Alle Forellen: 1.10.-31.12., Raubfische südl./oberer Seeteil: bis 31.5., Bei Fluss-/Bacheinläufen: ab 1.10. im 100m Umkreis",
@@ -615,7 +631,8 @@
     "freeFishing": true,
     "permitPrices": {
       "annual": "Dreiseen-Patent mit SaNa",
-      "info": "25m Abstand zum Schilf beachten"
+      "info": "25m Abstand zum Schilf beachten",
+      "link": "https://www.zh.ch/de/umwelt-tiere/tiere/fischerei.html"
     },
     "regulations": {
       "additionalRules": [
@@ -653,7 +670,8 @@
     "freeFishing": true,
     "permitPrices": {
       "annual": "Dreiseen-Patent mit SaNa",
-      "info": "Keine zeitliche Beschränkung beim Freiangelrecht"
+      "info": "Keine zeitliche Beschränkung beim Freiangelrecht",
+      "link": "https://www.zh.ch/de/umwelt-tiere/tiere/fischerei.html"
     },
     "regulations": {
       "additionalRules": [
@@ -686,7 +704,8 @@
     ],
     "freeFishing": true,
     "permitPrices": {
-      "info": "Freiangelrecht: 1 Rute, nur natürliche Köder (Würmer, Brot, Mais). Kunstköder verboten!"
+      "info": "Freiangelrecht: 1 Rute, nur natürliche Köder (Würmer, Brot, Mais). Kunstköder verboten!",
+      "link": "https://www.zh.ch/de/umwelt-tiere/tiere/fischerei.html"
     },
     "regulations": {
       "closedSeasons": "Hecht: 1.3.-30.4., Felchen: 20.11.-31.12. | 1.3.-30.4.: Nur Hegene + Freiangelrecht!",
@@ -731,7 +750,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.gr.ch/DE/institutionen/verwaltung/diem/ajf/fischerei/Fischen-in-Graubuenden/Seiten/Fischereipatente.aspx"
     },
     "id": "lago-di-poschiavo"
   },
@@ -757,7 +777,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.gr.ch/DE/institutionen/verwaltung/diem/ajf/fischerei/Fischen-in-Graubuenden/Seiten/Fischereipatente.aspx"
     },
     "id": "silsersee"
   },
@@ -783,7 +804,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.gr.ch/DE/institutionen/verwaltung/diem/ajf/fischerei/Fischen-in-Graubuenden/Seiten/Fischereipatente.aspx"
     },
     "id": "silvaplanersee"
   },
@@ -807,7 +829,8 @@
     "freeFishing": true,
     "permitPrices": {
       "annual": "Glarner Jahrespatent mit SaNa für Boot",
-      "info": "1 Rute, einfacher Haken ohne Widerhaken, natürliche Köder oder Fliege"
+      "info": "1 Rute, einfacher Haken ohne Widerhaken, natürliche Köder oder Fliege",
+      "link": "https://www.gl.ch/verwaltung/bau-und-umwelt/umwelt-wald-und-energie/jagd-und-fischerei/fischerei/fischereipatente.html/799"
     },
     "id": "kloentalersee"
   },
@@ -833,7 +856,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatent-beziehen.html"
     },
     "id": "oeschinensee"
   },
@@ -860,7 +884,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.ow.ch/dienstleistungen/2051"
     },
     "id": "sarnersee"
   },
@@ -886,7 +911,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.ow.ch/dienstleistungen/2051"
     },
     "id": "lungerersee"
   },
@@ -913,7 +939,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.vd.ch/environnement/biodiversite-et-paysage/peche-1"
     },
     "id": "lac-de-joux"
   },
@@ -942,7 +969,8 @@
       "daily": "Tageskarte",
       "weekly": "Wochenkarte",
       "annual": "Freianglerkarte CHF 50 (5:00-23:00, nur Ufer, 1 Rute)",
-      "info": "Boot nur in Revier 12 mit Patent. Anfüttern & Kunstköder verboten bei Freiangelrecht"
+      "info": "Boot nur in Revier 12 mit Patent. Anfüttern & Kunstköder verboten bei Freiangelrecht",
+      "link": "https://www.ag.ch/de/verwaltung/bvu/jagd-fischerei/fischerei/angeln-im-kanton-aargau"
     },
     "id": "klingnauer-stausee"
   },
@@ -970,7 +998,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.fr.ch/de/energie-landwirtschaft-und-umwelt/fauna-und-biodiversitaet/sektion-fauna-jagd-und-fischerei/fischerei"
     },
     "id": "lac-de-la-gruy-re"
   },
@@ -997,7 +1026,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.fr.ch/de/energie-landwirtschaft-und-umwelt/fauna-und-biodiversitaet/sektion-fauna-jagd-und-fischerei/fischerei"
     },
     "id": "schiffenensee"
   },
@@ -1011,7 +1041,7 @@
     "permitRequired": "SaNa + Bodensee-Patent (TG) erforderlich",
     "coords": [
       47.665,
-      9.0
+      9
     ],
     "fishSpecies": [
       "Hecht",
@@ -1025,7 +1055,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://jfv.tg.ch/fischerei.html/8653"
     },
     "id": "untersee-bodensee"
   },
@@ -1051,7 +1082,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.sz.ch/verwaltung/umweltdepartement/amt-fuer-gewaesser/fischerei/fischerpatente.html/8756-8758-8802-9447-9450-10713-10826"
     },
     "id": "waegitalersee"
   },
@@ -1074,7 +1106,8 @@
     ],
     "freeFishing": true,
     "permitPrices": {
-      "info": "1 Rute mit Einfachhaken ohne Widerhaken, mit Schwimmer, nur natürliche Köder (keine Köderfische). Anfüttern & Hältern verboten"
+      "info": "1 Rute mit Einfachhaken ohne Widerhaken, mit Schwimmer, nur natürliche Köder (keine Köderfische). Anfüttern & Hältern verboten",
+      "link": "https://www.sz.ch/verwaltung/umweltdepartement/amt-fuer-gewaesser/fischerei/fischerpatente.html/8756-8758-8802-9447-9450-10713-10826"
     },
     "id": "lauerzersee"
   },
@@ -1100,7 +1133,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.vs.ch/de/web/scpf/permis-de-peche-epeche-"
     },
     "id": "lac-de-salanfe"
   },
@@ -1126,7 +1160,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.vs.ch/de/web/scpf/permis-de-peche-epeche-"
     },
     "id": "mattmarksee"
   },
@@ -1151,7 +1186,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.gr.ch/DE/institutionen/verwaltung/diem/ajf/fischerei/Fischen-in-Graubuenden/Seiten/Fischereipatente.aspx"
     },
     "id": "caumasee"
   },
@@ -1176,7 +1212,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatent-beziehen.html"
     },
     "id": "blausee"
   },
@@ -1200,7 +1237,8 @@
     "freeFishing": false,
     "permitPrices": {
       "daily": "CHF 33-40 (Jugend CHF 15)",
-      "info": "Nur vom Ufer! Boot verboten! Mindestmass 24cm, max. 3-5 Fische/Tag. Zeit: 5:30-22:00. SONN- & FEIERTAGE: FISCHEREIVERBOT!"
+      "info": "Nur vom Ufer! Boot verboten! Mindestmass 24cm, max. 3-5 Fische/Tag. Zeit: 5:30-22:00. SONN- & FEIERTAGE: FISCHEREIVERBOT!",
+      "link": "https://www.ai.ch/themen/natur-und-umwelt/fischerei"
     },
     "regulations": {
       "closedSeasons": "SONN- UND FEIERTAGE: FISCHEREIVERBOT! | Bergseen allgemein: 12. April bis 27. September",
@@ -1242,7 +1280,8 @@
     "freeFishing": false,
     "permitPrices": {
       "daily": "CHF 33 (Jugend CHF 15)",
-      "info": "Mindestmass 28cm! Nur vom Ufer. Max. 3-5 Fische/Tag. SONN- & FEIERTAGE: FISCHEREIVERBOT!"
+      "info": "Mindestmass 28cm! Nur vom Ufer. Max. 3-5 Fische/Tag. SONN- & FEIERTAGE: FISCHEREIVERBOT!",
+      "link": "https://www.ai.ch/themen/natur-und-umwelt/fischerei"
     },
     "regulations": {
       "closedSeasons": "SONN- UND FEIERTAGE: FISCHEREIVERBOT! | Saison: 12. April - 27. September",
@@ -1281,7 +1320,8 @@
     "freeFishing": false,
     "permitPrices": {
       "daily": "CHF 33 (Jugend CHF 15)",
-      "info": "Mindestmass 28cm! Nur vom Ufer. Max. 3-5 Fische/Tag. SONN- & FEIERTAGE: FISCHEREIVERBOT!"
+      "info": "Mindestmass 28cm! Nur vom Ufer. Max. 3-5 Fische/Tag. SONN- & FEIERTAGE: FISCHEREIVERBOT!",
+      "link": "https://www.ai.ch/themen/natur-und-umwelt/fischerei"
     },
     "regulations": {
       "closedSeasons": "SONN- UND FEIERTAGE: FISCHEREIVERBOT! | Saison: 12. April - 27. September",
@@ -1324,7 +1364,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.ow.ch/dienstleistungen/2051"
     },
     "id": "melchsee"
   },
@@ -1350,7 +1391,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.ow.ch/dienstleistungen/2051"
     },
     "id": "tannensee"
   },
@@ -1376,7 +1418,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatent-beziehen.html"
     },
     "id": "engstlensee"
   },
@@ -1404,7 +1447,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www4.ti.ch/dt/da/ucp/temi/pesca/"
     },
     "id": "ritomsee"
   },
@@ -1430,7 +1474,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www4.ti.ch/dt/da/ucp/temi/pesca/"
     },
     "id": "lago-d-arbola"
   },
@@ -1456,7 +1501,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www4.ti.ch/dt/da/ucp/temi/pesca/"
     },
     "id": "laghetto-moesola"
   },
@@ -1484,7 +1530,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.sg.ch/umwelt-natur/jagd-fischerei/fischerei/fischereipatente.html"
     },
     "id": "oberer-murgsee"
   },
@@ -1511,7 +1558,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.sg.ch/umwelt-natur/jagd-fischerei/fischerei/fischereipatente.html"
     },
     "id": "mittlerer-murgsee"
   },
@@ -1538,7 +1586,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.gr.ch/DE/institutionen/verwaltung/diem/ajf/fischerei/Fischen-in-Graubuenden/Seiten/Fischereipatente.aspx"
     },
     "id": "st-moritzersee"
   },
@@ -1564,7 +1613,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.gr.ch/DE/institutionen/verwaltung/diem/ajf/fischerei/Fischen-in-Graubuenden/Seiten/Fischereipatente.aspx"
     },
     "id": "zervreilasee"
   },
@@ -1590,7 +1640,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.gr.ch/DE/institutionen/verwaltung/diem/ajf/fischerei/Fischen-in-Graubuenden/Seiten/Fischereipatente.aspx"
     },
     "id": "guraletschsee"
   },
@@ -1616,7 +1667,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.gr.ch/DE/institutionen/verwaltung/diem/ajf/fischerei/Fischen-in-Graubuenden/Seiten/Fischereipatente.aspx"
     },
     "id": "lagh-de-cama"
   },
@@ -1642,7 +1694,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.gr.ch/DE/institutionen/verwaltung/diem/ajf/fischerei/Fischen-in-Graubuenden/Seiten/Fischereipatente.aspx"
     },
     "id": "lag-da-barcuns"
   },
@@ -1668,7 +1721,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.gr.ch/DE/institutionen/verwaltung/diem/ajf/fischerei/Fischen-in-Graubuenden/Seiten/Fischereipatente.aspx"
     },
     "id": "davosersee"
   },
@@ -1694,7 +1748,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.gr.ch/DE/institutionen/verwaltung/diem/ajf/fischerei/Fischen-in-Graubuenden/Seiten/Fischereipatente.aspx"
     },
     "id": "lai-da-marmorera"
   },
@@ -1723,7 +1778,8 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.vs.ch/de/web/scpf/permis-de-peche-epeche-"
     },
     "id": "lac-de-taney"
   },
@@ -1749,8 +1805,586 @@
       "weekly": "CHF 55.00",
       "monthly": "CHF 130.00",
       "annual": "CHF 320.00",
-      "youth": "CHF 90.00"
+      "youth": "CHF 90.00",
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatent-beziehen.html"
     },
     "id": "arnensee"
+  },
+  {
+    "name": "Burgäschisee",
+    "area": "0.21 km²",
+    "maxDepth": "31 m",
+    "elevation": "465 m",
+    "cantons": "Solothurn, Bern",
+    "bestSeason": "Mitte Mai - Mitte Oktober",
+    "permitRequired": "Tagespatent (mit SaNa-Ausweis) im Volg-Laden Aeschi erhältlich",
+    "coords": [
+      47.169,
+      7.668
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Hecht",
+      "Egli",
+      "Karpfen",
+      "Schleie",
+      "Aal"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 20.00 (Ruderboot/Ufer)",
+      "annual": "CHF 60.00 (Erwachsene), CHF 20.00 (Jugend)",
+      "info": "SaNa-Ausweis zwingend erforderlich, ohne SaNa ist das Patent ungültig. Fischereizeit ca. 05:00-22:00 Uhr.",
+      "link": "https://so.ch/verwaltung/volkswirtschaftsdepartement/amt-fuer-wald-jagd-und-fischerei/fischerei/fischen-im-kanton-solothurn/"
+    },
+    "id": "burgaeschisee"
+  },
+  {
+    "name": "Rotsee",
+    "area": "0.48 km²",
+    "maxDepth": "16 m",
+    "elevation": "419 m",
+    "cantons": "Luzern",
+    "bestSeason": "Mitte Juni - Mitte September (Fischerkarten nur via myFish-App)",
+    "permitRequired": "Fischereipatent erforderlich (Tages-/Wochen-/Monatskarte nur online über myFish-App, Jahrespatent zusätzlich mit SaNa)",
+    "coords": [
+      47.06972,
+      8.31417
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Rotauge",
+      "Rotfeder",
+      "Karpfen",
+      "Schleie",
+      "Brachsen"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "info": "Preise nur über die myFish-App einsehbar, öffentlich nicht bestätigt. Jugendliche bis 16 Jahre fischen 1. Mai - 15. Dezember in der Jugendfisch-Zone kostenlos.",
+      "link": "https://www.myfish.ch/"
+    },
+    "id": "rotsee"
+  },
+  {
+    "name": "Étang de la Montoie",
+    "area": "0.016 km²",
+    "elevation": "466 m",
+    "cantons": "Jura",
+    "permitRequired": "Tageskarte (CHF 20) oder Jahreskarte (automatische Mitgliedschaft im Fischereiverein 'La Montoie')",
+    "coords": [
+      47.4128,
+      7.1740
+    ],
+    "fishSpecies": [
+      "Karpfen",
+      "Hecht",
+      "Zander"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 20.00",
+      "info": "Jahreskarte macht automatisch Mitglied des Fischereivereins 'La Montoie' (Vereinsbeitrag ca. CHF 35/Jahr).",
+      "link": "https://www.cornol.ch/_rte/verein/31079"
+    },
+    "id": "etang-de-la-montoie"
+  },
+  {
+    "name": "Wohlensee",
+    "area": "3.65 km²",
+    "maxDepth": "20 m",
+    "elevation": "481 m",
+    "cantons": "Bern",
+    "permitRequired": "Fischereipatent des Kantons Bern erforderlich (Patentgewässer)",
+    "coords": [
+      46.9683,
+      7.2844
+    ],
+    "fishSpecies": [
+      "Rotauge",
+      "Rotfeder",
+      "Hasel",
+      "Hecht",
+      "Felchen",
+      "Aal",
+      "Döbel",
+      "Barbe",
+      "Egli",
+      "Karpfen",
+      "Schleie",
+      "Trüsche"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 32.00",
+      "weekly": "CHF 100.00",
+      "monthly": "CHF 180.00 (Kanton Bern) / CHF 360.00 (auswärtig)",
+      "annual": "CHF 250.00 + CHF 50.00 Hegebeitrag (Kanton Bern) / CHF 500.00 + CHF 50.00 Hegebeitrag (auswärtig)",
+      "youth": "CHF 20.00 (Tagespatent) / CHF 72.00 (Jahrespatent)",
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatente-preise.html"
+    },
+    "id": "wohlensee"
+  },
+  {
+    "name": "Göscheneralpsee",
+    "area": "1.32 km²",
+    "maxDepth": "106 m",
+    "elevation": "1792 m",
+    "cantons": "Uri",
+    "bestSeason": "Juni - Oktober",
+    "permitRequired": "Fischereipatent des Kantons Uri erforderlich (1-Tagespatent ohne SaNa möglich)",
+    "coords": [
+      46.64528,
+      8.48444
+    ],
+    "fishSpecies": [
+      "Regenbogenforelle",
+      "Kanadische Seeforelle (Namaycush)"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 20.00 (Einheimische)",
+      "info": "1-Tagespatent gilt für Urnersee, Seelisbergersee und Göscheneralpsee, kein Sachkundenachweis nötig. Saison 1. Juni - 31. Oktober.",
+      "link": "https://fischereipatente.ur.ch/en/"
+    },
+    "id": "goescheneralpsee"
+  },
+  {
+    "name": "Muttsee",
+    "area": "0.84 km²",
+    "maxDepth": "98 m",
+    "elevation": "2474 m",
+    "cantons": "Glarus",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Glarner Fischereipatent erforderlich",
+    "coords": [
+      46.8636,
+      9.0272
+    ],
+    "fishSpecies": [
+      "Kanadischer Seesaibling (Namaycush)"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 30.00",
+      "weekly": "CHF 120.00",
+      "monthly": "CHF 200.00",
+      "annual": "CHF 160.00 (Einheimische) / CHF 400.00 (Auswärtige)",
+      "youth": "CHF 80.00",
+      "info": "Fangzeiten 1. Mai - 30. September, Schonmass 23 cm, max. 6 Fische/Tag. Höchstgelegener Stausee Europas, Zugang per Seilbahn Linthal-Tierfehd-Limmern.",
+      "link": "https://www.gl.ch/verwaltung/bau-und-umwelt/umwelt-wald-und-energie/jagd-und-fischerei/fischerei/fischereipatente.html/799"
+    },
+    "id": "muttsee"
+  },
+  {
+    "name": "Lago di Lei",
+    "area": "4.12 km²",
+    "maxDepth": "133 m",
+    "elevation": "1931 m",
+    "cantons": "Graubünden",
+    "bestSeason": "Anfang Mai - Anfang Oktober",
+    "permitRequired": "Sonderfall: Konzession liegt bei der italienischen 'Unione Pesca Sportiva della Provincia di Sondrio' (UPS), NICHT beim Bündner Amt für Jagd und Fischerei. Nötig: italienische Fischereilizenz Typ B (ca. EUR 23/Jahr) + Erlaubnisschein der UPS Sondrio.",
+    "coords": [
+      46.4831,
+      9.4550
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Regenbogenforelle",
+      "Seesaibling",
+      "Äsche"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "EUR 35.00",
+      "weekly": "EUR 70.00 (Abbonamento Weekend, 3 Tage Fr/Sa/So)",
+      "monthly": "EUR 100.00 (Abbonamento Estivo, 30 Tage)",
+      "info": "Zusätzlich italienische Regionallizenz Lombardei nötig (ca. EUR 23.00/Jahr). Fangbeschränkung max. 10 Fische/Tag (davon max. 5 Forellen/Äschen kombiniert).",
+      "link": "https://www.unionepescasondrio.it/"
+    },
+    "id": "lago-di-lei"
+  },
+  {
+    "name": "Lac d'Emosson",
+    "area": "3.27 km²",
+    "maxDepth": "161 m",
+    "elevation": "1930 m",
+    "cantons": "Wallis",
+    "permitRequired": "SaNa + Walliser Fischereipatent erforderlich. Tages-/2-Tages-Karte speziell für den Lac d'Emosson beim Restaurant du Barrage d'Emosson oder online via fishfinder.ch.",
+    "coords": [
+      46.0717,
+      6.9194
+    ],
+    "fishSpecies": [
+      "Regenbogenforelle",
+      "Seesaibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 30.00",
+      "info": "2-Tage-Karte: CHF 50.00.",
+      "link": "https://www.valleedutrient.ch/en/fishing-emosson-fp451"
+    },
+    "id": "lac-d-emosson"
+  },
+  {
+    "name": "Lac de l'Hongrin",
+    "area": "1.6 km²",
+    "maxDepth": "105 m",
+    "elevation": "1255 m",
+    "cantons": "Waadt",
+    "bestSeason": "3. Sonntag April - 1. Sonntag November (freitags Fischverbot)",
+    "permitRequired": "Waadtländer Fischereipatent (Permis de pêche en rivière) erforderlich. Für Jahrespatent zusätzlich SaNa nötig.",
+    "coords": [
+      46.4247,
+      7.0483
+    ],
+    "fishSpecies": [
+      "Forelle (Seeforelle)",
+      "Regenbogenforelle",
+      "Egli",
+      "Ukelei",
+      "Groppe"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 20.00 (Erwachsene) / CHF 10.00 (bis 18 Jahre)",
+      "weekly": "CHF 60.00 (Erwachsene) / CHF 30.00 (bis 18 Jahre)",
+      "annual": "CHF 150.00 Kanton Waadt bzw. Inhaber gültiges Jahres-Flusspatent GE/FR/BE/NE/VS (Jugendliche: CHF 75.00) / CHF 300.00 übrige (Jugendliche: CHF 150.00)",
+      "info": "Patent gilt auch für Lac de Bret und die Bergseen des Bezirks Aigle. Max. 6 Salmoniden/Tag (Jahrespatent), max. 200/Jahr.",
+      "link": "https://www.vd.ch/prestation/commander-un-permis-de-peche-de-loisir-courte-duree"
+    },
+    "id": "lac-de-l-hongrin"
+  },
+  {
+    "name": "Lac des Dix",
+    "area": "3.65 km²",
+    "maxDepth": "227 m",
+    "elevation": "2365 m",
+    "cantons": "Wallis",
+    "permitRequired": "SaNa + Walliser Fischereipatent (Kategorie Bergseen und Teiche) erforderlich",
+    "coords": [
+      46.077,
+      7.42365
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00 (inkl. Wiederbevölkerung)",
+      "info": "2-Tage-Patent: CHF 45.00. Jahrespatent (Rhone, Flüsse, Bergseen, Teiche): CHF 99.00 + CHF 77.00 Wiederbevölkerung (Kanton Wallis) / CHF 189.00 + CHF 157.00 (auswärtig).",
+      "link": "https://www.vs.ch/de/web/scpf/permis-de-peche-epeche-"
+    },
+    "id": "lac-des-dix"
+  },
+  {
+    "name": "Lac de Mauvoisin",
+    "area": "2.08 km²",
+    "elevation": "1961 m",
+    "cantons": "Wallis",
+    "permitRequired": "SaNa + Walliser Fischereipatent (Kategorie Bergseen und Teiche) erforderlich",
+    "coords": [
+      45.998056,
+      7.349444
+    ],
+    "fishSpecies": [
+      "Forelle",
+      "Saibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00 (inkl. Wiederbevölkerung)",
+      "info": "2-Tage-Patent: CHF 45.00. Jahrespatent (Rhone, Flüsse, Bergseen, Teiche): CHF 99.00 + CHF 77.00 Wiederbevölkerung (Kanton Wallis) / CHF 189.00 + CHF 157.00 (auswärtig). See wird in offiziellen Dokumenten nicht separat aufgeführt, allgemeine Walliser Bergsee-Regelung gilt.",
+      "link": "https://www.vs.ch/de/web/scpf/permis-de-peche-epeche-"
+    },
+    "id": "lac-de-mauvoisin"
+  },
+  {
+    "name": "Seelisbergersee",
+    "area": "0.18 km²",
+    "maxDepth": "37 m",
+    "elevation": "738 m",
+    "cantons": "Uri",
+    "bestSeason": "Juni - Dezember",
+    "permitRequired": "Fischereipatent des Kantons Uri erforderlich (1-Tagespatent ohne SaNa möglich)",
+    "coords": [
+      46.9586,
+      8.5719
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Egli (Barsch)",
+      "Alet",
+      "Schleie",
+      "Laube",
+      "Groppe"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 20.- (Wohnsitz Uri) / CHF 30.- (auswärtig) - 1-Tagespatent, gilt für Urnersee, Seelisbergersee und Göscheneralpstausee",
+      "weekly": "CHF 100.- (Wohnsitz Uri) / CHF 150.- (auswärtig)",
+      "annual": "CHF 330.- (Wohnsitz Uri) / CHF 660.- (auswärtig)",
+      "youth": "CHF 15.- (Tagespatent) / CHF 60.- (Jahrespatent)",
+      "info": "Fangzeiten 1. Juni - 31. Dezember. Fangmindestmass: Hecht 50 cm, Barsch (Egli) 15 cm, keine Tagesfangbeschränkung.",
+      "link": "https://fischereipatente.ur.ch/en/"
+    },
+    "id": "seelisbergersee"
+  },
+  {
+    "name": "Schwarzsee",
+    "area": "0.47 km²",
+    "maxDepth": "6 m",
+    "elevation": "1047 m",
+    "cantons": "Freiburg",
+    "permitRequired": "Kantonales Fischereipatent (Tages-, Wochen- oder Jahrespatent) erforderlich; erhältlich online beim Staat Freiburg oder bei Schwarzsee Tourismus",
+    "coords": [
+      46.6653,
+      7.2806
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Karausche",
+      "Zander",
+      "Brachsen",
+      "Rotauge",
+      "Rotfeder",
+      "Hecht",
+      "Karpfen",
+      "Barsch",
+      "Döbel"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 30 (Kt. FR/VD) / CHF 45 (auswärtig)",
+      "weekly": "CHF 61 (Kt. FR/VD) / CHF 107 (auswärtig, inkl. CHF 15 Besatzabgabe)",
+      "info": "Tages- und Wochenpatente erhältlich bei Schwarzsee Tourismus oder online beim virtuellen Schalter des Kantons Freiburg",
+      "link": "https://fribourg.ch/en/schwarzsee/outdoor-activities/fishing-in-schwarzsee/"
+    },
+    "id": "schwarzsee"
+  },
+  {
+    "name": "Mapraggsee",
+    "area": "0.26 km²",
+    "elevation": "865 m",
+    "cantons": "St. Gallen",
+    "bestSeason": "Mai - September",
+    "permitRequired": "Tages-/Jahreskarte des Fischereivereins Sarganserland (auch für Nichtmitglieder erhältlich)",
+    "coords": [
+      46.9414,
+      9.4781
+    ],
+    "fishSpecies": [
+      "Regenbogenforelle",
+      "Bachforelle",
+      "Seesaibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 40.00 (+ CHF 20 Depot)",
+      "weekly": "CHF 200.00 (7 Tage, + CHF 20 Depot)",
+      "annual": "CHF 355.00 (Mitglied, SaNa-Karte) / CHF 550.00 (Nichtmitglied)",
+      "youth": "CHF 100.00 (12-15 Jahre) / CHF 160.00 (16-25 Jahre)",
+      "info": "Schontage 2026 (kein Fischen erlaubt): 11.-12. Mai, 1.-2. Juni, 6.-7. Juli, 20.-21. Juli, 3.-4. Aug, 7.-8. Sept",
+      "link": "https://fv-sarganserland.ch/gewaesser/"
+    },
+    "id": "mapraggsee"
+  },
+  {
+    "name": "Räterichsbodensee",
+    "area": "0.67 km²",
+    "maxDepth": "77 m",
+    "elevation": "1767 m",
+    "cantons": "Bern",
+    "bestSeason": "Juni - September",
+    "permitRequired": "SaNa + Berner Fischereipatent erforderlich (eines der 6 Bergseen im Berner Patent)",
+    "coords": [
+      46.5853,
+      8.3281
+    ],
+    "fishSpecies": [
+      "Bachsaibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 32.00",
+      "weekly": "CHF 100.00",
+      "monthly": "CHF 180.00",
+      "annual": "CHF 250.00 + CHF 50.00 Hegebeitrag",
+      "youth": "CHF 20.00 (Tagespatent, unter 16 Jahre)",
+      "info": "Fischbestand gering, da kein Besatz mehr erfolgt; See ganzjährig durch Gletscherschliff getrübt. Bachsaiblinge nur im klaren Einlauf der oberen Aare.",
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatent-beziehen.html"
+    },
+    "id": "raeterichsbodensee"
+  },
+  {
+    "name": "Lac de Champex",
+    "area": "0.11 km²",
+    "maxDepth": "5 m",
+    "elevation": "1467 m",
+    "cantons": "Wallis",
+    "bestSeason": "Mai - September",
+    "permitRequired": "Lokale Fischereikarte der Société de Pêche de Champex-Lac erforderlich (privates, nach kantonalem Reglement geführtes Patent, Kontrolle durch kantonale Wildhüter); Inhaber des Walliser Kantonspatents sind von der zusätzlichen Kantonstaxe befreit.",
+    "coords": [
+      46.0283,
+      7.1162
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Bachsaibling",
+      "Seesaibling (Cristivomer)",
+      "Regenbogenforelle",
+      "Goldforelle",
+      "Egli"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 34.00 (zzgl. CHF 2.00 Kantonstaxe ohne Walliser Kantonspatent)",
+      "weekly": "CHF 85.00 (zzgl. CHF 10.00 Kantonstaxe ohne Walliser Kantonspatent)",
+      "monthly": "CHF 180.00 (zzgl. CHF 40.00 Kantonstaxe ohne Walliser Kantonspatent)",
+      "annual": "CHF 350.00 (zzgl. CHF 50.00 Kantonstaxe ohne Walliser Kantonspatent)",
+      "youth": "CHF 22.00 Tageskarte (8-14 Jahre), Jahreskarte CHF 180.00",
+      "info": "Fischen erlaubt 8-20 Uhr, ausser dienstags und freitags sowie in Schutzzonen. Saison: 2. Sonntag im Mai bis letzter Sonntag im September (Jahreskarte bis Ende Oktober). SaNa-Sachkundenachweis Pflicht für Karten über 1 Monat.",
+      "link": "https://www.peche-champex-lac.ch/"
+    },
+    "id": "lac-de-champex"
+  },
+  {
+    "name": "Gelmersee",
+    "area": "0.65 km²",
+    "maxDepth": "48 m",
+    "elevation": "1850 m",
+    "cantons": "Bern",
+    "bestSeason": "Juni - Oktober",
+    "permitRequired": "SaNa + Berner Fischereipatent erforderlich (eines der 6 Bergseen im Berner Patent)",
+    "coords": [
+      46.6161,
+      8.3322
+    ],
+    "fishSpecies": [
+      "Kanadische Seeforelle"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 32.00",
+      "weekly": "CHF 100.00",
+      "monthly": "CHF 180.00",
+      "annual": "CHF 250.00 + CHF 50.00 Hegebeitrag",
+      "youth": "CHF 20.00 (Tagespatent, unter 16 Jahre)",
+      "info": "See ganzjährig durch Gletscherschliff stark getrübt; kanadische Seeforellen werden eingesetzt und erfolgreich gefangen. Zugang meist nur saisonal via Gelmerbahn (Juni-Oktober).",
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatent-beziehen.html"
+    },
+    "id": "gelmersee"
+  },
+  {
+    "name": "Mattenalpsee",
+    "area": "0.186 km²",
+    "elevation": "1875 m",
+    "cantons": "Bern",
+    "bestSeason": "Juni - Oktober",
+    "permitRequired": "Kantonales Bernisches Fischereipatent (Bergsee-Patentgewässer, eines von 6 Bergseen)",
+    "coords": [
+      46.630278,
+      8.234167
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Bachsaibling"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 32.00",
+      "weekly": "CHF 100.00",
+      "monthly": "CHF 180.00",
+      "annual": "CHF 250.00 + CHF 50.00 Hegebeitrag",
+      "youth": "CHF 20.00 (Tagespatent, unter 16 Jahre)",
+      "info": "Widerhakenverbot am See; See ist durch Gletscherschliff meist trüb, daher werden aktuell kaum Fische eingesetzt/gefangen.",
+      "link": "https://www.bkfv-fcbp.ch/fischen-im-kanton-bern/patentgewaesser/seen/mattenalpsee/"
+    },
+    "id": "mattenalpsee"
+  },
+  {
+    "name": "Lago di Vogorno",
+    "area": "1.68 km²",
+    "maxDepth": "204 m",
+    "elevation": "470 m",
+    "cantons": "Tessin",
+    "bestSeason": "März - September",
+    "permitRequired": "Licenza di pesca cantonale Ticino erforderlich",
+    "coords": [
+      46.2,
+      8.85
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Regenbogenforelle",
+      "Hecht",
+      "Barsch",
+      "Felchen",
+      "Alet"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "weekly": "CHF 120.00 (Touristenpatent T1, 7 Tage)",
+      "annual": "CHF 170.00 (Tessin) / CHF 350.00 (Schweiz) / CHF 600.00 (Ausland)",
+      "youth": "CHF 50.00 (14-17 Jahre, Jahrespatent)",
+      "info": "Allgemeine Patente D1 (Jahr) oder T1 (Tourist, 2 oder 7 Tage) gültig für den Lago di Vogorno; keine Tageskarte verfügbar.",
+      "link": "https://www4.ti.ch/dt/da/ucp/temi/pesca/"
+    },
+    "id": "lago-di-vogorno"
+  },
+  {
+    "name": "Lac de Tseuzier",
+    "area": "0.85 km²",
+    "maxDepth": "140 m",
+    "elevation": "1774 m",
+    "cantons": "Wallis",
+    "bestSeason": "Juni - November",
+    "permitRequired": "SaNa + Walliser Fischereipatent (Kategorie Bergseen und Teiche) erforderlich. Tages-/2-Tages-Karte beim Restaurant du Lac de Tseuzier oder im Tourismusbüro Anzère erhältlich.",
+    "coords": [
+      46.35083,
+      7.43056
+    ],
+    "fishSpecies": [
+      "Bachforelle",
+      "Regenbogenforelle",
+      "Seeforelle"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00 (inkl. Wiederbevölkerung)",
+      "info": "2-Tage-Patent: CHF 45.00. Jahrespatent (Rhone, Flüsse, Bergseen, Teiche): CHF 99.00 + CHF 77.00 Wiederbevölkerung (Kanton Wallis) / CHF 189.00 + CHF 157.00 (auswärtig).",
+      "link": "https://www.vs.ch/de/web/scpf/permis-de-peche-epeche-"
+    },
+    "id": "lac-de-tseuzier"
+  },
+  {
+    "name": "Heidsee",
+    "area": "0.41 km²",
+    "elevation": "1484 m",
+    "cantons": "Graubünden",
+    "bestSeason": "Juni - Oktober",
+    "permitRequired": "Kantonales Bündner Patent NICHT gültig! Lokales Heidsee-Patent (Gemeinde Vaz/Obervaz) + SaNa-Ausweis erforderlich",
+    "coords": [
+      46.73972,
+      9.55056
+    ],
+    "fishSpecies": [
+      "Saibling",
+      "Schleie",
+      "Bachforelle",
+      "Regenbogenforelle"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 20.00",
+      "weekly": "CHF 50.00",
+      "annual": "CHF 200.00",
+      "youth": "Gratis (12-16 Jahre)",
+      "info": "Kantonales Fischereipatent gilt hier nicht - separates Heidsee-Patent nötig; ab Saison 2026 SaNa-Ausweis für alle Patentarten Pflicht",
+      "link": "https://arosalenzerheide.swiss/en/Lenzerheide/Summer/More-summer-activities/Fishing-Heidsee-lake"
+    },
+    "id": "heidsee"
   }
 ]
