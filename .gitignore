@@ -53,3 +53,7 @@ pubsub-debug.log
 # Firebase Functions
 functions/node_modules/
 functions/lib/
+
+# graphify (local knowledge-graph cache, regenerate with `graphify .`)
+/graphify-out
+.claude/
