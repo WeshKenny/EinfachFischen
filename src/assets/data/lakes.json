@@ -1869,8 +1869,10 @@
   {
     "name": "Étang de la Montoie",
     "area": "0.016 km²",
+    "maxDepth": "Unbekannt",
     "elevation": "466 m",
     "cantons": "Jura",
+    "bestSeason": "Unbekannt",
     "permitRequired": "Tageskarte (CHF 20) oder Jahreskarte (automatische Mitgliedschaft im Fischereiverein 'La Montoie')",
     "coords": [
       47.4128,
