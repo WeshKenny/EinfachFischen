@@ -1897,6 +1897,7 @@
     "maxDepth": "20 m",
     "elevation": "481 m",
     "cantons": "Bern",
+    "bestSeason": "Unbekannt",
     "permitRequired": "Fischereipatent des Kantons Bern erforderlich (Patentgewässer)",
     "coords": [
       46.9683,
