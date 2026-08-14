@@ -6,7 +6,7 @@
   "prHourlyLimit": 2,
   "automerge": false,
   "recreateClosed": true,
-  "rebaseWhen": "never",
+  "rebaseWhen": "behind-base-branch",
   "rangeStrategy": "replace", 
 
   "lockFileMaintenance": {

@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "validate:lakes": "node scripts/validate-lakes.js",
     "serve:ssr:my-app": "node dist/my-app/server/server.mjs"
   },
   "prettier": {

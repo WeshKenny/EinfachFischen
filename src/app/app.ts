@@ -53,7 +53,15 @@ export class App {
   @HostListener('document:click')
   onDocumentClick() {
     this.isLanguageMenuOpen = false;
-    this.isMobileMenuOpen = false;
+    this.setMobileMenuOpen(false);
+  }
+
+  @HostListener('window:resize')
+  onWindowResize() {
+    if (window.innerWidth > 760) {
+      this.setMobileMenuOpen(false);
+      this.isLanguageMenuOpen = false;
+    }
   }
 
   setLanguage(language: AppLanguage) {
@@ -71,11 +79,16 @@ export class App {
 
   toggleMobileMenu(event: Event) {
     event.stopPropagation();
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    this.setMobileMenuOpen(!this.isMobileMenuOpen);
   }
 
   closeMobileMenu() {
-    this.isMobileMenuOpen = false;
+    this.setMobileMenuOpen(false);
+  }
+
+  private setMobileMenuOpen(open: boolean) {
+    this.isMobileMenuOpen = open;
+    document.body.style.overflow = open ? 'hidden' : '';
   }
 
   private updateRouteSeo(url: string) {
