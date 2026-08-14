@@ -2397,5 +2397,304 @@
       "link": "https://arosalenzerheide.swiss/en/Lenzerheide/Summer/More-summer-activities/Fishing-Heidsee-lake"
     },
     "id": "heidsee"
+  },
+  {
+    "name": "Niederriedsee",
+    "area": "1.54 km²",
+    "maxDepth": "8 m",
+    "elevation": "461 m",
+    "cantons": "Bern",
+    "permitRequired": "SaNa + Bernisches Fischereipatent erforderlich",
+    "coords": [
+      47.00,
+      7.24
+    ],
+    "fishSpecies": [
+      "Äsche",
+      "Rotauge",
+      "Brachsmen",
+      "Hecht",
+      "Egli"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 32.00",
+      "weekly": "CHF 100.00",
+      "monthly": "CHF 180.00",
+      "annual": "CHF 250.00 + CHF 50.00 Hegebeitrag",
+      "youth": "CHF 72.00",
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatente-preise.html"
+    },
+    "id": "niederriedsee"
+  },
+  {
+    "name": "Stau von Aarberg",
+    "cantons": "Bern",
+    "bestSeason": "März - September",
+    "permitRequired": "Fischereipatent Kanton Bern erforderlich",
+    "coords": [
+      47.04,
+      7.27
+    ],
+    "fishSpecies": [
+      "Äsche",
+      "Hecht",
+      "Egli",
+      "Bachforelle",
+      "Rotauge",
+      "Brachse",
+      "Barbe"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 32.00",
+      "weekly": "CHF 100.00",
+      "monthly": "CHF 180.00",
+      "annual": "CHF 250.00",
+      "youth": "CHF 72.00",
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatente-preise.html"
+    },
+    "id": "stau-von-aarberg"
+  },
+  {
+    "name": "Stau von Bannwil",
+    "elevation": "410 m",
+    "cantons": "Bern",
+    "bestSeason": "Ganzjährig (ausser Hechtschonzeit 1. März - 30. April)",
+    "permitRequired": "Berner Fischereipatent erforderlich (SaNa nur für Jahres-/Monatspatent)",
+    "coords": [
+      47.23,
+      7.73
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Flussbarsch",
+      "Wels",
+      "Döbel",
+      "Karpfen",
+      "Rotauge",
+      "Rotfeder",
+      "Hasel",
+      "Äsche"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 32.00",
+      "weekly": "CHF 100.00",
+      "monthly": "CHF 180.00",
+      "annual": "CHF 250.00 (+ CHF 50 Hegebeitrag)",
+      "youth": "CHF 72.00",
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatente-preise.html"
+    },
+    "id": "stau-von-bannwil"
+  },
+  {
+    "name": "Stau von Wynau",
+    "elevation": "400 m",
+    "cantons": "Bern",
+    "permitRequired": "Berner Fischereipatent erforderlich",
+    "coords": [
+      47.25,
+      7.80
+    ],
+    "fishSpecies": [
+      "Egli",
+      "Forelle",
+      "Hecht",
+      "Barbe"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 32.00",
+      "weekly": "CHF 100.00",
+      "monthly": "CHF 180.00",
+      "annual": "CHF 300.00",
+      "youth": "CHF 72.00",
+      "link": "https://www.weu.be.ch/de/start/themen/jagd-fischerei/fischerei/fischen-kanton-bern/fischereipatente-preise.html"
+    },
+    "id": "stau-von-wynau"
+  },
+  {
+    "name": "Eugenisee",
+    "area": "0.05 km²",
+    "elevation": "990 m",
+    "cantons": "Obwalden",
+    "bestSeason": "April - Oktober",
+    "permitRequired": "Tageskarte Eugenisee erforderlich (15.4.-31.10., separat vom kantonalen Fischereipatent)",
+    "coords": [
+      46.819,
+      8.3905
+    ],
+    "fishSpecies": [
+      "Regenbogenforelle",
+      "Bachforelle"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 25.00",
+      "youth": "CHF 15.00",
+      "link": "https://www.ow.ch/dienstleistungen/2051"
+    },
+    "id": "eugenisee"
+  },
+  {
+    "name": "Itlimoosweiher",
+    "area": "0.02 km²",
+    "elevation": "647 m",
+    "cantons": "Schwyz",
+    "bestSeason": "Ganzjährig",
+    "permitRequired": "Patentfrei vom Ufer aus (Einzelhaken ohne Widerhaken mit Schwimmer, nur Naturköder erlaubt)",
+    "coords": [
+      47.19,
+      8.69
+    ],
+    "fishSpecies": [
+      "Egli",
+      "Hecht",
+      "Zander",
+      "Karpfen",
+      "Forelle",
+      "Barbe",
+      "Brachsmen",
+      "Rotauge",
+      "Rotfeder",
+      "Schleie",
+      "Alet",
+      "Hasel",
+      "Gründling",
+      "Groppe",
+      "Sonnenbarsch",
+      "Schneider"
+    ],
+    "freeFishing": true,
+    "permitPrices": {
+      "link": "https://www.sz.ch/verwaltung/umweltdepartement/amt-fuer-gewaesser/fischerei/fischerpatente.html/8756-8758-8802-9447-9450-10713-10826"
+    },
+    "id": "itlimoosweiher"
+  },
+  {
+    "name": "Lac de Brenet",
+    "area": "0.8 km²",
+    "maxDepth": "18 m",
+    "elevation": "1002 m",
+    "cantons": "Waadt",
+    "permitRequired": "SaNa + Waadtländer Fischereipatent (Lacs de Joux, Brenet et Ter) erforderlich",
+    "coords": [
+      46.67,
+      6.32
+    ],
+    "fishSpecies": [
+      "Hecht",
+      "Felchen",
+      "Egli",
+      "Seeforelle",
+      "Rotauge",
+      "Schleie",
+      "Karpfen",
+      "Trüsche"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 15.00",
+      "annual": "CHF 70.00",
+      "youth": "CHF 35.00",
+      "link": "https://www.vd.ch/fileadmin/user_upload/themes/environnement/biodiversite/fichiers_pdf/P%C3%AAche/PRIX_PERMIS_PECHE_2025_20241211.pdf"
+    },
+    "id": "lac-de-brenet"
+  },
+  {
+    "name": "Lac de Bret",
+    "area": "0.36 km²",
+    "maxDepth": "13 m",
+    "elevation": "674 m",
+    "cantons": "Waadt",
+    "permitRequired": "Waadtländer Fischereipatent (Permis de pêche en rivière) erforderlich – gilt auch für Lac de Bret. Für Jahrespatent zusätzlich SaNa nötig.",
+    "coords": [
+      46.5111,
+      6.7722
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 20.00 (Erwachsene) / CHF 10.00 (bis 18 Jahre)",
+      "weekly": "CHF 60.00 (Erwachsene) / CHF 30.00 (bis 18 Jahre)",
+      "annual": "CHF 150.00 Kanton Waadt bzw. Inhaber gültiges Jahres-Flusspatent GE/FR/BE/NE/VS (Jugendliche: CHF 75.00) / CHF 300.00 übrige (Jugendliche: CHF 150.00)",
+      "info": "Gleiches Fischereipatent wie Lac de l'Hongrin und Bergseen des Bezirks Aigle (Permis de pêche en rivière). Max. 6 Salmoniden/Tag (Jahrespatent), max. 200/Jahr.",
+      "link": "https://www.vd.ch/prestation/commander-un-permis-de-peche-de-loisir-courte-duree"
+    },
+    "id": "lac-de-bret"
+  },
+  {
+    "name": "Étang des Crénées",
+    "area": "0.03 km²",
+    "elevation": "372 m",
+    "cantons": "Waadt",
+    "permitRequired": "Kantonaler Fischereipatent erforderlich (Kategorie Flüsse, kleine Seen und Weiher)",
+    "coords": [
+      46.30,
+      6.17
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 20.00",
+      "weekly": "CHF 60.00",
+      "annual": "CHF 150.00",
+      "youth": "CHF 75.00",
+      "link": "https://www.vd.ch/environnement/biodiversite-et-paysage/peche-1"
+    },
+    "id": "etang-des-crenees"
+  },
+  {
+    "name": "Lac Ter",
+    "elevation": "1017 m",
+    "cantons": "Waadt",
+    "bestSeason": "Mai - September",
+    "permitRequired": "SaNa + Waadtländer Fischereipatent (Lacs de Joux, Brenet et Ter) erforderlich",
+    "coords": [
+      46.65,
+      6.29
+    ],
+    "fishSpecies": [
+      "Seeforelle",
+      "Hecht",
+      "Felchen",
+      "Egli",
+      "Rotauge",
+      "Schleie"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 15.00",
+      "annual": "CHF 70.00",
+      "youth": "CHF 35.00",
+      "link": "https://www.vd.ch/fileadmin/user_upload/themes/environnement/biodiversite/fichiers_pdf/P%C3%AAche/Prix_permis_2026_Internet_20251225.pdf"
+    },
+    "id": "lac-ter"
+  },
+  {
+    "name": "Étang Monnier",
+    "area": "0.05 km²",
+    "elevation": "437 m",
+    "cantons": "Jura",
+    "permitRequired": "Permis journalier disponible sur place (pas d'adhésion obligatoire)",
+    "coords": [
+      47.47,
+      7.16
+    ],
+    "fishSpecies": [
+      "Karpfen",
+      "Hecht",
+      "Zander",
+      "Egli",
+      "Schleie",
+      "Rotauge",
+      "Karausche",
+      "Regenbogenforelle"
+    ],
+    "freeFishing": false,
+    "permitPrices": {
+      "daily": "CHF 20.00",
+      "link": "https://www.sportsloisirs.ch/peche/"
+    },
+    "id": "etang-monnier"
   }
 ]
