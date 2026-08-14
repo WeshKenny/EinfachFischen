@@ -2,7 +2,7 @@
 
 **EinfachFischen** ist eine moderne Web-Plattform für Angelfreunde in der Schweiz. Die Anwendung bietet eine interaktive Karte mit detaillierten Informationen zu Schweizer Seen, einschließlich Fischereivorschriften, Fischarten und Saison-Empfehlungen.
 
-![Angular](https://img.shields.io/badge/Angular-20.3.5-red?logo=angular)
+![Angular](https://img.shields.io/badge/Angular-21.2-red?logo=angular)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?logo=typescript)
 ![Leaflet](https://img.shields.io/badge/Leaflet-1.9.4-green?logo=leaflet)
 ![Netlify](https://img.shields.io/badge/Deployed%20on-Netlify-00C7B7?logo=netlify)
@@ -21,12 +21,31 @@ Das Hauptziel von **EinfachFischen** ist es, Anglern in der Schweiz einen einfac
 
 Die Anwendung ist live unter **[einfachfischen.ch](https://einfachfischen.ch)** erreichbar.
 
+### Branch-Workflow
+
+Änderungen laufen über drei Stufen, bevor sie live gehen:
+
+```
+Feature-Branch  →  dev  →  main  →  Netlify Deploy
+```
+
+1. **Feature-Branch**: Neue Änderungen werden auf einem eigenen Branch entwickelt und per Pull Request nach `dev` gemergt.
+2. **`dev`**: Integrations-Branch. Hier laufen Änderungen mehrerer Features zusammen und werden getestet, bevor sie produktiv gehen.
+3. **`main`**: Nur `dev` darf per Pull Request nach `main` mergen — das wird automatisch erzwungen (siehe unten). Ein Push/Merge auf `main` löst das Live-Deployment aus.
+
+### CI/CD-Pipelines (GitHub Actions)
+
+| Workflow | Läuft bei | Zweck |
+|---|---|---|
+| `github-pipeline.yml` (**Application Build and Test**) | Pull Request → `dev` oder `main` | Installiert Dependencies, baut das Projekt im Production-Modus, führt die Tests aus (Karma/Jasmine, Headless Chrome) |
+| `only-dev.yml` (**Branch Policy Enforcement**) | Pull Request → `main` | Blockiert automatisch jeden Merge nach `main`, dessen Quell-Branch nicht `dev` ist |
+| `renovate.yml` | Täglich (2 Uhr UTC) + manuell auslösbar | Renovate Bot prüft auf veraltete Dependencies und öffnet einen gebündelten Pull Request gegen `dev` |
+
 ### Automatisches Deployment
 
-Jede Änderung, die auf den `main`-Branch gepusht wird, wird automatisch durch **Netlify** auf die offizielle Website [einfachfischen.ch](https://einfachfischen.ch) ausgerollt. 
+Jede Änderung, die auf den `main`-Branch gemergt wird, wird automatisch durch **Netlify** auf die offizielle Website [einfachfischen.ch](https://einfachfischen.ch) ausgerollt:
 
-Der Deployment-Prozess läuft vollautomatisch:
-1. Push auf `main` Branch
+1. Merge von `dev` nach `main` (nur via PR, Branch Policy erzwingt das)
 2. Netlify erkennt die Änderung
 3. Build-Prozess startet automatisch
 4. Bei erfolgreichem Build wird die neue Version deployed
@@ -36,28 +55,24 @@ Der Deployment-Prozess läuft vollautomatisch:
 
 Das Projekt ist als **Angular Standalone Application** mit **Server-Side Rendering (SSR)** aufgebaut.
 
-### Hauptkomponenten
+### Seiten & Routing
 
-#### 1. **Home Component** (`src/app/home/`)
-- **Zweck**: Landing Page mit Hero-Section und Karten-Integration
-- **Features**:
-  - Animierter Hero-Bereich mit "Zur Karte"-Button
-  - Smooth-Scroll zur Karte
-  - Responsive Design für alle Bildschirmgrößen
+| Route | Komponente | Zweck |
+|---|---|---|
+| `/` | Home (`src/app/home/`) | Landingpage mit Hero-Bereich und eingebetteter Karte (lazy geladen via `@defer`) |
+| `/seen` | Lakes (`src/app/lakes/`) | Listenansicht aller Seen |
+| `/lake/:id` | LakeDetail (`src/app/lake-detail/`) | Detailseite eines Sees: Wetter, Bewilligungen, Regulierungen, Bildergalerie, Report-Issue-Modal |
+| `/about` | About (`src/app/about/`) | Team-Vorstellung |
+| `/contact` | Contact (`src/app/contact/`) | Kontaktformular |
 
-#### 2. **Map Component** (`src/app/map/`)
-- **Zweck**: Interaktive Leaflet-Karte mit Schweizer Seen
-- **Features**:
-  - Dynamische Marker für jeden See
-  - Click-Handling für See-Auswahl
-  - Integration mit der Sidebar
-  - Responsive Kartengröße für alle Bildschirmgrößen
-  - Custom Marker-Styling mit Hover-Effekten
-  - SSR-kompatible Implementierung (Client-only Rendering für Leaflet)
+Die interaktive Leaflet-Karte (`src/app/map/`) läuft eingebettet auf der Startseite, mit Marker-Clustering, Filtern nach Fischart/Kanton/freiem Fischen und einer Detail-Sidebar. Da Leaflet nicht SSR-kompatibel ist, wird die Karte nur client-seitig gerendert.
 
-**Daten-Struktur** (Lake Interface):
+> **Hinweis**: `src/app/details/` existiert im Code, ist aber in `app.routes.ts` nicht verlinkt und wird von keiner anderen Komponente importiert — aktuell toter Code.
+
+**Daten-Struktur** (Lake Interface, `src/app/services/lake.service.ts`):
 ```typescript
 interface Lake {
+  id?: string;
   name: string;
   coords: [number, number];
   area: string;
@@ -68,52 +83,38 @@ interface Lake {
   freeFishing: boolean;
   bestSeason: string;
   permitRequired: string;
+  permitPrices?: { daily?, weekly?, monthly?, annual?, youth?, link? };
+  regulations?: { closedSeasons?, minSizes?, bagLimit?, additionalRules? };
 }
 ```
 
-#### 3. **Sidebar Component** (Teil von Map)
-- **Zweck**: Detailansicht für ausgewählten See
-- **Features**:
-  - Slide-in Animation von rechts
-  - Drei Informations-Sektionen:
-    - 📊 Allgemeine Informationen (Fläche, Tiefe, Höhe, Kantone)
-    - 🎣 Fischereiinformationen (Saison, Patent-Status, Bewilligung)
-    - 🐟 Fischarten (als Tags dargestellt)
-  - Fixed Position über der Karte
-  - Close-Button für bessere UX
+### Services (`src/app/services/`)
 
-#### 4. **About Component** (`src/app/about/`)
-- **Zweck**: Team-Vorstellung und Projekt-Informationen
-- **Features**:
-  - Profil-Karten für Entwickler
-  - Responsive Grid-Layout
-  - Hover-Effekte und Glassmorphism-Design
+| Service | Zweck |
+|---|---|
+| `LakeService` | Seedaten aus `lakes.json`, Filter- und Suchlogik |
+| `UiPreferencesService` | Sprache & Theme (hell/dunkel), persistiert in `localStorage` |
+| `WeatherService` | Wetterdaten via Open-Meteo API (kein API-Key, 30-Minuten-Cache) |
+| `SeoService` | Meta-Tags & strukturierte Daten pro Seite |
 
-#### 5. **Details Component** (`src/app/details/`)
-- **Zweck**: Zusätzliche Informationen und Details zum Projekt
-- **Features**: TBD (To Be Determined)
+### Mehrsprachigkeit & Theme
 
-### Navigation & Layout
-
-#### Top Navigation Bar (`src/app/app.html`)
-- Fixed Header mit Auto-Hide beim Scrollen
-- Routen: Home (`/`), Details (`/details`), Über uns (`/about`)
-- Gradient-Styling mit Backdrop-Blur-Effekt
-- Responsive für Mobile & Desktop
+Die Seite ist auf **Deutsch, Französisch, Italienisch und Englisch** verfügbar (`src/app/i18n-data.ts`) und unterstützt einen hell/dunkel Theme-Toggle, beides umgesetzt über Signals ohne zusätzliches State-Management (kein NgRx/Redux).
 
 ## 🛠️ Technologie-Stack
 
 ### Frontend
-- **Framework**: Angular 20.3.5 (Standalone Components)
-- **Sprache**: TypeScript 5.9
-- **Karten-Library**: Leaflet 1.9.4
-- **Styling**: CSS3 mit Custom Animations
-- **SSR**: Angular Universal (@angular/ssr)
+- **Framework**: Angular 21 (Standalone Components, Signals)
+- **Sprache**: TypeScript 5.9, strict mode
+- **Karten-Library**: Leaflet 1.9.4 + MarkerCluster
+- **Styling**: CSS mit Custom Properties (kein Tailwind/Bootstrap)
+- **SSR**: Angular SSR mit Express 5
 
 ### Build & Deployment
 - **Build-Tool**: Angular CLI (esbuild)
-- **Hosting**: Netlify
-- **CI/CD**: Automatisches Deployment via Netlify (main branch)
+- **Hosting**: Netlify (Auto-Deploy von `main`, siehe [Branch-Workflow](#branch-workflow))
+- **CI/CD**: GitHub Actions (Build+Test, Branch Policy Enforcement) + Renovate für Dependency-Updates
+- **Dependency-Budget**: 500KB initial, 1MB max (siehe `angular.json`)
 
 ### Development Tools
 - **Package Manager**: npm
@@ -123,7 +124,7 @@ interface Lake {
 ## 📦 Installation & Setup
 
 ### Voraussetzungen
-- Node.js (v18 oder höher)
+- Node.js (v20.19+, v22.12+ oder v24+ — siehe `@angular/cli` Engines-Anforderung)
 - npm (v9 oder höher)
 
 ### Installation
@@ -160,39 +161,48 @@ npm run serve:ssr:my-app
 EinfachFischen/
 ├── src/
 │   ├── app/
-│   │   ├── home/              # Landing Page Component
-│   │   ├── map/               # Karten-Component mit Sidebar
-│   │   ├── about/             # Team-Seite
-│   │   ├── details/           # Details-Seite
-│   │   ├── app.ts             # Root Component
-│   │   ├── app.routes.ts      # Routing-Konfiguration
-│   │   └── app.css            # Globale Styles
-│   ├── assets/                # Statische Assets (Bilder, Icons)
-│   ├── styles.css             # Globale Styles
-│   ├── main.ts                # Client-Entry-Point
-│   ├── main.server.ts         # Server-Entry-Point (SSR)
-│   └── server.ts              # Express Server (SSR)
-├── public/                    # Öffentliche Assets
-├── angular.json               # Angular Konfiguration
-├── package.json               # Dependencies
-├── tsconfig.json              # TypeScript Konfiguration
-└── README.md                  # Projekt-Dokumentation
+│   │   ├── home/               # Landingpage mit eingebetteter Karte
+│   │   ├── map/                # Leaflet-Karte mit Sidebar
+│   │   ├── lakes/               # Listenansicht aller Seen
+│   │   ├── lake-detail/         # Detailseite eines Sees
+│   │   ├── about/               # Team-Seite
+│   │   ├── contact/             # Kontaktformular
+│   │   ├── report-issue/        # Bug-Report-Modal
+│   │   ├── services/            # LakeService, WeatherService, UiPreferencesService, SeoService
+│   │   ├── app.ts               # Root Component
+│   │   ├── app.routes.ts        # Routing-Konfiguration
+│   │   └── i18n-data.ts         # Übersetzungen (DE, FR, IT, EN)
+│   ├── assets/
+│   │   └── data/lakes.json     # Seedatenbank
+│   ├── styles.css               # Globale Styles
+│   ├── main.ts                  # Client-Entry-Point
+│   ├── main.server.ts           # Server-Entry-Point (SSR)
+│   └── server.ts                # Express Server (SSR)
+├── public/                      # Öffentliche Assets
+├── .github/workflows/           # CI/CD-Pipelines
+├── angular.json                 # Angular Konfiguration
+├── package.json                 # Dependencies
+├── renovate.json                # Renovate-Konfiguration
+├── tsconfig.json                # TypeScript Konfiguration
+└── README.md                    # Projekt-Dokumentation
 ```
 
 ## 🗺️ Verfügbare Seen
 
-Das Projekt enthält Informationen zu zahlreichen Schweizer Seen und wird kontinuierlich erweitert, darunter:
+Das Projekt enthält eine wachsende Datenbank Schweizer Seen und Gewässer, darunter:
 
-- **Große Seen**: Genfersee, Bodensee, Neuenburgersee, Vierwaldstättersee, Zürichsee
+- **Grosse Seen**: Genfersee, Bodensee, Neuenburgersee, Vierwaldstättersee, Zürichsee
 - **Patentfreie Seen**: Neuenburgersee, Bielersee, Murtensee
-- **Weitere Seen**: Thunersee, Brienzersee, Zugersee, Sempachersee, Hallwilersee, und viele mehr
+- **Alpine Stauseen & Bergseen**: Lac des Dix, Lac de Mauvoisin, Muttsee, Göscheneralpsee, und viele mehr
 
-Jeder See enthält detaillierte Informationen zu:
+Jeder See enthält (soweit verfügbar) detaillierte Informationen zu:
 - Geografischen Daten (Koordinaten, Fläche, Tiefe, Höhe)
 - Zugehörigen Kantonen
-- Fischarten (z.B. Hecht, Zander, Barsch, Forelle)
-- Patent-Anforderungen
-- Besten Angelzeiten
+- Fischarten
+- Patent-Anforderungen & Preisen
+- Besten Angelzeiten & Regulierungen
+
+Alle Daten werden pro See gegen mindestens eine offizielle Quelle (Kantons-Fischereiamt, Wikipedia für Geodaten) geprüft, bevor sie aufgenommen werden — unbestätigte Angaben werden bewusst weggelassen statt geraten.
 
 ## 👥 Team
 
@@ -219,7 +229,7 @@ Dieses Projekt ist privat und nicht für kommerzielle Zwecke bestimmt.
 ## 🔗 Links
 
 - **Live-Website**: [einfachfischen.ch](https://einfachfischen.ch)
-- **Repository**: [GitHub](https://github.com/WeshKenny/Html_ToDoListe)
+- **Repository**: [GitHub](https://github.com/WeshKenny/EinfachFischen)
 - **Angular Dokumentation**: [angular.dev](https://angular.dev)
 - **Leaflet Dokumentation**: [leafletjs.com](https://leafletjs.com)
 
