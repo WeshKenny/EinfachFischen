@@ -87,7 +87,8 @@ export const UI_TRANSLATIONS: Record<SupportedLanguage, Record<string, string>> 
     regulations: 'Regelungen',
     patents: 'Fischereipatente',
     patentsIntro: 'Wähle einen Kanton, um zu sehen, welche Seen mit dem jeweiligen kantonalen Fischereipatent zugänglich sind.',
-    showOnMap: 'Auf Karte anzeigen'
+    showOnMap: 'Auf Karte anzeigen',
+    mapSectionTitle: 'Finde deinen Angelplatz auf der Karte'
   },
   fr: {
     home: 'Accueil',
@@ -173,7 +174,8 @@ export const UI_TRANSLATIONS: Record<SupportedLanguage, Record<string, string>> 
     regulations: 'Réglementation',
     patents: 'Permis de pêche',
     patentsIntro: 'Choisissez un canton pour voir quels lacs sont accessibles avec le permis de pêche cantonal correspondant.',
-    showOnMap: 'Voir sur la carte'
+    showOnMap: 'Voir sur la carte',
+    mapSectionTitle: 'Trouve ton coin de pêche sur la carte'
   },
   it: {
     home: 'Home',
@@ -259,7 +261,8 @@ export const UI_TRANSLATIONS: Record<SupportedLanguage, Record<string, string>> 
     regulations: 'Regolamenti',
     patents: 'Permessi di pesca',
     patentsIntro: 'Scegli un cantone per vedere quali laghi sono accessibili con il relativo permesso di pesca cantonale.',
-    showOnMap: 'Mostra sulla mappa'
+    showOnMap: 'Mostra sulla mappa',
+    mapSectionTitle: 'Trova il tuo posto di pesca sulla mappa'
   },
   en: {
     home: 'Home',
@@ -345,7 +348,8 @@ export const UI_TRANSLATIONS: Record<SupportedLanguage, Record<string, string>> 
     regulations: 'Regulations',
     patents: 'Fishing licenses',
     patentsIntro: 'Choose a canton to see which lakes are covered by the corresponding cantonal fishing license.',
-    showOnMap: 'Show on map'
+    showOnMap: 'Show on map',
+    mapSectionTitle: 'Find your fishing spot on the map'
   }
 };
 
