@@ -19,6 +19,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: 'seen', renderMode: RenderMode.Prerender },
   { path: 'about', renderMode: RenderMode.Prerender },
   { path: 'contact', renderMode: RenderMode.Prerender },
+  { path: 'patente', renderMode: RenderMode.Prerender },
   {
     path: 'lake/:id',
     renderMode: RenderMode.Prerender,

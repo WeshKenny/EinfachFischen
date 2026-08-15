@@ -15,7 +15,7 @@
 
   <section class="map-shell" #mapSection aria-label="Interaktive Karte der Schweizer Angelgewässer">
     @defer (on viewport; on timer(100ms)) {
-      <app-map (loadFailed)="onMapLoadError()"></app-map>
+      <app-map [initialCantonFilter]="cantonFilter" (loadFailed)="onMapLoadError()"></app-map>
     } @placeholder {
       <div class="map-placeholder">
         <div>
