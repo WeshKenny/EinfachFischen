@@ -1,0 +1,19 @@
+<section class="patents-page">
+  <div class="patents-card">
+    <h1>{{ prefs.t('patents') }}</h1>
+    <p class="patents-intro">{{ prefs.t('patentsIntro') }}</p>
+
+    <div class="patents-grid" *ngIf="patents.length > 0">
+      <button
+        type="button"
+        class="patent-card"
+        *ngFor="let patent of patents"
+        (click)="showOnMap(patent.canton)">
+        <img *ngIf="patent.image" [src]="patent.image" [alt]="prefs.localizeCantonName(patent.canton)" class="patent-flag">
+        <span class="patent-name">{{ prefs.localizeCantonName(patent.canton) }}</span>
+        <span class="patent-count">{{ patent.lakeCount }} {{ prefs.t('lakes') }}</span>
+        <span class="patent-cta">{{ prefs.t('showOnMap') }}</span>
+      </button>
+    </div>
+  </div>
+</section>

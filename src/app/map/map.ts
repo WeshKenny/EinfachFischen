@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, PLATFORM_ID, Inject, Output, EventEmitter, NgZone, ChangeDetectorRef, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, PLATFORM_ID, Inject, Input, Output, EventEmitter, NgZone, ChangeDetectorRef, ChangeDetectionStrategy, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -34,6 +34,7 @@ interface ActiveFilterChip {
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class Map implements AfterViewInit, OnDestroy {
+  @Input() initialCantonFilter?: string;
   @Output() loadFailed = new EventEmitter<void>();
 
   private map!: L.Map;
@@ -88,6 +89,7 @@ export class Map implements AfterViewInit, OnDestroy {
 
       this.initMap();
       await this.addMarkers();
+      await this.applyInitialCantonFilter();
       this.cdr.detectChanges();
 
       this.documentClickHandler = () => {
@@ -291,6 +293,20 @@ export class Map implements AfterViewInit, OnDestroy {
       value,
       image: getCantonImageAsset(value)
     }));
+  }
+
+  private async applyInitialCantonFilter(): Promise<void> {
+    if (!this.initialCantonFilter) {
+      return;
+    }
+
+    const match = this.regionFilterOptions.find(option =>
+      option.value.toLowerCase() === this.initialCantonFilter!.toLowerCase()
+    );
+
+    if (match) {
+      await this.toggleRegionFilter(match.value);
+    }
   }
 
   private extractCantons(rawCantons: string): string[] {

@@ -4,10 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "prebuild": "node scripts/generate-sitemap.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "validate:lakes": "node scripts/validate-lakes.js",
+    "sitemap": "node scripts/generate-sitemap.js",
     "serve:ssr:my-app": "node dist/my-app/server/server.mjs"
   },
   "prettier": {
