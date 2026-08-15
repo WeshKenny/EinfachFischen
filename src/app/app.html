@@ -8,6 +8,7 @@
     <ul>
       <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ prefs.t('home') }}</a></li>
       <li><a routerLink="/seen" routerLinkActive="active">{{ prefs.t('lakes') }}</a></li>
+      <li><a routerLink="/patente" routerLinkActive="active">{{ prefs.t('patents') }}</a></li>
       <li><a routerLink="/about" routerLinkActive="active">{{ prefs.t('about') }}</a></li>
       <li><a routerLink="/contact" routerLinkActive="active">{{ prefs.t('contact') }}</a></li>
     </ul>
@@ -39,6 +40,7 @@
 <nav class="mobile-nav" [class.open]="isMobileMenuOpen" aria-label="Mobile Navigation" (click)="$event.stopPropagation()">
   <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMobileMenu()">{{ prefs.t('home') }}</a>
   <a routerLink="/seen" routerLinkActive="active" (click)="closeMobileMenu()">{{ prefs.t('lakes') }}</a>
+  <a routerLink="/patente" routerLinkActive="active" (click)="closeMobileMenu()">{{ prefs.t('patents') }}</a>
   <a routerLink="/about" routerLinkActive="active" (click)="closeMobileMenu()">{{ prefs.t('about') }}</a>
   <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">{{ prefs.t('contact') }}</a>
 </nav>

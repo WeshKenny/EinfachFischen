@@ -79,6 +79,13 @@
   padding-top: 0;
 }
 
+.map-section-title {
+  text-align: center;
+  font-size: 1.4rem;
+  color: var(--text-main);
+  margin: 0 0 1rem;
+}
+
 .map-placeholder {
   height: 900px;
   display: flex;

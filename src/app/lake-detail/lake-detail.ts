@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef, effect } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, ChangeDetectorRef, effect, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { LakeService, Lake } from '../services/lake.service';
 import { WeatherService, WeatherData } from '../services/weather.service';
@@ -30,7 +30,8 @@ export class LakeDetail implements OnInit {
     private weatherService: WeatherService,
     private cdr: ChangeDetectorRef,
     public prefs: UiPreferencesService,
-    private seo: SeoService
+    private seo: SeoService,
+    @Inject(PLATFORM_ID) private platformId: object
   ) {
     effect(() => {
       this.prefs.language();
@@ -52,10 +53,14 @@ export class LakeDetail implements OnInit {
       } else {
         console.log(`✓ See geladen: ${this.lake.name}`);
         this.updateSeo();
-        
-        // Lade Wetter-Daten
-        this.loadWeather();
-        
+
+        // Wetter nur im Browser laden (nicht beim SSR/Prerendering) -
+        // vermeidet einen echten API-Call während des Builds und hält
+        // die vorgerenderte Seite unabhängig von der Wetter-API.
+        if (isPlatformBrowser(this.platformId)) {
+          this.loadWeather();
+        }
+
         // Force Change Detection nach async Laden
         this.cdr.detectChanges();
       }
@@ -157,7 +162,7 @@ export class LakeDetail implements OnInit {
       this.prefs.language(),
       this.prefs.localizeLakeName(this.lake.name),
       this.prefs.localizeCantons(this.lake.cantons),
-      this.lake.fishSpecies.map(fish => this.prefs.localizeFishName(fish))
+      (this.lake.fishSpecies ?? []).map(fish => this.prefs.localizeFishName(fish))
     );
   }
 }
